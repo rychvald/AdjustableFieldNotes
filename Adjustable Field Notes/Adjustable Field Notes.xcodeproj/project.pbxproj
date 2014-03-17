@@ -1,0 +1,502 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		086AAC0418D6E61900B0BEAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0318D6E61900B0BEAE /* Foundation.framework */; };
+		086AAC0618D6E61900B0BEAE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0518D6E61900B0BEAE /* CoreGraphics.framework */; };
+		086AAC0818D6E61900B0BEAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0718D6E61900B0BEAE /* UIKit.framework */; };
+		086AAC0A18D6E61900B0BEAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0918D6E61900B0BEAE /* CoreData.framework */; };
+		086AAC1018D6E61900B0BEAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC0E18D6E61900B0BEAE /* InfoPlist.strings */; };
+		086AAC1218D6E61900B0BEAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC1118D6E61900B0BEAE /* main.m */; };
+		086AAC1618D6E61900B0BEAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC1518D6E61900B0BEAE /* AppDelegate.m */; };
+		086AAC1918D6E61900B0BEAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC1718D6E61900B0BEAE /* Main.storyboard */; };
+		086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC1A18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld */; };
+		086AAC1F18D6E61900B0BEAE /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC1E18D6E61900B0BEAE /* MasterViewController.m */; };
+		086AAC2218D6E61900B0BEAE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC2118D6E61900B0BEAE /* DetailViewController.m */; };
+		086AAC2418D6E61900B0BEAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC2318D6E61900B0BEAE /* Images.xcassets */; };
+		086AAC2B18D6E61900B0BEAE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC2A18D6E61900B0BEAE /* XCTest.framework */; };
+		086AAC2C18D6E61900B0BEAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0318D6E61900B0BEAE /* Foundation.framework */; };
+		086AAC2D18D6E61900B0BEAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0718D6E61900B0BEAE /* UIKit.framework */; };
+		086AAC2E18D6E61900B0BEAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0918D6E61900B0BEAE /* CoreData.framework */; };
+		086AAC3618D6E61900B0BEAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC3418D6E61900B0BEAE /* InfoPlist.strings */; };
+		086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		086AAC2F18D6E61900B0BEAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 086AABF818D6E61900B0BEAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 086AABFF18D6E61900B0BEAE;
+			remoteInfo = "Adjustable Field Notes";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		086AAC0018D6E61900B0BEAE /* Adjustable Field Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Adjustable Field Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		086AAC0318D6E61900B0BEAE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		086AAC0518D6E61900B0BEAE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		086AAC0718D6E61900B0BEAE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		086AAC0918D6E61900B0BEAE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		086AAC0D18D6E61900B0BEAE /* Adjustable Field Notes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Adjustable Field Notes-Info.plist"; sourceTree = "<group>"; };
+		086AAC0F18D6E61900B0BEAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		086AAC1118D6E61900B0BEAE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		086AAC1318D6E61900B0BEAE /* Adjustable Field Notes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Adjustable Field Notes-Prefix.pch"; sourceTree = "<group>"; };
+		086AAC1418D6E61900B0BEAE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		086AAC1518D6E61900B0BEAE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		086AAC1818D6E61900B0BEAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		086AAC1B18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Adjustable_Field_Notes.xcdatamodel; sourceTree = "<group>"; };
+		086AAC1D18D6E61900B0BEAE /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		086AAC1E18D6E61900B0BEAE /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		086AAC2018D6E61900B0BEAE /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		086AAC2118D6E61900B0BEAE /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		086AAC2318D6E61900B0BEAE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		086AAC2918D6E61900B0BEAE /* Adjustable Field NotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Adjustable Field NotesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		086AAC2A18D6E61900B0BEAE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		086AAC3318D6E61900B0BEAE /* Adjustable Field NotesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Adjustable Field NotesTests-Info.plist"; sourceTree = "<group>"; };
+		086AAC3518D6E61900B0BEAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Adjustable_Field_NotesTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		086AABFD18D6E61900B0BEAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				086AAC0618D6E61900B0BEAE /* CoreGraphics.framework in Frameworks */,
+				086AAC0A18D6E61900B0BEAE /* CoreData.framework in Frameworks */,
+				086AAC0818D6E61900B0BEAE /* UIKit.framework in Frameworks */,
+				086AAC0418D6E61900B0BEAE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		086AAC2618D6E61900B0BEAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				086AAC2B18D6E61900B0BEAE /* XCTest.framework in Frameworks */,
+				086AAC2E18D6E61900B0BEAE /* CoreData.framework in Frameworks */,
+				086AAC2D18D6E61900B0BEAE /* UIKit.framework in Frameworks */,
+				086AAC2C18D6E61900B0BEAE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		086AABF718D6E61900B0BEAE = {
+			isa = PBXGroup;
+			children = (
+				086AAC0B18D6E61900B0BEAE /* Adjustable Field Notes */,
+				086AAC3118D6E61900B0BEAE /* Adjustable Field NotesTests */,
+				086AAC0218D6E61900B0BEAE /* Frameworks */,
+				086AAC0118D6E61900B0BEAE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		086AAC0118D6E61900B0BEAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				086AAC0018D6E61900B0BEAE /* Adjustable Field Notes.app */,
+				086AAC2918D6E61900B0BEAE /* Adjustable Field NotesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		086AAC0218D6E61900B0BEAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				086AAC0318D6E61900B0BEAE /* Foundation.framework */,
+				086AAC0518D6E61900B0BEAE /* CoreGraphics.framework */,
+				086AAC0718D6E61900B0BEAE /* UIKit.framework */,
+				086AAC0918D6E61900B0BEAE /* CoreData.framework */,
+				086AAC2A18D6E61900B0BEAE /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		086AAC0B18D6E61900B0BEAE /* Adjustable Field Notes */ = {
+			isa = PBXGroup;
+			children = (
+				086AAC1418D6E61900B0BEAE /* AppDelegate.h */,
+				086AAC1518D6E61900B0BEAE /* AppDelegate.m */,
+				086AAC1718D6E61900B0BEAE /* Main.storyboard */,
+				086AAC1D18D6E61900B0BEAE /* MasterViewController.h */,
+				086AAC1E18D6E61900B0BEAE /* MasterViewController.m */,
+				086AAC2018D6E61900B0BEAE /* DetailViewController.h */,
+				086AAC2118D6E61900B0BEAE /* DetailViewController.m */,
+				086AAC2318D6E61900B0BEAE /* Images.xcassets */,
+				086AAC1A18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld */,
+				086AAC0C18D6E61900B0BEAE /* Supporting Files */,
+			);
+			path = "Adjustable Field Notes";
+			sourceTree = "<group>";
+		};
+		086AAC0C18D6E61900B0BEAE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				086AAC0D18D6E61900B0BEAE /* Adjustable Field Notes-Info.plist */,
+				086AAC0E18D6E61900B0BEAE /* InfoPlist.strings */,
+				086AAC1118D6E61900B0BEAE /* main.m */,
+				086AAC1318D6E61900B0BEAE /* Adjustable Field Notes-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		086AAC3118D6E61900B0BEAE /* Adjustable Field NotesTests */ = {
+			isa = PBXGroup;
+			children = (
+				086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */,
+				086AAC3218D6E61900B0BEAE /* Supporting Files */,
+			);
+			path = "Adjustable Field NotesTests";
+			sourceTree = "<group>";
+		};
+		086AAC3218D6E61900B0BEAE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				086AAC3318D6E61900B0BEAE /* Adjustable Field NotesTests-Info.plist */,
+				086AAC3418D6E61900B0BEAE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		086AABFF18D6E61900B0BEAE /* Adjustable Field Notes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 086AAC3B18D6E61900B0BEAE /* Build configuration list for PBXNativeTarget "Adjustable Field Notes" */;
+			buildPhases = (
+				086AABFC18D6E61900B0BEAE /* Sources */,
+				086AABFD18D6E61900B0BEAE /* Frameworks */,
+				086AABFE18D6E61900B0BEAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Adjustable Field Notes";
+			productName = "Adjustable Field Notes";
+			productReference = 086AAC0018D6E61900B0BEAE /* Adjustable Field Notes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		086AAC2818D6E61900B0BEAE /* Adjustable Field NotesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 086AAC3E18D6E61900B0BEAE /* Build configuration list for PBXNativeTarget "Adjustable Field NotesTests" */;
+			buildPhases = (
+				086AAC2518D6E61900B0BEAE /* Sources */,
+				086AAC2618D6E61900B0BEAE /* Frameworks */,
+				086AAC2718D6E61900B0BEAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				086AAC3018D6E61900B0BEAE /* PBXTargetDependency */,
+			);
+			name = "Adjustable Field NotesTests";
+			productName = "Adjustable Field NotesTests";
+			productReference = 086AAC2918D6E61900B0BEAE /* Adjustable Field NotesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		086AABF818D6E61900B0BEAE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "___FULLUSERNAME___";
+				TargetAttributes = {
+					086AAC2818D6E61900B0BEAE = {
+						TestTargetID = 086AABFF18D6E61900B0BEAE;
+					};
+				};
+			};
+			buildConfigurationList = 086AABFB18D6E61900B0BEAE /* Build configuration list for PBXProject "Adjustable Field Notes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 086AABF718D6E61900B0BEAE;
+			productRefGroup = 086AAC0118D6E61900B0BEAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				086AABFF18D6E61900B0BEAE /* Adjustable Field Notes */,
+				086AAC2818D6E61900B0BEAE /* Adjustable Field NotesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		086AABFE18D6E61900B0BEAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				086AAC2418D6E61900B0BEAE /* Images.xcassets in Resources */,
+				086AAC1018D6E61900B0BEAE /* InfoPlist.strings in Resources */,
+				086AAC1918D6E61900B0BEAE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		086AAC2718D6E61900B0BEAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				086AAC3618D6E61900B0BEAE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		086AABFC18D6E61900B0BEAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				086AAC2218D6E61900B0BEAE /* DetailViewController.m in Sources */,
+				086AAC1F18D6E61900B0BEAE /* MasterViewController.m in Sources */,
+				086AAC1618D6E61900B0BEAE /* AppDelegate.m in Sources */,
+				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
+				086AAC1218D6E61900B0BEAE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		086AAC2518D6E61900B0BEAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		086AAC3018D6E61900B0BEAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 086AABFF18D6E61900B0BEAE /* Adjustable Field Notes */;
+			targetProxy = 086AAC2F18D6E61900B0BEAE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		086AAC0E18D6E61900B0BEAE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				086AAC0F18D6E61900B0BEAE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		086AAC1718D6E61900B0BEAE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				086AAC1818D6E61900B0BEAE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		086AAC3418D6E61900B0BEAE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				086AAC3518D6E61900B0BEAE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		086AAC3918D6E61900B0BEAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		086AAC3A18D6E61900B0BEAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		086AAC3C18D6E61900B0BEAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adjustable Field Notes/Adjustable Field Notes-Prefix.pch";
+				INFOPLIST_FILE = "Adjustable Field Notes/Adjustable Field Notes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		086AAC3D18D6E61900B0BEAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adjustable Field Notes/Adjustable Field Notes-Prefix.pch";
+				INFOPLIST_FILE = "Adjustable Field Notes/Adjustable Field Notes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		086AAC3F18D6E61900B0BEAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Adjustable Field Notes.app/Adjustable Field Notes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adjustable Field Notes/Adjustable Field Notes-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Adjustable Field NotesTests/Adjustable Field NotesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		086AAC4018D6E61900B0BEAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Adjustable Field Notes.app/Adjustable Field Notes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adjustable Field Notes/Adjustable Field Notes-Prefix.pch";
+				INFOPLIST_FILE = "Adjustable Field NotesTests/Adjustable Field NotesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		086AABFB18D6E61900B0BEAE /* Build configuration list for PBXProject "Adjustable Field Notes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				086AAC3918D6E61900B0BEAE /* Debug */,
+				086AAC3A18D6E61900B0BEAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		086AAC3B18D6E61900B0BEAE /* Build configuration list for PBXNativeTarget "Adjustable Field Notes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				086AAC3C18D6E61900B0BEAE /* Debug */,
+				086AAC3D18D6E61900B0BEAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		086AAC3E18D6E61900B0BEAE /* Build configuration list for PBXNativeTarget "Adjustable Field NotesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				086AAC3F18D6E61900B0BEAE /* Debug */,
+				086AAC4018D6E61900B0BEAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		086AAC1A18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				086AAC1B18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodel */,
+			);
+			currentVersion = 086AAC1B18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodel */;
+			path = Adjustable_Field_Notes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 086AABF818D6E61900B0BEAE /* Project object */;
+}
