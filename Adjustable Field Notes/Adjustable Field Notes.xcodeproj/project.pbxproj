@@ -25,6 +25,10 @@
 		086AAC2E18D6E61900B0BEAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0918D6E61900B0BEAE /* CoreData.framework */; };
 		086AAC3618D6E61900B0BEAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC3418D6E61900B0BEAE /* InfoPlist.strings */; };
 		086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */; };
+		41752FF318DF204000F3ECCA /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF218DF204000F3ECCA /* Category.m */; };
+		41752FF418DF204000F3ECCA /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF218DF204000F3ECCA /* Category.m */; };
+		41752FF718DF749B00F3ECCA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */; };
+		41752FF818DF749B00F3ECCA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,9 @@
 		086AAC3318D6E61900B0BEAE /* Adjustable Field NotesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Adjustable Field NotesTests-Info.plist"; sourceTree = "<group>"; };
 		086AAC3518D6E61900B0BEAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Adjustable_Field_NotesTests.m; sourceTree = "<group>"; };
+		41752FF118DF204000F3ECCA /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		41752FF218DF204000F3ECCA /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		41752FF618DF749B00F3ECCA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +99,7 @@
 		086AABF718D6E61900B0BEAE = {
 			isa = PBXGroup;
 			children = (
+				41752FF018DF1E2600F3ECCA /* Model Classes */,
 				086AAC0B18D6E61900B0BEAE /* Adjustable Field Notes */,
 				086AAC3118D6E61900B0BEAE /* Adjustable Field NotesTests */,
 				086AAC0218D6E61900B0BEAE /* Frameworks */,
@@ -164,6 +172,16 @@
 				086AAC3418D6E61900B0BEAE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		41752FF018DF1E2600F3ECCA /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */,
+				41752FF118DF204000F3ECCA /* Category.h */,
+				41752FF218DF204000F3ECCA /* Category.m */,
+			);
+			name = "Model Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,8 +284,10 @@
 				086AAC2218D6E61900B0BEAE /* DetailViewController.m in Sources */,
 				086AAC1F18D6E61900B0BEAE /* MasterViewController.m in Sources */,
 				086AAC1618D6E61900B0BEAE /* AppDelegate.m in Sources */,
+				41752FF718DF749B00F3ECCA /* Model.xcdatamodeld in Sources */,
 				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
 				086AAC1218D6E61900B0BEAE /* main.m in Sources */,
+				41752FF318DF204000F3ECCA /* Category.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */,
+				41752FF418DF204000F3ECCA /* Category.m in Sources */,
+				41752FF818DF749B00F3ECCA /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +496,7 @@
 				086AAC3D18D6E61900B0BEAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		086AAC3E18D6E61900B0BEAE /* Build configuration list for PBXNativeTarget "Adjustable Field NotesTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +505,7 @@
 				086AAC4018D6E61900B0BEAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -493,6 +517,16 @@
 			);
 			currentVersion = 086AAC1B18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodel */;
 			path = Adjustable_Field_Notes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				41752FF618DF749B00F3ECCA /* Model.xcdatamodel */,
+			);
+			currentVersion = 41752FF618DF749B00F3ECCA /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
