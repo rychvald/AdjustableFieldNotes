@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Category : NSObject
+@interface Keyword : NSObject
 
 @property NSString* Name;
 @property UIColor* color;

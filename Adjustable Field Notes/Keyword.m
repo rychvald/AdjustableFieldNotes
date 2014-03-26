@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 mars. All rights reserved.
 //
 
-#import "Category.h"
+#import "Keyword.h"
 
-@implementation Category
+@implementation Keyword
 
 @end

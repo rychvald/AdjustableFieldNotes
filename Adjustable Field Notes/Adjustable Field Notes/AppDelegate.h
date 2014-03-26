@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Category.h"
+#import "Keyword.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -16,7 +16,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (readonly, nonatomic) Category *topCategory;
+@property (readonly, nonatomic) Keyword *topCategory;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

@@ -25,8 +25,8 @@
 		086AAC2E18D6E61900B0BEAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0918D6E61900B0BEAE /* CoreData.framework */; };
 		086AAC3618D6E61900B0BEAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC3418D6E61900B0BEAE /* InfoPlist.strings */; };
 		086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */; };
-		41752FF318DF204000F3ECCA /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF218DF204000F3ECCA /* Category.m */; };
-		41752FF418DF204000F3ECCA /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF218DF204000F3ECCA /* Category.m */; };
+		41752FF318DF204000F3ECCA /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF218DF204000F3ECCA /* Keyword.m */; };
+		41752FF418DF204000F3ECCA /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF218DF204000F3ECCA /* Keyword.m */; };
 		41752FF718DF749B00F3ECCA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */; };
 		41752FF818DF749B00F3ECCA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -71,8 +71,8 @@
 		08ADBF1F18E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		08ADBF2018E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08ADBF2118E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		41752FF118DF204000F3ECCA /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
-		41752FF218DF204000F3ECCA /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		41752FF118DF204000F3ECCA /* Keyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyword.h; sourceTree = "<group>"; };
+		41752FF218DF204000F3ECCA /* Keyword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keyword.m; sourceTree = "<group>"; };
 		41752FF618DF749B00F3ECCA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,8 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */,
-				41752FF118DF204000F3ECCA /* Category.h */,
-				41752FF218DF204000F3ECCA /* Category.m */,
+				41752FF118DF204000F3ECCA /* Keyword.h */,
+				41752FF218DF204000F3ECCA /* Keyword.m */,
 			);
 			name = "Model Classes";
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 				41752FF718DF749B00F3ECCA /* Model.xcdatamodeld in Sources */,
 				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
 				086AAC1218D6E61900B0BEAE /* main.m in Sources */,
-				41752FF318DF204000F3ECCA /* Category.m in Sources */,
+				41752FF318DF204000F3ECCA /* Keyword.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */,
-				41752FF418DF204000F3ECCA /* Category.m in Sources */,
+				41752FF418DF204000F3ECCA /* Keyword.m in Sources */,
 				41752FF818DF749B00F3ECCA /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
