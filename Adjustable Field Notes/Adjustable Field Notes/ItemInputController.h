@@ -10,9 +10,10 @@
 
 @interface ItemInputController : UITableViewController
 
-@property (nonatomic,retain) IBOutlet UITableViewCell *labelCell;
-@property (nonatomic,retain) IBOutlet UITableViewCell *keywordCell;
+@property (nonatomic,retain) IBOutlet UILabel *label;
+@property (nonatomic,retain) IBOutlet UILabel *keyword;
 
 - (void)prepareForNewEntry;
+- (IBAction)editTex:(id)sender;
 
 @end

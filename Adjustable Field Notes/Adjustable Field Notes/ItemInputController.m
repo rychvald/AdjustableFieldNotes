@@ -10,8 +10,8 @@
 
 @implementation ItemInputController
 
-@synthesize labelCell;
-@synthesize keywordCell;
+@synthesize label;
+@synthesize keyword;
 
 - (void)viewDidLoad
 {
@@ -24,8 +24,8 @@
 }
 
 - (void)prepareForNewEntry {
-    self.labelCell.textLabel.text = @"Label";
-    self.keywordCell.textLabel.text = @"Keyword (leave empty if same as label)";
+    self.label.text = @"Label";
+    self.keyword.text = @"Keyword (leave empty if same as label)";
 }
 
 - (void)saveItem {
