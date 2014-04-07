@@ -144,8 +144,8 @@
 				086AAC1E18D6E61900B0BEAE /* MasterViewController.m */,
 				086AAC2018D6E61900B0BEAE /* DetailViewController.h */,
 				086AAC2118D6E61900B0BEAE /* DetailViewController.m */,
-				086AAC2318D6E61900B0BEAE /* Images.xcassets */,
 				086AAC1A18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld */,
+				086AAC2318D6E61900B0BEAE /* Images.xcassets */,
 				086AAC0C18D6E61900B0BEAE /* Supporting Files */,
 			);
 			path = "Adjustable Field Notes";
