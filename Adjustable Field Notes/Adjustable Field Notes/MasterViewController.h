@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class DetailViewController;
+@class ItemInputController;
 
 #import <CoreData/CoreData.h>
 
@@ -18,5 +19,9 @@
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong) ItemInputController *itemInputController;
+
+
 
 @end

@@ -29,6 +29,7 @@
 		41752FF418DF204000F3ECCA /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF218DF204000F3ECCA /* Keyword.m */; };
 		41752FF718DF749B00F3ECCA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */; };
 		41752FF818DF749B00F3ECCA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */; };
+		41D4242618F336AA00068102 /* ItemInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4242518F336AA00068102 /* ItemInputController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		41752FF118DF204000F3ECCA /* Keyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyword.h; sourceTree = "<group>"; };
 		41752FF218DF204000F3ECCA /* Keyword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keyword.m; sourceTree = "<group>"; };
 		41752FF618DF749B00F3ECCA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		41D4242418F336AA00068102 /* ItemInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemInputController.h; sourceTree = "<group>"; };
+		41D4242518F336AA00068102 /* ItemInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemInputController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +150,8 @@
 				086AAC1A18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld */,
 				086AAC2318D6E61900B0BEAE /* Images.xcassets */,
 				086AAC0C18D6E61900B0BEAE /* Supporting Files */,
+				41D4242418F336AA00068102 /* ItemInputController.h */,
+				41D4242518F336AA00068102 /* ItemInputController.m */,
 			);
 			path = "Adjustable Field Notes";
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				086AAC2218D6E61900B0BEAE /* DetailViewController.m in Sources */,
 				086AAC1F18D6E61900B0BEAE /* MasterViewController.m in Sources */,
 				086AAC1618D6E61900B0BEAE /* AppDelegate.m in Sources */,
+				41D4242618F336AA00068102 /* ItemInputController.m in Sources */,
 				41752FF718DF749B00F3ECCA /* Model.xcdatamodeld in Sources */,
 				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
 				086AAC1218D6E61900B0BEAE /* main.m in Sources */,
