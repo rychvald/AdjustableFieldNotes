@@ -9,19 +9,20 @@
 #import <UIKit/UIKit.h>
 
 @class DetailViewController;
-@class ItemInputController;
 
 #import <CoreData/CoreData.h>
+#import "ItemInputController.h"
 
-@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate,ItemInputDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedKeywordResultsController;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedRelationResultsController;
+@property (retain, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSManagedObject *rootKeyword;
+@property (strong, nonatomic) ItemInputController *itemInputController;
 
-@property (nonatomic, strong) ItemInputController *itemInputController;
-
-
+- (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
 
 @end

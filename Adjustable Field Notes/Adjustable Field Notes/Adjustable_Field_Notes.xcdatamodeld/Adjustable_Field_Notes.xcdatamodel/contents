@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="AbstractWord" isAbstract="YES">
+    <entity name="AbstractWord">
         <attribute name="keyword" attributeType="String">
             <userInfo/>
         </attribute>
-        <attribute name="label" attributeType="String" syncable="YES"/>
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="orderNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="usedByEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="words" inverseEntity="Entry" syncable="YES"/>
         <userInfo/>
-    </entity>
-    <entity name="Connector" parentEntity="AbstractWord" syncable="YES">
-        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Keyword" inverseName="connectors" inverseEntity="Keyword" syncable="YES"/>
     </entity>
     <entity name="Entry" syncable="YES">
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="AbstractWord" inverseName="usedByEntries" inverseEntity="AbstractWord" syncable="YES"/>
     </entity>
-    <entity name="Keyword" parentEntity="AbstractWord">
-        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Keyword" inverseName="parent" inverseEntity="Keyword" syncable="YES"/>
-        <relationship name="connectors" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Connector" inverseName="parent" inverseEntity="Connector" syncable="YES"/>
-        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Keyword" inverseName="children" inverseEntity="Keyword" syncable="YES"/>
+    <entity name="Keyword" parentEntity="Root" syncable="YES"/>
+    <entity name="Relation" parentEntity="AbstractWord" syncable="YES">
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Root" inverseName="connectors" inverseEntity="Root" syncable="YES"/>
+    </entity>
+    <entity name="Root" parentEntity="AbstractWord">
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Root" inverseName="parent" inverseEntity="Root" syncable="YES"/>
+        <relationship name="connectors" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Relation" inverseName="parent" inverseEntity="Relation" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Root" inverseName="children" inverseEntity="Root" syncable="YES"/>
         <userInfo/>
     </entity>
     <elements>
-        <element name="AbstractWord" positionX="133" positionY="-153" width="128" height="103"/>
-        <element name="Connector" positionX="18" positionY="-0" width="128" height="58"/>
-        <element name="Keyword" positionX="234" positionY="-0" width="128" height="88"/>
-        <element name="Entry" positionX="-119" positionY="-145" width="128" height="73"/>
+        <element name="AbstractWord" positionX="160" positionY="-432" width="128" height="103"/>
+        <element name="Relation" positionX="25" positionY="-193" width="128" height="58"/>
+        <element name="Entry" positionX="-182" positionY="-397" width="128" height="73"/>
+        <element name="Root" positionX="232" positionY="-207" width="128" height="88"/>
+        <element name="Keyword" positionX="232" positionY="9" width="128" height="43"/>
     </elements>
 </model>

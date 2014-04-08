@@ -8,12 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ItemInputDelegate <NSObject>
+
+- (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
+
+@end
+
 @interface ItemInputController : UITableViewController
 
-@property (nonatomic,retain) IBOutlet UILabel *label;
-@property (nonatomic,retain) IBOutlet UILabel *keyword;
+@property (nonatomic, retain) IBOutlet UITextField *label;
+@property (nonatomic, retain) IBOutlet UITextField *keyword;
+@property (nonatomic, retain) IBOutlet UITextField *color;
+@property (strong, nonatomic) id<ItemInputDelegate> inputDelegate;
 
-- (void)prepareForNewEntry;
-- (IBAction)editTex:(id)sender;
+- (void)prepareForNewEntryFromDelegate:(id)delegate;
 
 @end

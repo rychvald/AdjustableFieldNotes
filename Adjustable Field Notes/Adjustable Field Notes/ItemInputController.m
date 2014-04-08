@@ -12,6 +12,8 @@
 
 @synthesize label;
 @synthesize keyword;
+@synthesize color;
+@synthesize inputDelegate;
 
 - (void)viewDidLoad
 {
@@ -23,12 +25,19 @@
     self.navigationItem.rightBarButtonItem = addButton;
 }
 
-- (void)prepareForNewEntry {
+- (void)prepareForNewEntryFromDelegate:(id)delegate {
+    self.inputDelegate = delegate;
     self.label.text = @"Label";
     self.keyword.text = @"Keyword (leave empty if same as label)";
 }
 
 - (void)saveItem {
+    NSLog(@"Saving item...");
+    if (self.inputDelegate == nil) {
+        NSLog(@"inputDelegate is nil!");
+    }
+    NSLog(@"Keyword: %@ Label: %@", self.keyword.text, self.label.text);
+    [self.inputDelegate createNewKeyword:self.keyword.text withLabel:self.label.text andColor:nil];
     [self cancel];
 }
 
