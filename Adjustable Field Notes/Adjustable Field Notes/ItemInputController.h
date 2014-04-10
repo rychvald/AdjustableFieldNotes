@@ -22,5 +22,6 @@
 @property (strong, nonatomic) id<ItemInputDelegate> inputDelegate;
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate;
+- (void)prepareForEditingKeyword:(NSManagedObject *)keyword fromDelegate:(id)delegate;
 
 @end

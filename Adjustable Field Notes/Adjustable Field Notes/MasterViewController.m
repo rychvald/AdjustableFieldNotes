@@ -16,6 +16,7 @@
 
 @synthesize managedObjectContext;
 @synthesize rootKeyword = _rootKeyword;
+@synthesize itemInputController = _itemInputController;
 
 - (void)awakeFromNib
 {
@@ -73,21 +74,22 @@
 - (void)insertNewObject:(id)sender
 {
     [self performSegueWithIdentifier:@"addItem" sender:self];
-    [self.itemInputController prepareForNewEntryFromDelegate:self];
     if (self.itemInputController == nil) {
         NSLog(@"ItemInputController is nil!");
     }
+    [self.itemInputController.tableView reloadData];
+    [self.itemInputController.tableView reloadData];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+/*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqual:@"addItem"]) {
         self.itemInputController = (ItemInputController *)[[segue destinationViewController]topViewController];
-        [self.itemInputController prepareForNewEntryFromDelegate:self];
+            [self.itemInputController prepareForNewEntryFromDelegate:self];
     } else {
         NSLog(@"No handler defined for segue %@", segue.identifier);
     }
-}
+}*/
 
 #pragma mark - ItemInputDelegate Methods
 

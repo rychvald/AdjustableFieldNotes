@@ -27,8 +27,17 @@
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate {
     self.inputDelegate = delegate;
-    self.label.text = @"Label";
-    self.keyword.text = @"Keyword (leave empty if same as label)";
+    self.keyword.placeholder = @"Keyword";
+    self.label.text = @"Label ()";
+    self.color.placeholder = @"White";
+    [self.tableView reloadData];
+}
+
+- (void)prepareForEditingKeyword:(NSManagedObject *)Keyword fromDelegate:(id)delegate {
+    self.inputDelegate = delegate;
+    self.keyword.text = (NSString *)[Keyword valueForKey:@"keyword"];
+    self.label.text = (NSString *)[Keyword valueForKey:@"label"];
+    self.color.text = (NSString *)[Keyword valueForKey:@"color"];
 }
 
 - (void)saveItem {
