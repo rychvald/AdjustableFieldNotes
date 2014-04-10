@@ -11,6 +11,7 @@
 @protocol ItemInputDelegate <NSObject>
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
+- (void)reload;
 
 @end
 
@@ -19,6 +20,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *label;
 @property (nonatomic, retain) IBOutlet UITextField *keyword;
 @property (nonatomic, retain) IBOutlet UITextField *color;
+@property (nonatomic, retain) NSManagedObject *currentObject;
 @property (strong, nonatomic) id<ItemInputDelegate> inputDelegate;
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate;

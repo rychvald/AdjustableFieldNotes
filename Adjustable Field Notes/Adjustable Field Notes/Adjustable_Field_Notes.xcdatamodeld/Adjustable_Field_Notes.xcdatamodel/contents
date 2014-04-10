@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AbstractWord">
+        <attribute name="color" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="keyword" attributeType="String">
             <userInfo/>
         </attribute>
@@ -24,10 +25,10 @@
         <userInfo/>
     </entity>
     <elements>
-        <element name="AbstractWord" positionX="160" positionY="-432" width="128" height="103"/>
-        <element name="Relation" positionX="25" positionY="-193" width="128" height="58"/>
+        <element name="AbstractWord" positionX="160" positionY="-433" width="128" height="118"/>
         <element name="Entry" positionX="-182" positionY="-397" width="128" height="73"/>
-        <element name="Root" positionX="232" positionY="-207" width="128" height="88"/>
         <element name="Keyword" positionX="232" positionY="9" width="128" height="43"/>
+        <element name="Relation" positionX="25" positionY="-193" width="128" height="58"/>
+        <element name="Root" positionX="232" positionY="-207" width="128" height="88"/>
     </elements>
 </model>

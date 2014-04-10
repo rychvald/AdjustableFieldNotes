@@ -16,7 +16,8 @@
 
 @synthesize managedObjectContext;
 @synthesize rootKeyword = _rootKeyword;
-@synthesize itemInputController = _itemInputController;
+@synthesize itemInputController;
+@synthesize itemInputNC;
 
 - (void)awakeFromNib
 {
@@ -77,19 +78,20 @@
     if (self.itemInputController == nil) {
         NSLog(@"ItemInputController is nil!");
     }
-    [self.itemInputController.tableView reloadData];
-    [self.itemInputController.tableView reloadData];
+    [self.itemInputController prepareForNewEntryFromDelegate:self];
 }
 
-/*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqual:@"addItem"]) {
-        self.itemInputController = (ItemInputController *)[[segue destinationViewController]topViewController];
-            [self.itemInputController prepareForNewEntryFromDelegate:self];
-    } else {
+        self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
+        [self.itemInputController prepareForNewEntryFromDelegate:self];
+    } else if ([segue.identifier isEqual:@"editItem"]) {
+        self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
+        [self.itemInputController prepareForEditingKeyword:(NSManagedObject *)sender fromDelegate:self];
+    } else
         NSLog(@"No handler defined for segue %@", segue.identifier);
-    }
-}*/
+}
 
 #pragma mark - ItemInputDelegate Methods
 
@@ -115,13 +117,8 @@
     [self.tableView reloadData];
 }
 
-- (ItemInputController *)itemInputController {
-    if (_itemInputController != nil) {
-        return _itemInputController;
-    } else {
-        _itemInputController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ItemInputController"];
-        return _itemInputController;
-    }
+- (void)reload {
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table View
@@ -242,6 +239,13 @@
     //self.detailViewController.detailItem = object;
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"editItem" sender:editingObject];
+    [self.itemInputController prepareForEditingKeyword:editingObject fromDelegate:self];
+    NSLog(@"Pressed Accessory Button");
+}
+
 //helper method for dividing indexPaths between the two object types
 - (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Fetching object for section: %ld with row: %ld", indexPath.section, (long)indexPath.row);
@@ -295,10 +299,10 @@
     [fetchRequest setFetchBatchSize:20];
     
     // make the keywords to be sorted by label
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"keyword" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
+    //NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"keyword" ascending:YES];
+    //NSArray *sortDescriptors = @[sortDescriptor];
     
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    //[fetchRequest setSortDescriptors:sortDescriptors];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".

@@ -21,7 +21,8 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedRelationResultsController;
 @property (retain, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSManagedObject *rootKeyword;
-@property (strong, nonatomic) ItemInputController *itemInputController;
+@property (strong, nonatomic) IBOutlet ItemInputController *itemInputController;
+@property (strong, nonatomic) UINavigationController *itemInputNC;
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
 

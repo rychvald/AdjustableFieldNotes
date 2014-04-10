@@ -13,6 +13,7 @@
 @synthesize label;
 @synthesize keyword;
 @synthesize color;
+@synthesize currentObject;
 @synthesize inputDelegate;
 
 - (void)viewDidLoad
@@ -26,18 +27,21 @@
 }
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate {
+    self.currentObject = nil;
     self.inputDelegate = delegate;
     self.keyword.placeholder = @"Keyword";
-    self.label.text = @"Label ()";
+    self.label.placeholder = @"Label (optional)";
     self.color.placeholder = @"White";
     [self.tableView reloadData];
 }
 
 - (void)prepareForEditingKeyword:(NSManagedObject *)Keyword fromDelegate:(id)delegate {
     self.inputDelegate = delegate;
+    self.currentObject = Keyword;
     self.keyword.text = (NSString *)[Keyword valueForKey:@"keyword"];
     self.label.text = (NSString *)[Keyword valueForKey:@"label"];
     self.color.text = (NSString *)[Keyword valueForKey:@"color"];
+    [self.tableView reloadData];
 }
 
 - (void)saveItem {
@@ -46,12 +50,19 @@
         NSLog(@"inputDelegate is nil!");
     }
     NSLog(@"Keyword: %@ Label: %@", self.keyword.text, self.label.text);
-    [self.inputDelegate createNewKeyword:self.keyword.text withLabel:self.label.text andColor:nil];
+    if (self.currentObject == nil)
+        [self.inputDelegate createNewKeyword:self.keyword.text withLabel:self.label.text andColor:nil];
+    else {
+        [self.currentObject setValue:self.keyword.text forKey:@"keyword"];
+        [self.currentObject setValue:self.label.text forKey:@"label"];
+    }
     [self cancel];
 }
 
 - (void)cancel {
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.currentObject = nil;
+    [self.inputDelegate reload];
 }
 
 @end

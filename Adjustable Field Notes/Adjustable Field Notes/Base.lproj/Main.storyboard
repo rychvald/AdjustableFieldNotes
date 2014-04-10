@@ -136,33 +136,18 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
                     <connections>
-                        <segue destination="bN3-m2-hmE" kind="modal" identifier="addItem" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="pHh-xX-rwV"/>
+                        <segue destination="YIy-pa-kUN" kind="modal" identifier="addItem" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="yow-pL-qoK"/>
+                        <segue destination="YIy-pa-kUN" kind="modal" identifier="editItem" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="3yP-oo-Hft"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="859" y="-631"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ao5-06-5bI">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="bN3-m2-hmE" sceneMemberID="viewController">
-                    <size key="freeformSize" width="320" height="309"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Jp-bX-rdA">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="odU-kO-Wnt" kind="relationship" relationship="rootViewController" id="7nq-oM-xRm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rgH-Mm-WPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1289" y="-630"/>
-        </scene>
         <!--Item Input Controller - New Word-->
         <scene sceneID="zZV-GE-Hvc">
             <objects>
-                <tableViewController storyboardIdentifier="ItemInputController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="odU-kO-Wnt" customClass="ItemInputController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="itemInputController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="odU-kO-Wnt" customClass="ItemInputController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ybA-nB-drK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,7 +163,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Keyword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="uiJ-HE-Fmm" userLabel="Keyword">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="uiJ-HE-Fmm" userLabel="Keyword">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <accessibility key="accessibilityConfiguration">
@@ -246,7 +231,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72Z-1S-bYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1686" y="-631"/>
+            <point key="canvasLocation" x="1890" y="-631"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -263,10 +248,32 @@
             </objects>
             <point key="canvasLocation" x="-366" y="248"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="H5T-oB-zdy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YIy-pa-kUN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ewf-Vs-TbJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rVL-ak-3ea">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="odU-kO-Wnt" kind="relationship" relationship="rootViewController" id="x30-IV-IuJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jsX-9g-k61" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1404" y="-631"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="3yP-oo-Hft"/>
+    </inferredMetricsTieBreakers>
 </document>
