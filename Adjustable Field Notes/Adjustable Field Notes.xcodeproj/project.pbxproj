@@ -25,10 +25,12 @@
 		086AAC2E18D6E61900B0BEAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0918D6E61900B0BEAE /* CoreData.framework */; };
 		086AAC3618D6E61900B0BEAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC3418D6E61900B0BEAE /* InfoPlist.strings */; };
 		086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */; };
-		41752FF318DF204000F3ECCA /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF218DF204000F3ECCA /* Keyword.m */; };
-		41752FF418DF204000F3ECCA /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF218DF204000F3ECCA /* Keyword.m */; };
-		41752FF718DF749B00F3ECCA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */; };
-		41752FF818DF749B00F3ECCA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */; };
+		418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */; };
+		418EA95518F7D3AC000EA9E7 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA95418F7D3AC000EA9E7 /* Entry.m */; };
+		418EA95818F7D3AC000EA9E7 /* AbstractWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA95718F7D3AC000EA9E7 /* AbstractWord.m */; };
+		418EA95B18F7D3AC000EA9E7 /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA95A18F7D3AC000EA9E7 /* Keyword.m */; };
+		418EA95E18F7D3AC000EA9E7 /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA95D18F7D3AC000EA9E7 /* Recording.m */; };
+		418EA96118F7D3AC000EA9E7 /* Relation.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA96018F7D3AC000EA9E7 /* Relation.m */; };
 		41D4242618F336AA00068102 /* ItemInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4242518F336AA00068102 /* ItemInputController.m */; };
 /* End PBXBuildFile section */
 
@@ -72,9 +74,18 @@
 		08ADBF1F18E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		08ADBF2018E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08ADBF2118E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		41752FF118DF204000F3ECCA /* Keyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyword.h; sourceTree = "<group>"; };
-		41752FF218DF204000F3ECCA /* Keyword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keyword.m; sourceTree = "<group>"; };
-		41752FF618DF749B00F3ECCA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		418EA93218F7D014000EA9E7 /* Keyword+KeywordAccessors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Keyword+KeywordAccessors.h"; sourceTree = "<group>"; };
+		418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Keyword+KeywordAccessors.m"; sourceTree = "<group>"; };
+		418EA95318F7D3AC000EA9E7 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		418EA95418F7D3AC000EA9E7 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		418EA95618F7D3AC000EA9E7 /* AbstractWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractWord.h; sourceTree = "<group>"; };
+		418EA95718F7D3AC000EA9E7 /* AbstractWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractWord.m; sourceTree = "<group>"; };
+		418EA95918F7D3AC000EA9E7 /* Keyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyword.h; sourceTree = "<group>"; };
+		418EA95A18F7D3AC000EA9E7 /* Keyword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keyword.m; sourceTree = "<group>"; };
+		418EA95C18F7D3AC000EA9E7 /* Recording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recording.h; sourceTree = "<group>"; };
+		418EA95D18F7D3AC000EA9E7 /* Recording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recording.m; sourceTree = "<group>"; };
+		418EA95F18F7D3AC000EA9E7 /* Relation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relation.h; sourceTree = "<group>"; };
+		418EA96018F7D3AC000EA9E7 /* Relation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Relation.m; sourceTree = "<group>"; };
 		41D4242418F336AA00068102 /* ItemInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemInputController.h; sourceTree = "<group>"; };
 		41D4242518F336AA00068102 /* ItemInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemInputController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,7 +158,6 @@
 				086AAC1E18D6E61900B0BEAE /* MasterViewController.m */,
 				086AAC2018D6E61900B0BEAE /* DetailViewController.h */,
 				086AAC2118D6E61900B0BEAE /* DetailViewController.m */,
-				086AAC1A18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld */,
 				086AAC2318D6E61900B0BEAE /* Images.xcassets */,
 				086AAC0C18D6E61900B0BEAE /* Supporting Files */,
 				41D4242418F336AA00068102 /* ItemInputController.h */,
@@ -188,9 +198,19 @@
 		41752FF018DF1E2600F3ECCA /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
-				41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */,
-				41752FF118DF204000F3ECCA /* Keyword.h */,
-				41752FF218DF204000F3ECCA /* Keyword.m */,
+				086AAC1A18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld */,
+				418EA95F18F7D3AC000EA9E7 /* Relation.h */,
+				418EA96018F7D3AC000EA9E7 /* Relation.m */,
+				418EA95C18F7D3AC000EA9E7 /* Recording.h */,
+				418EA95D18F7D3AC000EA9E7 /* Recording.m */,
+				418EA95918F7D3AC000EA9E7 /* Keyword.h */,
+				418EA95A18F7D3AC000EA9E7 /* Keyword.m */,
+				418EA93218F7D014000EA9E7 /* Keyword+KeywordAccessors.h */,
+				418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */,
+				418EA95618F7D3AC000EA9E7 /* AbstractWord.h */,
+				418EA95718F7D3AC000EA9E7 /* AbstractWord.m */,
+				418EA95318F7D3AC000EA9E7 /* Entry.h */,
+				418EA95418F7D3AC000EA9E7 /* Entry.m */,
 			);
 			name = "Model Classes";
 			sourceTree = "<group>";
@@ -298,13 +318,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				086AAC2218D6E61900B0BEAE /* DetailViewController.m in Sources */,
+				418EA95818F7D3AC000EA9E7 /* AbstractWord.m in Sources */,
 				086AAC1F18D6E61900B0BEAE /* MasterViewController.m in Sources */,
 				086AAC1618D6E61900B0BEAE /* AppDelegate.m in Sources */,
 				41D4242618F336AA00068102 /* ItemInputController.m in Sources */,
-				41752FF718DF749B00F3ECCA /* Model.xcdatamodeld in Sources */,
+				418EA95E18F7D3AC000EA9E7 /* Recording.m in Sources */,
+				418EA95518F7D3AC000EA9E7 /* Entry.m in Sources */,
+				418EA96118F7D3AC000EA9E7 /* Relation.m in Sources */,
+				418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */,
+				418EA95B18F7D3AC000EA9E7 /* Keyword.m in Sources */,
 				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
 				086AAC1218D6E61900B0BEAE /* main.m in Sources */,
-				41752FF318DF204000F3ECCA /* Keyword.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,8 +337,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */,
-				41752FF418DF204000F3ECCA /* Keyword.m in Sources */,
-				41752FF818DF749B00F3ECCA /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,17 +567,8 @@
 				086AAC1B18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodel */,
 			);
 			currentVersion = 086AAC1B18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodel */;
-			path = Adjustable_Field_Notes.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		41752FF518DF749B00F3ECCA /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				41752FF618DF749B00F3ECCA /* Model.xcdatamodel */,
-			);
-			currentVersion = 41752FF618DF749B00F3ECCA /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			name = Adjustable_Field_Notes.xcdatamodeld;
+			path = "Adjustable Field Notes/Adjustable_Field_Notes.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

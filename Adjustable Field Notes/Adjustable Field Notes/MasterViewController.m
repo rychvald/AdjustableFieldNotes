@@ -11,11 +11,12 @@
 #import "DetailViewController.h"
 #import "ItemInputController.h"
 #import "AppDelegate.h"
+#import "Keyword.h"
+#import "Keyword+KeywordAccessors.h"
 
 @implementation MasterViewController
 
 @synthesize managedObjectContext;
-@synthesize rootKeyword = _rootKeyword;
 @synthesize itemInputController;
 @synthesize itemInputNC;
 
@@ -38,7 +39,7 @@
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
-- (NSManagedObject *)rootKeyword {
+/*- (NSManagedObject *)rootKeyword {
     NSManagedObjectContext *context = self.managedObjectContext;
     if (_rootKeyword != nil) {
         return _rootKeyword;
@@ -57,7 +58,7 @@
     }
 
     return _rootKeyword;
-}
+}*/
 
 - (NSManagedObject *)createRootKeywordInContext:(NSManagedObjectContext *)context {
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Root" inManagedObjectContext:self.managedObjectContext];
@@ -101,7 +102,8 @@
     
     [newManagedObject setValue:keyword forKey:@"keyword"];
     [newManagedObject setValue:label forKey:@"label"];
-    [newManagedObject setValue:self.rootKeyword forKey:@"parent"];
+    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
+    [newManagedObject setValue:rootKeyword forKey:@"parent"];
     
     NSLog(@"Created entity with keyword: %@",keyword);
     
@@ -249,23 +251,34 @@
 //helper method for dividing indexPaths between the two object types
 - (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Fetching object for section: %ld with row: %ld", indexPath.section, (long)indexPath.row);
-    NSFetchedResultsController *controller;
-    NSIndexPath *myIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+    //NSFetchedResultsController *controller;
+    //NSIndexPath *myIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
+    AbstractWord *returnWord;
     switch (indexPath.section) {
         case 0:
-            controller = self.fetchedKeywordResultsController;
+            if ([rootKeyword.children count] == 0)
+                returnWord = nil;
+            else
+                returnWord = [rootKeyword.children objectAtIndex:indexPath.row];
+            //controller = self.fetchedKeywordResultsController;
             break;
         case 1:
-            controller = self.fetchedRelationResultsController;
+            if ([rootKeyword.connectors count] == 0)
+                returnWord = nil;
+            else
+                returnWord = [rootKeyword.connectors objectAtIndex:indexPath.row];
+            //controller = self.fetchedRelationResultsController;
             break;
         default:
             return nil;;
             break;
     }
-    if ([[controller fetchedObjects] count] == 0) {
+    /*if ([[controller fetchedObjects] count] == 0) {
         return nil;
     }
-    return [controller objectAtIndexPath:myIndexPath];
+    return [controller objectAtIndexPath:myIndexPath];*/
+    return returnWord;
 }
 
 
@@ -299,10 +312,10 @@
     [fetchRequest setFetchBatchSize:20];
     
     // make the keywords to be sorted by label
-    //NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"keyword" ascending:YES];
-    //NSArray *sortDescriptors = @[sortDescriptor];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"keyword" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
     
-    //[fetchRequest setSortDescriptors:sortDescriptors];
+    [fetchRequest setSortDescriptors:sortDescriptors];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".

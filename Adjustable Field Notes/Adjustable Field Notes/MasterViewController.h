@@ -20,7 +20,6 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedKeywordResultsController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedRelationResultsController;
 @property (retain, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSManagedObject *rootKeyword;
 @property (strong, nonatomic) IBOutlet ItemInputController *itemInputController;
 @property (strong, nonatomic) UINavigationController *itemInputNC;
 

@@ -1,25 +1,16 @@
 //
-//  Keyword.h
+//  Root+RootSingleton.h
 //  Adjustable Field Notes
 //
 //  Created by Marcel Stolz on 11.04.14.
 //  Copyright (c) 2014 Marcel Stolz. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-#import "AbstractWord.h"
+#import "Keyword.h"
 
-@class Keyword, Relation;
+@interface Keyword (KeywordAccessors)
 
-@interface Keyword : AbstractWord
-
-@property (nonatomic, retain) NSOrderedSet *children;
-@property (nonatomic, retain) NSOrderedSet *connectors;
-@property (nonatomic, retain) Keyword *parent;
-@end
-
-@interface Keyword (CoreDataGeneratedAccessors)
++ (Keyword *)getRootForContext:(NSManagedObjectContext *)context;
 
 - (void)insertObject:(Keyword *)value inChildrenAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromChildrenAtIndex:(NSUInteger)idx;
@@ -41,4 +32,5 @@
 - (void)removeConnectorsObject:(Relation *)value;
 - (void)addConnectors:(NSOrderedSet *)values;
 - (void)removeConnectors:(NSOrderedSet *)values;
+
 @end
