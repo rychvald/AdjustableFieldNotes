@@ -2,7 +2,7 @@
 //  Keyword.h
 //  Adjustable Field Notes
 //
-//  Created by Marcel Stolz on 11.04.14.
+//  Created by Marcel Stolz on 12.04.14.
 //  Copyright (c) 2014 Marcel Stolz. All rights reserved.
 //
 
@@ -15,7 +15,7 @@
 @interface Keyword : AbstractWord
 
 @property (nonatomic, retain) NSOrderedSet *children;
-@property (nonatomic, retain) NSOrderedSet *connectors;
+@property (nonatomic, retain) NSOrderedSet *relations;
 @property (nonatomic, retain) Keyword *parent;
 @end
 
@@ -31,14 +31,15 @@
 - (void)removeChildrenObject:(Keyword *)value;
 - (void)addChildren:(NSOrderedSet *)values;
 - (void)removeChildren:(NSOrderedSet *)values;
-- (void)insertObject:(Relation *)value inConnectorsAtIndex:(NSUInteger)idx;
-- (void)removeObjectFromConnectorsAtIndex:(NSUInteger)idx;
-- (void)insertConnectors:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
-- (void)removeConnectorsAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInConnectorsAtIndex:(NSUInteger)idx withObject:(Relation *)value;
-- (void)replaceConnectorsAtIndexes:(NSIndexSet *)indexes withConnectors:(NSArray *)values;
-- (void)addConnectorsObject:(Relation *)value;
-- (void)removeConnectorsObject:(Relation *)value;
-- (void)addConnectors:(NSOrderedSet *)values;
-- (void)removeConnectors:(NSOrderedSet *)values;
+- (void)insertObject:(Relation *)value inRelationsAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromRelationsAtIndex:(NSUInteger)idx;
+- (void)insertRelations:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeRelationsAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInRelationsAtIndex:(NSUInteger)idx withObject:(Relation *)value;
+- (void)replaceRelationsAtIndexes:(NSIndexSet *)indexes withRelations:(NSArray *)values;
+- (void)addRelationsObject:(Relation *)value;
+- (void)removeRelationsObject:(Relation *)value;
+- (void)addRelations:(NSOrderedSet *)values;
+- (void)removeRelations:(NSOrderedSet *)values;
+
 @end

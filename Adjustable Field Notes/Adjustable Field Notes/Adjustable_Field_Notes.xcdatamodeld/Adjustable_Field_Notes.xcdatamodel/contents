@@ -18,8 +18,8 @@
     </entity>
     <entity name="Keyword" representedClassName="Keyword" parentEntity="AbstractWord">
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Keyword" inverseName="parent" inverseEntity="Keyword" syncable="YES"/>
-        <relationship name="connectors" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Relation" inverseName="parent" inverseEntity="Relation" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Keyword" inverseName="children" inverseEntity="Keyword" syncable="YES"/>
+        <relationship name="relations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Relation" inverseName="parent" inverseEntity="Relation" syncable="YES"/>
         <userInfo/>
     </entity>
     <entity name="Recording" representedClassName="Recording" syncable="YES">
@@ -28,13 +28,13 @@
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Entry" inverseName="recording" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <entity name="Relation" representedClassName="Relation" parentEntity="AbstractWord" syncable="YES">
-        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Keyword" inverseName="connectors" inverseEntity="Keyword" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Keyword" inverseName="relations" inverseEntity="Keyword" syncable="YES"/>
     </entity>
     <elements>
         <element name="AbstractWord" positionX="160" positionY="-433" width="128" height="118"/>
         <element name="Entry" positionX="-101" positionY="-343" width="128" height="103"/>
-        <element name="Relation" positionX="25" positionY="-193" width="128" height="58"/>
         <element name="Keyword" positionX="232" positionY="-207" width="128" height="88"/>
         <element name="Recording" positionX="-254" positionY="-189" width="128" height="88"/>
+        <element name="Relation" positionX="25" positionY="-193" width="128" height="58"/>
     </elements>
 </model>

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class DetailViewController;
+@class Keyword;
 
 #import <CoreData/CoreData.h>
 #import "ItemInputController.h"
@@ -16,6 +17,7 @@
 @interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate,ItemInputDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+@property (nonatomic, retain) Keyword *myKeyword;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedKeywordResultsController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedRelationResultsController;
@@ -24,5 +26,8 @@
 @property (strong, nonatomic) UINavigationController *itemInputNC;
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
+- (void)createNewRelation:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
+- (NSManagedObject *)changeTypeOfObject:(NSManagedObject *)managedObject;
+- (void)reload;
 
 @end

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Marcel Stolz. All rights reserved.
 //
 
+#import "AbstractWord.h"
 #import "Keyword.h"
 #import "Keyword+KeywordAccessors.h"
 
@@ -37,86 +38,92 @@
     return rootKeyword;
 }
 
+- (BOOL)hasEntries {
+    if([self.children count] == 0 && [self.relations count] == 0)
+        return NO;
+    else
+        return YES;
+}
+
+- (BOOL)hasKeywords {
+    if ([self.children count] == 0)
+        return NO;
+    else
+        return YES;
+}
+
+- (BOOL)hasRelations {
+    if ([self.relations count] == 0)
+        return NO;
+    else
+        return YES;
+}
+
+#pragma mark - Initialisation Methods
+
++ (Keyword *)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label color:(UIColor *)color inContext:(NSManagedObjectContext *)context {
+    Keyword *newKeyword = (Keyword *)[NSEntityDescription insertNewObjectForEntityForName:@"Keyword" inManagedObjectContext:context];
+    newKeyword.keyword = keyword;
+    [context insertObject:newKeyword];
+    return newKeyword;
+}
+
 #pragma mark - Accessor Methods
 
 - (void)insertObject:(Keyword *)value inChildrenAtIndex:(NSUInteger)idx {
-    
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.children];
+    [newSet insertObject:value atIndex:idx];
+    self.children = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
 - (void)removeObjectFromChildrenAtIndex:(NSUInteger)idx {
-    
-}
-
-- (void)insertChildren:(NSArray *)value atIndexes:(NSIndexSet *)indexes {
-    
-}
-
-- (void)removeChildrenAtIndexes:(NSIndexSet *)indexes {
-    
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.children];
+    [newSet removeObjectAtIndex:idx];
+    self.children = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
 - (void)replaceObjectInChildrenAtIndex:(NSUInteger)idx withObject:(Keyword *)value; {
     
 }
 
-- (void)replaceChildrenAtIndexes:(NSIndexSet *)indexes withChildren:(NSArray *)values; {
-    
-}
-
 - (void)addChildrenObject:(Keyword *)value {
-    
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.children];
+    [newSet addObject:value];
+    self.children = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
 - (void)removeChildrenObject:(Keyword *)value {
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.children];
+    [newSet removeObject:value];
+    self.children = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
+}
+
+- (void)insertObject:(Relation *)value inRelationsAtIndex:(NSUInteger)idx {
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.relations];
+    [newSet insertObject:value atIndex:idx];
+    self.relations = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
+}
+
+- (void)removeObjectFromRelationsAtIndex:(NSUInteger)idx {
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.relations];
+    [newSet removeObjectAtIndex:idx];
+    self.relations = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
+}
+
+- (void)replaceObjectInRelationsAtIndex:(NSUInteger)idx withObject:(Relation *)value {
     
 }
 
-- (void)addChildren:(NSOrderedSet *)values {
-    
+- (void)addRelationsObject:(Relation *)value {
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.relations];
+    [newSet addObject:value];
+    self.relations = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
-- (void)removeChildren:(NSOrderedSet *)values {
-    
-}
-
-- (void)insertObject:(Relation *)value inConnectorsAtIndex:(NSUInteger)idx {
-    
-}
-
-- (void)removeObjectFromConnectorsAtIndex:(NSUInteger)idx {
-    
-}
-
-- (void)insertConnectors:(NSArray *)value atIndexes:(NSIndexSet *)indexes {
-    
-}
-
-- (void)removeConnectorsAtIndexes:(NSIndexSet *)indexes {
-    
-}
-
-- (void)replaceObjectInConnectorsAtIndex:(NSUInteger)idx withObject:(Relation *)value {
-    
-}
-
-- (void)replaceConnectorsAtIndexes:(NSIndexSet *)indexes withConnectors:(NSArray *)values {
-    
-}
-
-- (void)addConnectorsObject:(Relation *)value {
-    
-}
-
-- (void)removeConnectorsObject:(Relation *)value {
-    
-}
-
-- (void)addConnectors:(NSOrderedSet *)values {
-    
-}
-
-- (void)removeConnectors:(NSOrderedSet *)values {
-    
+- (void)removeRelationsObject:(Relation *)value {
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.relations];
+    [newSet removeObject:value];
+    self.relations = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
 @end

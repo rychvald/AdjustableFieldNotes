@@ -13,9 +13,12 @@
 #import "AppDelegate.h"
 #import "Keyword.h"
 #import "Keyword+KeywordAccessors.h"
+#import "Relation.h"
+#import "Relation+RelationAccessors.h"
 
 @implementation MasterViewController
 
+@synthesize myKeyword;
 @synthesize managedObjectContext;
 @synthesize itemInputController;
 @synthesize itemInputNC;
@@ -87,9 +90,12 @@
     if ([segue.identifier isEqual:@"addItem"]) {
         self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
         [self.itemInputController prepareForNewEntryFromDelegate:self];
-    } else if ([segue.identifier isEqual:@"editItem"]) {
+    } else if ([segue.identifier isEqual:@"editKeyword"]) {
         self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
         [self.itemInputController prepareForEditingKeyword:(NSManagedObject *)sender fromDelegate:self];
+    } else if ([segue.identifier isEqual:@"editRelation"]) {
+        self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
+        [self.itemInputController prepareForEditingRelation:(NSManagedObject *)sender fromDelegate:self];
     } else
         NSLog(@"No handler defined for segue %@", segue.identifier);
 }
@@ -97,19 +103,17 @@
 #pragma mark - ItemInputDelegate Methods
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color {
-    NSManagedObjectContext *context = self.managedObjectContext;
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Keyword" inManagedObjectContext:context];
-    
-    [newManagedObject setValue:keyword forKey:@"keyword"];
-    [newManagedObject setValue:label forKey:@"label"];
     Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
-    [newManagedObject setValue:rootKeyword forKey:@"parent"];
-    
+    Keyword *newKeyword = [Keyword createNewKeyword:keyword withLabel:label color:color inContext:self.managedObjectContext];
+    newKeyword.keyword = keyword;
+    newKeyword.label = label;
+    newKeyword.color = color;
+    [rootKeyword addChildrenObject:newKeyword];
     NSLog(@"Created entity with keyword: %@",keyword);
     
     // Save the context.
     NSError *error = nil;
-    if (![context save:&error]) {
+    if (![self.managedObjectContext save:&error]) {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -117,6 +121,47 @@
     }
     
     [self.tableView reloadData];
+}
+
+- (void)createNewRelation:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color {
+    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
+    Relation *newRelation = [Relation createNewRelation:keyword withLabel:label color:color inContext:self.managedObjectContext];
+    newRelation.keyword = keyword;
+    newRelation.label = label;
+    newRelation.color = color;
+    [rootKeyword addRelationsObject:newRelation];
+    NSLog(@"Created entity with relation: %@",keyword);
+    
+    // Save the context.
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    [self.tableView reloadData];
+}
+
+- (NSManagedObject *)changeTypeOfObject:(NSManagedObject *)managedObject {
+    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
+    if (managedObject.entity == [NSEntityDescription entityForName:@"Keyword" inManagedObjectContext:self.managedObjectContext]) {
+        Keyword *keyword = (Keyword *)managedObject;
+        Relation *newRelation = [Relation createNewRelation:keyword.keyword withLabel:keyword.label color:keyword.color inContext:self.managedObjectContext];
+        [rootKeyword removeChildrenObject:keyword];
+        [rootKeyword addRelationsObject:newRelation];
+        return newRelation;
+    } else if (managedObject.entity == [NSEntityDescription entityForName:@"Relation" inManagedObjectContext:self.managedObjectContext]) {
+        Relation *relation = (Relation *)managedObject;
+        Keyword *newKeyword = [Keyword createNewKeyword:relation.keyword withLabel:relation.label color:relation.color inContext:self.managedObjectContext];
+        [rootKeyword removeRelationsObject:relation];
+        [rootKeyword addChildrenObject:newKeyword];
+        return newKeyword;
+    } else {
+        NSLog(@"Something went wrong in MasterViewController changeTypeOfObject:");
+        return nil;
+    }
 }
 
 - (void)reload {
@@ -149,20 +194,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSFetchedResultsController *controller;
+    //NSFetchedResultsController *controller;
+    NSInteger retVal = 0;
+    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
+    
     switch (section) {
         case 0:
-            controller = self.fetchedKeywordResultsController;
+            retVal = [rootKeyword.children count];
             break;
         case 1:
-            controller = self.fetchedRelationResultsController;
+            retVal = [rootKeyword.relations count];
             break;
         default:
             break;
     }
     
-    id <NSFetchedResultsSectionInfo> sectionInfo = [controller sections][0];
-    NSInteger retVal = [sectionInfo numberOfObjects];
+    //id <NSFetchedResultsSectionInfo> sectionInfo = [controller sections][0];
+    //NSInteger retVal = [sectionInfo numberOfObjects];
     
     if (retVal == 0) {
         retVal = 1;
@@ -175,63 +223,92 @@
 {
     UITableViewCell *cell;
     
-    NSManagedObject *object = [self getManagedObjectAtIndexPath:indexPath];
-    if (object != nil) {
+    Keyword *keyword = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
+    if (keyword != nil) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         cell.detailTextLabel.textColor =[UIColor grayColor];
         cell.textLabel.textColor = [UIColor blackColor];
-        if ([object valueForKey:@"label"] == nil) {
+        if (keyword.label == nil) {
             cell.detailTextLabel.text = @"";
-            cell.textLabel.text = [[object valueForKey:@"keyword"] description];
+            cell.textLabel.text = keyword.keyword;
         } else {
-            cell.detailTextLabel.text = [[object valueForKey:@"label"] description];
-            cell.textLabel.text = [[object valueForKey:@"keyword"] description];
+            cell.detailTextLabel.text = keyword.label;
+            cell.textLabel.text = keyword.keyword;
         }
         
     } else {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.textLabel.text = @"None";
+        cell.detailTextLabel.text = @"";
     }
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if ([self getManagedObjectAtIndexPath:indexPath] == nil)
+        return NO;
+    else
+        return YES;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSManagedObjectContext *context = self.managedObjectContext;
-        [context deleteObject:[self getManagedObjectAtIndexPath:indexPath]];
-        
-        NSError *error = nil;
-        if (![context save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+        switch (indexPath.section) {
+            case 0:
+                [rootKeyword removeObjectFromChildrenAtIndex:indexPath.row];
+                break;
+            case 1:
+                [rootKeyword removeObjectFromRelationsAtIndex:indexPath.row];
+                break;
+            default:
+                break;
         }
+    } else
+        return;
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
     }
+    [self.tableView reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    NSManagedObject *object = [self getManagedObjectAtIndexPath:fromIndexPath];
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // The table view should not be re-orderable.
-    return YES;
+    if (fromIndexPath.section != toIndexPath.section) {
+        return;
+    }
+    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
+    Keyword *movingKeyword;
+    Relation *movingRelation;
+    switch (fromIndexPath.section) {
+        case 0:
+            movingKeyword = [rootKeyword.children objectAtIndex:fromIndexPath.row];
+            [rootKeyword removeObjectFromChildrenAtIndex:fromIndexPath.row];
+            [rootKeyword insertObject:movingKeyword inChildrenAtIndex:toIndexPath.row];
+            break;
+        case 1:
+            movingRelation = [rootKeyword.relations objectAtIndex:fromIndexPath.row];
+            [rootKeyword removeObjectFromRelationsAtIndex:fromIndexPath.row];
+            [rootKeyword insertObject:movingRelation inRelationsAtIndex:toIndexPath.row];
+            break;
+        default:
+            break;
+    }
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-    if (sourceIndexPath.section != proposedDestinationIndexPath.section) {
-        return sourceIndexPath;
-    } else {
+    //if (sourceIndexPath.section != proposedDestinationIndexPath.section) {
+     //   return sourceIndexPath;
+    //} else {
         return proposedDestinationIndexPath;
-    }
+    //}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -243,8 +320,18 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"editItem" sender:editingObject];
-    [self.itemInputController prepareForEditingKeyword:editingObject fromDelegate:self];
+    switch (indexPath.section) {
+        case 0:
+            [self performSegueWithIdentifier:@"editKeyword" sender:editingObject];
+            [self.itemInputController prepareForEditingKeyword:editingObject fromDelegate:self];
+            break;
+        case 1:
+            [self performSegueWithIdentifier:@"editRelation" sender:editingObject];
+            [self.itemInputController prepareForEditingRelation:editingObject fromDelegate:self];
+            break;
+        default:
+            break;
+    }
     NSLog(@"Pressed Accessory Button");
 }
 
@@ -257,17 +344,17 @@
     AbstractWord *returnWord;
     switch (indexPath.section) {
         case 0:
-            if ([rootKeyword.children count] == 0)
+            if ([rootKeyword.children count] < indexPath.row+1)
                 returnWord = nil;
             else
                 returnWord = [rootKeyword.children objectAtIndex:indexPath.row];
             //controller = self.fetchedKeywordResultsController;
             break;
         case 1:
-            if ([rootKeyword.connectors count] == 0)
+            if ([rootKeyword.relations count] < indexPath.row+1)
                 returnWord = nil;
             else
-                returnWord = [rootKeyword.connectors objectAtIndex:indexPath.row];
+                returnWord = [rootKeyword.relations objectAtIndex:indexPath.row];
             //controller = self.fetchedRelationResultsController;
             break;
         default:
