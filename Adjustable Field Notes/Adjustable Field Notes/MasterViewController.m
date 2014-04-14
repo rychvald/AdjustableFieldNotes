@@ -42,27 +42,6 @@
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
-/*- (NSManagedObject *)rootKeyword {
-    NSManagedObjectContext *context = self.managedObjectContext;
-    if (_rootKeyword != nil) {
-        return _rootKeyword;
-    }
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Root"];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"keyword like %@", @"root"]];
-    if ([context countForFetchRequest:request error:nil] == 0) {
-        _rootKeyword = [self createRootKeywordInContext:context];
-    }
-    else if ([context countForFetchRequest:request error:nil] == 1) {
-        _rootKeyword = [[context executeFetchRequest:request error:nil] objectAtIndex:0];
-    } else {
-        NSLog(@"Something is not as it should be in the object model. Trying to continue anyway...");
-        _rootKeyword = [[context executeFetchRequest:request error:nil] objectAtIndex:0];
-    }
-
-    return _rootKeyword;
-}*/
-
 - (NSManagedObject *)createRootKeywordInContext:(NSManagedObjectContext *)context {
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Root" inManagedObjectContext:self.managedObjectContext];
     [newManagedObject setValue:@"root" forKey:@"keyword"];
