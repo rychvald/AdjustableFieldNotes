@@ -161,7 +161,7 @@
 
 //helper method for dividing indexPaths between the two object types
 - (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Fetching object for section: %ld with row: %ld", indexPath.section, (long)indexPath.row);
+    NSLog(@"Fetching object for section: %ld with row: %ld", (long)indexPath.section, (long)indexPath.row);
     //NSFetchedResultsController *controller;
     //NSIndexPath *myIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
     Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
