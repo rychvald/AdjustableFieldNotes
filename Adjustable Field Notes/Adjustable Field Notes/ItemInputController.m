@@ -65,7 +65,20 @@
 }
 
 - (IBAction)typeChanged:(id)sender {
-    if ([self.currentObject.entity.name isEqualToString:@"Keyword"] && self.typeSelector.selectedSegmentIndex == 1)
+    if (self.currentObject == nil && [self.keyword.text isEqualToString:@""]) {
+        switch (self.typeSelector.selectedSegmentIndex) {
+            case 0:
+                self.keyword.placeholder = @"Keyword";
+                break;
+            case 1:
+                self.keyword.placeholder = @"Relation";
+                break;
+            default:
+                break;
+        }
+        self.typeChange = NO;
+    }
+    else if ([self.currentObject.entity.name isEqualToString:@"Keyword"] && self.typeSelector.selectedSegmentIndex == 1)
         self.typeChange = YES;
     else if ([self.currentObject.entity.name isEqualToString:@"Relation"] && self.typeSelector.selectedSegmentIndex == 0)
         self.typeChange = YES;

@@ -12,6 +12,9 @@
 
 @implementation AppDelegate
 
+@synthesize activeKeyword;
+@synthesize activeRecording;
+
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
