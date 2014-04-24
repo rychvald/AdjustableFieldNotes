@@ -294,6 +294,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //NSManagedObject *object = [self getManagedObjectAtIndexPath:indexPath];
+    MasterViewController *newVC = [[MasterViewController alloc]init];
+    [self.navigationController pushViewController:newVC animated:YES];
+    
     return;
     //self.detailViewController.detailItem = object;
 }
