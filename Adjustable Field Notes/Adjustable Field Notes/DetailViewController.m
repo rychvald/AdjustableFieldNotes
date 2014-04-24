@@ -44,6 +44,7 @@
         self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
     }
     self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
 }
 
 - (void)viewDidLoad
@@ -85,7 +86,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *header = nil;
     if (tableView == self.keywordTableview) {
-        header = @"Keywords";
+        header = @"Categories";
     }
     return header;
 }
@@ -105,7 +106,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     if (tableView == self.keywordTableview) {
         Keyword *keyword = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
-        cell.textLabel.text = keyword.label;
+        if ([keyword.label isEqualToString:@""] || keyword.label == nil) {
+            cell.textLabel.text = keyword.keyword;
+        } else {
+            cell.textLabel.text = keyword.label;
+        }
     } else if (tableView == self.recordingTableview) {
         
     }

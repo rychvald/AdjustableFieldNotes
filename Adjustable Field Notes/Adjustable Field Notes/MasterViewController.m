@@ -27,6 +27,7 @@
 {
     self.clearsSelectionOnViewWillAppear = NO;
     self.preferredContentSize = CGSizeMake(320.0, 600.0);
+    self.isRoot = NO;
     [super awakeFromNib];
 }
 

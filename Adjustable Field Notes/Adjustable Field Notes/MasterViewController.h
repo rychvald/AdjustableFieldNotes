@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (nonatomic, retain) Keyword *myKeyword;
+@property BOOL isRoot;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedKeywordResultsController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedRelationResultsController;

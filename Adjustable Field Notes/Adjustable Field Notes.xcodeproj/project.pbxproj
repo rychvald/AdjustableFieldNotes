@@ -32,6 +32,9 @@
 		414B4EF518F9885700CA375B /* AbstractWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EF418F9885700CA375B /* AbstractWord.m */; };
 		414B4EF818F9885700CA375B /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EF718F9885700CA375B /* Entry.m */; };
 		418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */; };
+		41A80E89190932EC008FDB42 /* KeywordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A80E88190932EC008FDB42 /* KeywordCell.m */; };
+		41A80E8C1909551B008FDB42 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A80E8A1909551B008FDB42 /* bg_cork.png */; };
+		41A80E8D1909551B008FDB42 /* bg_cork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A80E8B1909551B008FDB42 /* bg_cork@2x.png */; };
 		41D4242618F336AA00068102 /* ItemInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4242518F336AA00068102 /* ItemInputController.m */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +92,10 @@
 		414B4EF718F9885700CA375B /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		418EA93218F7D014000EA9E7 /* Keyword+KeywordAccessors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Keyword+KeywordAccessors.h"; sourceTree = "<group>"; };
 		418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Keyword+KeywordAccessors.m"; sourceTree = "<group>"; };
+		41A80E87190932EC008FDB42 /* KeywordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordCell.h; sourceTree = "<group>"; };
+		41A80E88190932EC008FDB42 /* KeywordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordCell.m; sourceTree = "<group>"; };
+		41A80E8A1909551B008FDB42 /* bg_cork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cork.png; sourceTree = "<group>"; };
+		41A80E8B1909551B008FDB42 /* bg_cork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cork@2x.png"; sourceTree = "<group>"; };
 		41D4242418F336AA00068102 /* ItemInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemInputController.h; sourceTree = "<group>"; };
 		41D4242518F336AA00068102 /* ItemInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemInputController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,10 +168,14 @@
 				086AAC1E18D6E61900B0BEAE /* MasterViewController.m */,
 				086AAC2018D6E61900B0BEAE /* DetailViewController.h */,
 				086AAC2118D6E61900B0BEAE /* DetailViewController.m */,
+				41A80E8A1909551B008FDB42 /* bg_cork.png */,
+				41A80E8B1909551B008FDB42 /* bg_cork@2x.png */,
 				41D4242418F336AA00068102 /* ItemInputController.h */,
 				41D4242518F336AA00068102 /* ItemInputController.m */,
 				086AAC2318D6E61900B0BEAE /* Images.xcassets */,
 				086AAC0C18D6E61900B0BEAE /* Supporting Files */,
+				41A80E87190932EC008FDB42 /* KeywordCell.h */,
+				41A80E88190932EC008FDB42 /* KeywordCell.m */,
 			);
 			path = "Adjustable Field Notes";
 			sourceTree = "<group>";
@@ -302,6 +313,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				086AAC2418D6E61900B0BEAE /* Images.xcassets in Resources */,
+				41A80E8C1909551B008FDB42 /* bg_cork.png in Resources */,
+				41A80E8D1909551B008FDB42 /* bg_cork@2x.png in Resources */,
 				086AAC1018D6E61900B0BEAE /* InfoPlist.strings in Resources */,
 				086AAC1918D6E61900B0BEAE /* Main.storyboard in Resources */,
 			);
@@ -335,6 +348,7 @@
 				418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */,
 				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
 				086AAC1218D6E61900B0BEAE /* main.m in Sources */,
+				41A80E89190932EC008FDB42 /* KeywordCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

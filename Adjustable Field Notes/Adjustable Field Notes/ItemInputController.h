@@ -10,6 +10,8 @@
 
 @protocol ItemInputDelegate <NSObject>
 
+@property BOOL isRoot;
+
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
 - (void)createNewRelation:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
 - (NSManagedObject *)changeTypeOfObject:(NSManagedObject *)managedObject;
