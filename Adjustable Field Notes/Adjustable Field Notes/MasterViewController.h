@@ -10,6 +10,7 @@
 
 @class DetailViewController;
 @class Keyword;
+@class RecordingsHandler;
 
 #import <CoreData/CoreData.h>
 #import "ItemInputController.h"
@@ -25,6 +26,7 @@
 @property (retain, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet ItemInputController *itemInputController;
 @property (strong, nonatomic) UINavigationController *itemInputNC;
+@property (nonatomic,retain) RecordingsHandler *recordingsHandler;
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
 - (void)createNewRelation:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;

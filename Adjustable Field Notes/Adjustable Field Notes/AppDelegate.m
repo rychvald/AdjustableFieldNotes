@@ -9,11 +9,15 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
+#import "Recording.h"
+#import "Recording+Additions.h"
+#import "RecordingsHandler.h"
 
 @implementation AppDelegate
 
 @synthesize activeKeyword;
 @synthesize activeRecording;
+@synthesize recordingsHandler;
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -29,6 +33,8 @@
     UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
     MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
+    [self initRecordings];
+    [self initRecordingsHandler];
     return YES;
 }
 							
@@ -52,6 +58,8 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self initRecordings];
+    [self initRecordingsHandler];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -72,6 +80,16 @@
             abort();
         } 
     }
+}
+
+- (void)initRecordings {
+    if (self.recordingsHandler == nil) {
+        self.recordingsHandler = [[RecordingsHandler alloc]init];
+    }
+}
+
+- (void)initRecordingsHandler {
+    
 }
 
 #pragma mark - Core Data stack

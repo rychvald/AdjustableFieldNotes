@@ -25,6 +25,9 @@
 		086AAC2E18D6E61900B0BEAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0918D6E61900B0BEAE /* CoreData.framework */; };
 		086AAC3618D6E61900B0BEAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC3418D6E61900B0BEAE /* InfoPlist.strings */; };
 		086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */; };
+		4145CD57190A475C006B141D /* MasterVCTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4145CD56190A475C006B141D /* MasterVCTemplate.m */; };
+		4145CD5A190A49F9006B141D /* RecordingsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4145CD59190A49F9006B141D /* RecordingsHandler.m */; };
+		4145CD5D190A4A49006B141D /* Recording+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4145CD5C190A4A49006B141D /* Recording+Additions.m */; };
 		414B4EE918F986F800CA375B /* Relation+RelationAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EE818F986F800CA375B /* Relation+RelationAccessors.m */; };
 		414B4EEC18F9885700CA375B /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EEB18F9885700CA375B /* Keyword.m */; };
 		414B4EEF18F9885700CA375B /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EEE18F9885700CA375B /* Recording.m */; };
@@ -78,6 +81,12 @@
 		08ADBF1F18E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		08ADBF2018E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08ADBF2118E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4145CD55190A475C006B141D /* MasterVCTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterVCTemplate.h; sourceTree = "<group>"; };
+		4145CD56190A475C006B141D /* MasterVCTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterVCTemplate.m; sourceTree = "<group>"; };
+		4145CD58190A49F9006B141D /* RecordingsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingsHandler.h; sourceTree = "<group>"; };
+		4145CD59190A49F9006B141D /* RecordingsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingsHandler.m; sourceTree = "<group>"; };
+		4145CD5B190A4A49006B141D /* Recording+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Recording+Additions.h"; sourceTree = "<group>"; };
+		4145CD5C190A4A49006B141D /* Recording+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Recording+Additions.m"; sourceTree = "<group>"; };
 		414B4EE718F986F800CA375B /* Relation+RelationAccessors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Relation+RelationAccessors.h"; sourceTree = "<group>"; };
 		414B4EE818F986F800CA375B /* Relation+RelationAccessors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Relation+RelationAccessors.m"; sourceTree = "<group>"; };
 		414B4EEA18F9885700CA375B /* Keyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyword.h; sourceTree = "<group>"; };
@@ -164,6 +173,8 @@
 				086AAC1418D6E61900B0BEAE /* AppDelegate.h */,
 				086AAC1518D6E61900B0BEAE /* AppDelegate.m */,
 				086AAC1718D6E61900B0BEAE /* Main.storyboard */,
+				4145CD55190A475C006B141D /* MasterVCTemplate.h */,
+				4145CD56190A475C006B141D /* MasterVCTemplate.m */,
 				086AAC1D18D6E61900B0BEAE /* MasterViewController.h */,
 				086AAC1E18D6E61900B0BEAE /* MasterViewController.m */,
 				086AAC2018D6E61900B0BEAE /* DetailViewController.h */,
@@ -172,6 +183,8 @@
 				41A80E8B1909551B008FDB42 /* bg_cork@2x.png */,
 				41D4242418F336AA00068102 /* ItemInputController.h */,
 				41D4242518F336AA00068102 /* ItemInputController.m */,
+				4145CD58190A49F9006B141D /* RecordingsHandler.h */,
+				4145CD59190A49F9006B141D /* RecordingsHandler.m */,
 				086AAC2318D6E61900B0BEAE /* Images.xcassets */,
 				086AAC0C18D6E61900B0BEAE /* Supporting Files */,
 				41A80E87190932EC008FDB42 /* KeywordCell.h */,
@@ -223,6 +236,8 @@
 				414B4EE818F986F800CA375B /* Relation+RelationAccessors.m */,
 				414B4EED18F9885700CA375B /* Recording.h */,
 				414B4EEE18F9885700CA375B /* Recording.m */,
+				4145CD5B190A4A49006B141D /* Recording+Additions.h */,
+				4145CD5C190A4A49006B141D /* Recording+Additions.m */,
 				414B4EEA18F9885700CA375B /* Keyword.h */,
 				414B4EEB18F9885700CA375B /* Keyword.m */,
 				418EA93218F7D014000EA9E7 /* Keyword+KeywordAccessors.h */,
@@ -342,10 +357,13 @@
 				414B4EF218F9885700CA375B /* Relation.m in Sources */,
 				414B4EE918F986F800CA375B /* Relation+RelationAccessors.m in Sources */,
 				086AAC1F18D6E61900B0BEAE /* MasterViewController.m in Sources */,
+				4145CD5D190A4A49006B141D /* Recording+Additions.m in Sources */,
 				086AAC1618D6E61900B0BEAE /* AppDelegate.m in Sources */,
 				41D4242618F336AA00068102 /* ItemInputController.m in Sources */,
 				414B4EF518F9885700CA375B /* AbstractWord.m in Sources */,
 				418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */,
+				4145CD57190A475C006B141D /* MasterVCTemplate.m in Sources */,
+				4145CD5A190A49F9006B141D /* RecordingsHandler.m in Sources */,
 				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
 				086AAC1218D6E61900B0BEAE /* main.m in Sources */,
 				41A80E89190932EC008FDB42 /* KeywordCell.m in Sources */,

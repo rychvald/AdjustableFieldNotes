@@ -15,6 +15,7 @@
 #import "Keyword+KeywordAccessors.h"
 #import "Relation.h"
 #import "Relation+RelationAccessors.h"
+#import "RecordingsHandler.h"
 
 @implementation MasterViewController
 
@@ -22,6 +23,7 @@
 @synthesize managedObjectContext;
 @synthesize itemInputController;
 @synthesize itemInputNC;
+@synthesize recordingsHandler;
 
 - (void)awakeFromNib
 {
