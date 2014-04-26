@@ -51,28 +51,26 @@
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
-- (NSManagedObject *)createRootKeywordInContext:(NSManagedObjectContext *)context {
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Root" inManagedObjectContext:self.managedObjectContext];
-    [newManagedObject setValue:@"root" forKey:@"keyword"];
-    [context insertObject:newManagedObject];
-    return newManagedObject;
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)insertNewObject:(id)sender {
+    return;
+}
+
 #pragma mark - ItemInputDelegate Methods
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color {
-    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
     Keyword *newKeyword = [Keyword createNewKeyword:keyword withLabel:label color:color inContext:self.managedObjectContext];
     newKeyword.keyword = keyword;
     newKeyword.label = label;
     newKeyword.color = color;
-    [rootKeyword addChildrenObject:newKeyword];
+    if (self.myKeyword != nil) {
+        [myKeyword addChildrenObject:newKeyword];
+    }
     NSLog(@"Created entity with keyword: %@",keyword);
     
     // Save the context.

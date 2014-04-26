@@ -155,6 +155,69 @@
             </objects>
             <point key="canvasLocation" x="448" y="248"/>
         </scene>
+        <!--Categories View Controller - Categories-->
+        <scene sceneID="0WI-qv-dST">
+            <objects>
+                <tableViewController id="iUk-Za-G51" customClass="CategoriesViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Vs1-kV-Upg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Bzk-cW-NaQ">
+                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bzk-cW-NaQ" id="Jd5-P8-DO1">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iUk-Za-G51" id="rgG-gE-Ojg"/>
+                            <outlet property="delegate" destination="iUk-Za-G51" id="mFo-mh-cND"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Categories" id="pkU-8G-bz5"/>
+                    <connections>
+                        <segue destination="7A5-wx-zVl" kind="push" id="Rmo-uD-hBQ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKy-O0-QkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1390" y="-630"/>
+        </scene>
+        <!--Keywords View Controller - Keywords and Relations-->
+        <scene sceneID="Cla-uY-wWL">
+            <objects>
+                <tableViewController id="7A5-wx-zVl" customClass="KeywordsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bXO-j2-5r0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="LXL-wa-0pg">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LXL-wa-0pg" id="BNj-Hy-5L8">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7A5-wx-zVl" id="6uS-rr-02r"/>
+                            <outlet property="delegate" destination="7A5-wx-zVl" id="6d6-nT-u2T"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Keywords and Relations" id="KEO-Cb-rC2"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXX-8v-pOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1876" y="-630"/>
+        </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
@@ -232,11 +295,12 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Keyword Sets" id="Zdf-7t-Un8"/>
                     <connections>
                         <segue destination="YIy-pa-kUN" kind="modal" identifier="addItem" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="yow-pL-qoK"/>
                         <segue destination="YIy-pa-kUN" kind="modal" identifier="editKeyword" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="3yP-oo-Hft"/>
                         <segue destination="YIy-pa-kUN" kind="modal" identifier="editRelation" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="PZu-l1-a4z"/>
+                        <segue destination="iUk-Za-G51" kind="push" id="mqz-YO-SmD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
@@ -361,7 +425,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72Z-1S-bYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1890" y="-631"/>
+            <point key="canvasLocation" x="1876" y="-1547"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -395,7 +459,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsX-9g-k61" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1404" y="-631"/>
+            <point key="canvasLocation" x="1390" y="-1547"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

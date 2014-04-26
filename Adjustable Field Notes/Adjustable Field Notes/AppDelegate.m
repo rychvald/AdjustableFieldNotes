@@ -83,13 +83,17 @@
 }
 
 - (void)initRecordings {
-    if (self.recordingsHandler == nil) {
-        self.recordingsHandler = [[RecordingsHandler alloc]init];
-    }
+    
+}
+
+- (void)initWords {
+    
 }
 
 - (void)initRecordingsHandler {
-    
+    if (self.recordingsHandler == nil) {
+        self.recordingsHandler = [[RecordingsHandler alloc]init];
+    }
 }
 
 #pragma mark - Core Data stack

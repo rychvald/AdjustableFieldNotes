@@ -356,55 +356,6 @@
 
 #pragma mark - Fetched results controller
 
-- (NSFetchedResultsController *)fetchedKeywordResultsController {
-    if (_fetchedKeywordResultsController != nil) {
-        return _fetchedKeywordResultsController;
-    }
-    
-    return [self fetchResultsControllerForEntity:@"Keyword"];
-}
-
-- (NSFetchedResultsController *)fetchedRelationResultsController {
-    if (_fetchedRelationResultsController != nil) {
-        return _fetchedRelationResultsController;
-    }
-    
-    return [self fetchResultsControllerForEntity:@"Relation"];
-}
-
-- (NSFetchedResultsController *)fetchResultsControllerForEntity:(NSString *)name
-{
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Define which entities we want to fetch: Keywords at the top level
-    NSEntityDescription *entity = [NSEntityDescription entityForName:name inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
-    
-    // make the keywords to be sorted by label
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"keyword" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
-    aFetchedResultsController.delegate = self;
-    
-	NSError *error = nil;
-	if (![aFetchedResultsController performFetch:&error]) {
-	     // Replace this implementation with code to handle the error appropriately.
-	     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
-	}
-    
-    return aFetchedResultsController;
-}    
-
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView beginUpdates];
@@ -454,15 +405,5 @@
 {
     [self.tableView endUpdates];
 }
-
-/*
-// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    // In the simplest, most efficient, case, reload the table view.
-    [self.tableView reloadData];
-}
- */
 
 @end
