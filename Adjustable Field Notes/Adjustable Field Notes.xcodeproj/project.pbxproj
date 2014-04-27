@@ -25,15 +25,17 @@
 		086AAC2E18D6E61900B0BEAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0918D6E61900B0BEAE /* CoreData.framework */; };
 		086AAC3618D6E61900B0BEAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC3418D6E61900B0BEAE /* InfoPlist.strings */; };
 		086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */; };
+		41201BA4190D516100B0E8DB /* Relation.m in Sources */ = {isa = PBXBuildFile; fileRef = 41201BA3190D516100B0E8DB /* Relation.m */; };
+		41201BA7190D516100B0E8DB /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 41201BA6190D516100B0E8DB /* Keyword.m */; };
+		41201BAA190D516200B0E8DB /* AbstractWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 41201BA9190D516200B0E8DB /* AbstractWord.m */; };
+		41201BAD190D516200B0E8DB /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = 41201BAC190D516200B0E8DB /* Recording.m */; };
+		41201BB0190D516200B0E8DB /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 41201BAF190D516200B0E8DB /* Entry.m */; };
+		41201BB3190D5EE000B0E8DB /* WordSetInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41201BB2190D5EE000B0E8DB /* WordSetInputController.m */; };
+		41201BB6190D5EF800B0E8DB /* CategoriesInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41201BB5190D5EF800B0E8DB /* CategoriesInputController.m */; };
 		4145CD57190A475C006B141D /* MasterVCTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4145CD56190A475C006B141D /* MasterVCTemplate.m */; };
 		4145CD5A190A49F9006B141D /* RecordingsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4145CD59190A49F9006B141D /* RecordingsHandler.m */; };
 		4145CD5D190A4A49006B141D /* Recording+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4145CD5C190A4A49006B141D /* Recording+Additions.m */; };
 		414B4EE918F986F800CA375B /* Relation+RelationAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EE818F986F800CA375B /* Relation+RelationAccessors.m */; };
-		414B4EEC18F9885700CA375B /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EEB18F9885700CA375B /* Keyword.m */; };
-		414B4EEF18F9885700CA375B /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EEE18F9885700CA375B /* Recording.m */; };
-		414B4EF218F9885700CA375B /* Relation.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EF118F9885700CA375B /* Relation.m */; };
-		414B4EF518F9885700CA375B /* AbstractWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EF418F9885700CA375B /* AbstractWord.m */; };
-		414B4EF818F9885700CA375B /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 414B4EF718F9885700CA375B /* Entry.m */; };
 		417C7DB3190BEA17003C8AC5 /* WordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 417C7DB2190BEA17003C8AC5 /* WordsViewController.m */; };
 		417C7DB6190BEC31003C8AC5 /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 417C7DB5190BEC31003C8AC5 /* CategoriesViewController.m */; };
 		417C7DB9190BEC4E003C8AC5 /* KeywordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 417C7DB8190BEC4E003C8AC5 /* KeywordsViewController.m */; };
@@ -84,6 +86,20 @@
 		08ADBF1F18E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		08ADBF2018E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08ADBF2118E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		41201BA2190D516100B0E8DB /* Relation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relation.h; sourceTree = "<group>"; };
+		41201BA3190D516100B0E8DB /* Relation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Relation.m; sourceTree = "<group>"; };
+		41201BA5190D516100B0E8DB /* Keyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyword.h; sourceTree = "<group>"; };
+		41201BA6190D516100B0E8DB /* Keyword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keyword.m; sourceTree = "<group>"; };
+		41201BA8190D516200B0E8DB /* AbstractWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractWord.h; sourceTree = "<group>"; };
+		41201BA9190D516200B0E8DB /* AbstractWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractWord.m; sourceTree = "<group>"; };
+		41201BAB190D516200B0E8DB /* Recording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recording.h; sourceTree = "<group>"; };
+		41201BAC190D516200B0E8DB /* Recording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recording.m; sourceTree = "<group>"; };
+		41201BAE190D516200B0E8DB /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		41201BAF190D516200B0E8DB /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		41201BB1190D5EE000B0E8DB /* WordSetInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSetInputController.h; sourceTree = "<group>"; };
+		41201BB2190D5EE000B0E8DB /* WordSetInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSetInputController.m; sourceTree = "<group>"; };
+		41201BB4190D5EF800B0E8DB /* CategoriesInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesInputController.h; sourceTree = "<group>"; };
+		41201BB5190D5EF800B0E8DB /* CategoriesInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesInputController.m; sourceTree = "<group>"; };
 		4145CD55190A475C006B141D /* MasterVCTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterVCTemplate.h; sourceTree = "<group>"; };
 		4145CD56190A475C006B141D /* MasterVCTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterVCTemplate.m; sourceTree = "<group>"; };
 		4145CD58190A49F9006B141D /* RecordingsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingsHandler.h; sourceTree = "<group>"; };
@@ -92,16 +108,6 @@
 		4145CD5C190A4A49006B141D /* Recording+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Recording+Additions.m"; sourceTree = "<group>"; };
 		414B4EE718F986F800CA375B /* Relation+RelationAccessors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Relation+RelationAccessors.h"; sourceTree = "<group>"; };
 		414B4EE818F986F800CA375B /* Relation+RelationAccessors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Relation+RelationAccessors.m"; sourceTree = "<group>"; };
-		414B4EEA18F9885700CA375B /* Keyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyword.h; sourceTree = "<group>"; };
-		414B4EEB18F9885700CA375B /* Keyword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keyword.m; sourceTree = "<group>"; };
-		414B4EED18F9885700CA375B /* Recording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recording.h; sourceTree = "<group>"; };
-		414B4EEE18F9885700CA375B /* Recording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recording.m; sourceTree = "<group>"; };
-		414B4EF018F9885700CA375B /* Relation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relation.h; sourceTree = "<group>"; };
-		414B4EF118F9885700CA375B /* Relation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Relation.m; sourceTree = "<group>"; };
-		414B4EF318F9885700CA375B /* AbstractWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractWord.h; sourceTree = "<group>"; };
-		414B4EF418F9885700CA375B /* AbstractWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractWord.m; sourceTree = "<group>"; };
-		414B4EF618F9885700CA375B /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		414B4EF718F9885700CA375B /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		417C7DB1190BEA17003C8AC5 /* WordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsViewController.h; sourceTree = "<group>"; };
 		417C7DB2190BEA17003C8AC5 /* WordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsViewController.m; sourceTree = "<group>"; };
 		417C7DB4190BEC31003C8AC5 /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
@@ -182,6 +188,8 @@
 				086AAC1418D6E61900B0BEAE /* AppDelegate.h */,
 				086AAC1518D6E61900B0BEAE /* AppDelegate.m */,
 				086AAC1718D6E61900B0BEAE /* Main.storyboard */,
+				086AAC1D18D6E61900B0BEAE /* MasterViewController.h */,
+				086AAC1E18D6E61900B0BEAE /* MasterViewController.m */,
 				4145CD55190A475C006B141D /* MasterVCTemplate.h */,
 				4145CD56190A475C006B141D /* MasterVCTemplate.m */,
 				417C7DB1190BEA17003C8AC5 /* WordsViewController.h */,
@@ -190,14 +198,16 @@
 				417C7DB5190BEC31003C8AC5 /* CategoriesViewController.m */,
 				417C7DB7190BEC4E003C8AC5 /* KeywordsViewController.h */,
 				417C7DB8190BEC4E003C8AC5 /* KeywordsViewController.m */,
-				086AAC1D18D6E61900B0BEAE /* MasterViewController.h */,
-				086AAC1E18D6E61900B0BEAE /* MasterViewController.m */,
 				086AAC2018D6E61900B0BEAE /* DetailViewController.h */,
 				086AAC2118D6E61900B0BEAE /* DetailViewController.m */,
 				41A80E8A1909551B008FDB42 /* bg_cork.png */,
 				41A80E8B1909551B008FDB42 /* bg_cork@2x.png */,
 				41D4242418F336AA00068102 /* ItemInputController.h */,
 				41D4242518F336AA00068102 /* ItemInputController.m */,
+				41201BB1190D5EE000B0E8DB /* WordSetInputController.h */,
+				41201BB2190D5EE000B0E8DB /* WordSetInputController.m */,
+				41201BB4190D5EF800B0E8DB /* CategoriesInputController.h */,
+				41201BB5190D5EF800B0E8DB /* CategoriesInputController.m */,
 				4145CD58190A49F9006B141D /* RecordingsHandler.h */,
 				4145CD59190A49F9006B141D /* RecordingsHandler.m */,
 				086AAC2318D6E61900B0BEAE /* Images.xcassets */,
@@ -241,22 +251,22 @@
 			isa = PBXGroup;
 			children = (
 				086AAC1A18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld */,
-				414B4EF618F9885700CA375B /* Entry.h */,
-				414B4EF718F9885700CA375B /* Entry.m */,
-				414B4EF318F9885700CA375B /* AbstractWord.h */,
-				414B4EF418F9885700CA375B /* AbstractWord.m */,
-				414B4EF018F9885700CA375B /* Relation.h */,
-				414B4EF118F9885700CA375B /* Relation.m */,
-				414B4EE718F986F800CA375B /* Relation+RelationAccessors.h */,
-				414B4EE818F986F800CA375B /* Relation+RelationAccessors.m */,
-				414B4EED18F9885700CA375B /* Recording.h */,
-				414B4EEE18F9885700CA375B /* Recording.m */,
+				41201BAE190D516200B0E8DB /* Entry.h */,
+				41201BAF190D516200B0E8DB /* Entry.m */,
+				41201BAB190D516200B0E8DB /* Recording.h */,
+				41201BAC190D516200B0E8DB /* Recording.m */,
+				41201BA8190D516200B0E8DB /* AbstractWord.h */,
+				41201BA9190D516200B0E8DB /* AbstractWord.m */,
+				41201BA5190D516100B0E8DB /* Keyword.h */,
+				41201BA6190D516100B0E8DB /* Keyword.m */,
+				41201BA2190D516100B0E8DB /* Relation.h */,
+				41201BA3190D516100B0E8DB /* Relation.m */,
 				4145CD5B190A4A49006B141D /* Recording+Additions.h */,
 				4145CD5C190A4A49006B141D /* Recording+Additions.m */,
-				414B4EEA18F9885700CA375B /* Keyword.h */,
-				414B4EEB18F9885700CA375B /* Keyword.m */,
 				418EA93218F7D014000EA9E7 /* Keyword+KeywordAccessors.h */,
 				418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */,
+				414B4EE718F986F800CA375B /* Relation+RelationAccessors.h */,
+				414B4EE818F986F800CA375B /* Relation+RelationAccessors.m */,
 			);
 			name = "Model Classes";
 			sourceTree = "<group>";
@@ -365,25 +375,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				414B4EEC18F9885700CA375B /* Keyword.m in Sources */,
-				414B4EF818F9885700CA375B /* Entry.m in Sources */,
 				417C7DB9190BEC4E003C8AC5 /* KeywordsViewController.m in Sources */,
 				417C7DB3190BEA17003C8AC5 /* WordsViewController.m in Sources */,
 				086AAC2218D6E61900B0BEAE /* DetailViewController.m in Sources */,
-				414B4EEF18F9885700CA375B /* Recording.m in Sources */,
-				414B4EF218F9885700CA375B /* Relation.m in Sources */,
+				41201BA4190D516100B0E8DB /* Relation.m in Sources */,
 				414B4EE918F986F800CA375B /* Relation+RelationAccessors.m in Sources */,
 				086AAC1F18D6E61900B0BEAE /* MasterViewController.m in Sources */,
 				4145CD5D190A4A49006B141D /* Recording+Additions.m in Sources */,
 				417C7DB6190BEC31003C8AC5 /* CategoriesViewController.m in Sources */,
 				086AAC1618D6E61900B0BEAE /* AppDelegate.m in Sources */,
 				41D4242618F336AA00068102 /* ItemInputController.m in Sources */,
-				414B4EF518F9885700CA375B /* AbstractWord.m in Sources */,
 				418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */,
 				4145CD57190A475C006B141D /* MasterVCTemplate.m in Sources */,
 				4145CD5A190A49F9006B141D /* RecordingsHandler.m in Sources */,
 				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
+				41201BB3190D5EE000B0E8DB /* WordSetInputController.m in Sources */,
+				41201BAD190D516200B0E8DB /* Recording.m in Sources */,
+				41201BA7190D516100B0E8DB /* Keyword.m in Sources */,
+				41201BB0190D516200B0E8DB /* Entry.m in Sources */,
+				41201BAA190D516200B0E8DB /* AbstractWord.m in Sources */,
 				086AAC1218D6E61900B0BEAE /* main.m in Sources */,
+				41201BB6190D5EF800B0E8DB /* CategoriesInputController.m in Sources */,
 				41A80E89190932EC008FDB42 /* KeywordCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

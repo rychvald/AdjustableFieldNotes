@@ -2,7 +2,7 @@
 //  Keyword.h
 //  Adjustable Field Notes
 //
-//  Created by Marcel Stolz on 12.04.14.
+//  Created by Marcel Stolz on 27.04.14.
 //  Copyright (c) 2014 Marcel Stolz. All rights reserved.
 //
 
@@ -14,9 +14,11 @@
 
 @interface Keyword : AbstractWord
 
+@property (nonatomic) BOOL active;
+@property (nonatomic, retain) NSDate * dateCreated;
 @property (nonatomic, retain) NSOrderedSet *children;
-@property (nonatomic, retain) NSOrderedSet *relations;
 @property (nonatomic, retain) Keyword *parent;
+@property (nonatomic, retain) NSOrderedSet *relations;
 @end
 
 @interface Keyword (CoreDataGeneratedAccessors)
@@ -41,5 +43,4 @@
 - (void)removeRelationsObject:(Relation *)value;
 - (void)addRelations:(NSOrderedSet *)values;
 - (void)removeRelations:(NSOrderedSet *)values;
-
 @end

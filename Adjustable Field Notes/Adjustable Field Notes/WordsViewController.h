@@ -8,6 +8,10 @@
 
 #import "MasterVCTemplate.h"
 
+@class WordSetInputController;
+
 @interface WordsViewController : MasterVCTemplate
+
+@property (nonatomic,retain) WordSetInputController *inputController;
 
 @end

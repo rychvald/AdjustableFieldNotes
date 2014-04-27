@@ -19,7 +19,7 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Keyword"];
     [request setPredicate:[NSPredicate predicateWithFormat:@"keyword like %@ AND parent == nil", @"rootKeyword"]];
     if ([context countForFetchRequest:request error:nil] == 0) {
-        rootKeyword = [Keyword createRootKeywordInContext:context];
+        rootKeyword = [Keyword createInitialWordSetInContext:context];
     }
     else if ([context countForFetchRequest:request error:nil] == 1) {
         rootKeyword = [[context executeFetchRequest:request error:nil] objectAtIndex:0];
@@ -31,9 +31,53 @@
     return rootKeyword;
 }
 
-+ (Keyword *)createRootKeywordInContext:(NSManagedObjectContext *)context {
++ (NSArray *)getWordSetsForContext:(NSManagedObjectContext *)context {
+    Keyword *rootKeyword;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Keyword"];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"parent == nil"]];
+    NSArray *array = nil;
+    
+    if ([context countForFetchRequest:request error:nil] == 0) {
+        rootKeyword = [Keyword createInitialWordSetInContext:context];
+        array = @[rootKeyword];
+    } else {
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"keyword" ascending:YES];
+        [request setSortDescriptors:@[sortDescriptor]];
+        array = [context executeFetchRequest:request error:nil];
+    }
+    
+    return array;
+}
+
++ (NSArray *)getInactiveWordSetsForContext:(NSManagedObjectContext *)context {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Keyword"];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"parent == nil AND active != YES"]];
+    NSArray *array = nil;
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"keyword" ascending:YES];
+    [request setSortDescriptors:@[sortDescriptor]];
+    array = [context executeFetchRequest:request error:nil];
+    
+    return array;
+}
+
++ (Keyword *)getActiveWordSetForContext:(NSManagedObjectContext *)context {
+    Keyword *activeKeyword = nil;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Keyword"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"keyword" ascending:YES];
+    [request setSortDescriptors:@[sortDescriptor]];
+    if ([[context executeFetchRequest:request error:nil]count] == 0) {
+        activeKeyword = [Keyword createInitialWordSetInContext:context];
+    } else {
+        activeKeyword = [[context executeFetchRequest:request error:nil]objectAtIndex:0];
+    }
+    return activeKeyword;
+}
+
++ (Keyword *)createInitialWordSetInContext:(NSManagedObjectContext *)context {
     Keyword *rootKeyword = (Keyword *)[NSEntityDescription insertNewObjectForEntityForName:@"Keyword" inManagedObjectContext:context];
-    rootKeyword.keyword = @"rootKeyword";
+    rootKeyword.keyword = @"Initial Keyword Set";
+    rootKeyword.dateCreated = [NSDate date];
+    rootKeyword.active = YES;
     [context insertObject:rootKeyword];
     return rootKeyword;
 }

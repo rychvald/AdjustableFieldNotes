@@ -1,17 +1,13 @@
 //
-//  Relation.m
+//  CategoriesInputController.h
 //  Adjustable Field Notes
 //
 //  Created by Marcel Stolz on 27.04.14.
 //  Copyright (c) 2014 Marcel Stolz. All rights reserved.
 //
 
-#import "Relation.h"
-#import "Keyword.h"
+#import <Foundation/Foundation.h>
 
-
-@implementation Relation
-
-@dynamic parent;
+@interface CategoriesInputController : UITableViewController
 
 @end

@@ -20,7 +20,6 @@
 @property (nonatomic, retain) Keyword *myKeyword;
 
 @property (retain, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) IBOutlet ItemInputController *itemInputController;
 @property (strong, nonatomic) UINavigationController *itemInputNC;
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;

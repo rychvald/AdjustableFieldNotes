@@ -22,7 +22,6 @@
 
 @synthesize myKeyword;
 @synthesize managedObjectContext;
-@synthesize itemInputController;
 @synthesize itemInputNC;
 
 - (void)awakeFromNib
@@ -110,6 +109,198 @@
 
 - (void)reload {
     [self.tableView reloadData];
+}
+
+#pragma mark - Table View
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+    //return [[self.fetchedResultsController sections] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *header;
+    switch (section) {
+        case 0:
+            header = @"Keywords";
+            break;
+        case 1:
+            header = @"Relations";
+            break;
+        default:
+            header = @"";
+            break;
+    }
+    return header;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    //NSFetchedResultsController *controller;
+    NSInteger retVal = 0;
+    
+    switch (section) {
+        case 0:
+            retVal = [self.myKeyword.children count];
+            break;
+        case 1:
+            retVal = [self.myKeyword.relations count];
+            break;
+        default:
+            break;
+    }
+    
+    //id <NSFetchedResultsSectionInfo> sectionInfo = [controller sections][0];
+    //NSInteger retVal = [sectionInfo numberOfObjects];
+    
+    if (retVal == 0) {
+        retVal = 1;
+    }
+    
+    return retVal;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    
+    Keyword *keyword = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
+    if (keyword != nil) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        cell.detailTextLabel.textColor =[UIColor grayColor];
+        cell.textLabel.textColor = [UIColor blackColor];
+        if (keyword.label == nil) {
+            cell.detailTextLabel.text = @"";
+            cell.textLabel.text = keyword.keyword;
+        } else {
+            cell.detailTextLabel.text = keyword.label;
+            cell.textLabel.text = keyword.keyword;
+        }
+        
+    } else {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.textLabel.text = @"None";
+        cell.detailTextLabel.text = @"";
+    }
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self getManagedObjectAtIndexPath:indexPath] == nil)
+        return NO;
+    else
+        return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        switch (indexPath.section) {
+            case 0:
+                [self.myKeyword removeObjectFromChildrenAtIndex:indexPath.row];
+                break;
+            case 1:
+                [self.myKeyword removeObjectFromRelationsAtIndex:indexPath.row];
+                break;
+            default:
+                break;
+        }
+    } else
+        return;
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    [self.tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    if (fromIndexPath.section != toIndexPath.section) {
+        return;
+    }
+    Keyword *movingKeyword;
+    Relation *movingRelation;
+    switch (fromIndexPath.section) {
+        case 0:
+            movingKeyword = [self.myKeyword.children objectAtIndex:fromIndexPath.row];
+            [self.myKeyword removeObjectFromChildrenAtIndex:fromIndexPath.row];
+            [self.myKeyword insertObject:movingKeyword inChildrenAtIndex:toIndexPath.row];
+            break;
+        case 1:
+            movingRelation = [self.myKeyword.relations objectAtIndex:fromIndexPath.row];
+            [self.myKeyword removeObjectFromRelationsAtIndex:fromIndexPath.row];
+            [self.myKeyword insertObject:movingRelation inRelationsAtIndex:toIndexPath.row];
+            break;
+        default:
+            break;
+    }
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+    //if (sourceIndexPath.section != proposedDestinationIndexPath.section) {
+    //   return sourceIndexPath;
+    //} else {
+    return proposedDestinationIndexPath;
+    //}
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
+    switch (indexPath.section) {
+        case 0:
+            [self performSegueWithIdentifier:@"editKeyword" sender:editingObject];
+            break;
+        case 1:
+            [self performSegueWithIdentifier:@"editRelation" sender:editingObject];
+            break;
+        default:
+            break;
+    }
+    NSLog(@"Pressed Accessory Button");
+}
+
+//helper method for dividing indexPaths between the two object types
+- (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Fetching object for section: %ld with row: %ld", (long)indexPath.section, (long)indexPath.row);
+    //NSFetchedResultsController *controller;
+    //NSIndexPath *myIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+    AbstractWord *returnWord;
+    switch (indexPath.section) {
+        case 0:
+            if ([self.myKeyword.children count] < indexPath.row+1)
+                returnWord = nil;
+            else
+                returnWord = [self.myKeyword.children objectAtIndex:indexPath.row];
+            //controller = self.fetchedKeywordResultsController;
+            break;
+        case 1:
+            if ([self.myKeyword.relations count] < indexPath.row+1)
+                returnWord = nil;
+            else
+                returnWord = [self.myKeyword.relations objectAtIndex:indexPath.row];
+            //controller = self.fetchedRelationResultsController;
+            break;
+        default:
+            return nil;;
+            break;
+    }
+    /*if ([[controller fetchedObjects] count] == 0) {
+     return nil;
+     }
+     return [controller objectAtIndexPath:myIndexPath];*/
+    return returnWord;
 }
 
 @end

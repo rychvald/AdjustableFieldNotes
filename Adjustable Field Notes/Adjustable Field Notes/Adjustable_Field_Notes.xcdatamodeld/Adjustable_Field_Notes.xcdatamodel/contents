@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AbstractWord" representedClassName="AbstractWord">
         <attribute name="color" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="keyword" attributeType="String">
             <userInfo/>
         </attribute>
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="linebreak" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="orderNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="usedByEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="words" inverseEntity="Entry" syncable="YES"/>
         <userInfo/>
@@ -17,6 +18,8 @@
         <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="AbstractWord" inverseName="usedByEntries" inverseEntity="AbstractWord" syncable="YES"/>
     </entity>
     <entity name="Keyword" representedClassName="Keyword" parentEntity="AbstractWord">
+        <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Keyword" inverseName="parent" inverseEntity="Keyword" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Keyword" inverseName="children" inverseEntity="Keyword" syncable="YES"/>
         <relationship name="relations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Relation" inverseName="parent" inverseEntity="Relation" syncable="YES"/>
@@ -31,9 +34,9 @@
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Keyword" inverseName="relations" inverseEntity="Keyword" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AbstractWord" positionX="160" positionY="-433" width="128" height="118"/>
+        <element name="AbstractWord" positionX="160" positionY="-433" width="128" height="133"/>
         <element name="Entry" positionX="-101" positionY="-343" width="128" height="103"/>
-        <element name="Keyword" positionX="232" positionY="-207" width="128" height="88"/>
+        <element name="Keyword" positionX="232" positionY="-207" width="128" height="118"/>
         <element name="Recording" positionX="-254" positionY="-189" width="128" height="88"/>
         <element name="Relation" positionX="25" positionY="-193" width="128" height="58"/>
     </elements>

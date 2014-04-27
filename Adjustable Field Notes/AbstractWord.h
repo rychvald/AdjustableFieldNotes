@@ -2,7 +2,7 @@
 //  AbstractWord.h
 //  Adjustable Field Notes
 //
-//  Created by Marcel Stolz on 12.04.14.
+//  Created by Marcel Stolz on 27.04.14.
 //  Copyright (c) 2014 Marcel Stolz. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString * keyword;
 @property (nonatomic, retain) NSString * label;
 @property (nonatomic, retain) NSNumber * orderNumber;
+@property (nonatomic, retain) NSNumber * linebreak;
 @property (nonatomic, retain) NSSet *usedByEntries;
 @end
 
