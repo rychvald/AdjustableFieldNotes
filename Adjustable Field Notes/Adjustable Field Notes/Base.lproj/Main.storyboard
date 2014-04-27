@@ -145,9 +145,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="categoriesTableview" destination="56e-ED-yrn" id="38r-mF-TBF"/>
                         <outlet property="inputField" destination="Gpf-Ce-P79" id="O9Y-pU-IR0"/>
                         <outlet property="keywordCollectionView" destination="ZgG-4q-VL8" id="ydH-nY-JjE"/>
-                        <outlet property="keywordTableview" destination="56e-ED-yrn" id="Duf-8V-3HK"/>
                         <outlet property="recordingTableview" destination="JwA-6L-atR" id="bO4-Uv-cOR"/>
                     </connections>
                 </viewController>
@@ -220,6 +220,7 @@
                     <connections>
                         <segue destination="7A5-wx-zVl" kind="push" identifier="showKeywordsAndRelations" id="Rmo-uD-hBQ"/>
                         <segue destination="FeL-6E-jVC" kind="modal" identifier="addCategory" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="xwp-fK-y6a"/>
+                        <segue destination="FeL-6E-jVC" kind="modal" identifier="editCategory" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="oyF-g7-0mD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKy-O0-QkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,11 +237,11 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="blue" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="detailButton" textLabel="gH5-ha-DnP" detailTextLabel="ZjV-vt-h97" style="IBUITableViewCellStyleSubtitle" id="ov5-xQ-J1N">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="blue" showsReorderControl="YES" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="detailButton" textLabel="gH5-ha-DnP" detailTextLabel="ZjV-vt-h97" style="IBUITableViewCellStyleSubtitle" id="ov5-xQ-J1N">
                                 <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ov5-xQ-J1N" id="VZ2-nb-OGX">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gH5-ha-DnP">
@@ -260,9 +261,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="YIy-pa-kUN" kind="modal" identifier="editRelation" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="Nff-2R-lhi"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="NoneCell" textLabel="wtr-dn-TrD" style="IBUITableViewCellStyleDefault" id="CGR-LS-u9z">
                                 <rect key="frame" x="0.0" y="163" width="320" height="44"/>
@@ -283,9 +281,6 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                 </accessibility>
-                                <connections>
-                                    <segue destination="YIy-pa-kUN" kind="modal" identifier="editKeyword" id="415-ro-qTS"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -296,6 +291,7 @@
                     <navigationItem key="navigationItem" title="Keywords and Relations" id="KEO-Cb-rC2"/>
                     <connections>
                         <segue destination="YIy-pa-kUN" kind="modal" identifier="addItem" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="wgz-hj-2Lh"/>
+                        <segue destination="YIy-pa-kUN" kind="modal" identifier="editItem" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="815-QF-1B4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXX-8v-pOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,7 +317,7 @@
         <scene sceneID="smW-Zh-WAh">
             <objects>
                 <tableViewController title="Master" id="7bK-jq-Zjz" customClass="WordsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="r7i-6Z-zg0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -383,14 +379,11 @@
                     <connections>
                         <segue destination="iUk-Za-G51" kind="push" identifier="showCategories" id="mqz-YO-SmD"/>
                         <segue destination="Ba2-Cp-tEU" kind="modal" identifier="addWordSet" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="MXM-N1-i5J"/>
+                        <segue destination="Ba2-Cp-tEU" kind="modal" identifier="editWordSet" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="KX1-WN-Iyo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
-                <customObject id="QoA-EY-hVN" customClass="RecordingsHandler">
-                    <connections>
-                        <outlet property="tableView" destination="r7i-6Z-zg0" id="jL8-tl-CRU"/>
-                    </connections>
-                </customObject>
+                <customObject id="QoA-EY-hVN" customClass="RecordingsHandler"/>
             </objects>
             <point key="canvasLocation" x="859" y="-631"/>
         </scene>
@@ -507,7 +500,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72Z-1S-bYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="-1527"/>
+            <point key="canvasLocation" x="1876" y="-2461"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -608,6 +601,9 @@
                                                     </accessibility>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Mga-Al-ZkG" id="Ymw-pX-vxE"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -665,11 +661,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Make this the active word set" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggg-lw-K0F" userLabel="Color">
-                                                    <rect key="frame" x="20" y="7" width="280" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Make this the active word set" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggg-lw-K0F" userLabel="Color">
+                                                    <rect key="frame" x="20" y="7" width="223" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Mga-Al-ZkG" id="Nm2-ya-Xgg"/>
+                                                    </connections>
                                                 </textField>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3nq-oG-kOk">
                                                     <rect key="frame" x="251" y="6" width="51" height="31"/>
@@ -697,10 +696,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="859" y="-2461"/>
         </scene>
-        <!--Categories Input Controller - New Category-->
+        <!--Category Input Controller - New Category-->
         <scene sceneID="GUj-W4-kFy">
             <objects>
-                <tableViewController storyboardIdentifier="categoryInputController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L0q-eA-NcT" customClass="CategoriesInputController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="categoryInputController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L0q-eA-NcT" customClass="CategoryInputController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="MgD-xr-umD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -716,7 +715,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="meU-yg-bff" userLabel="Keyword">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Category Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="meU-yg-bff" userLabel="Keyword">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <accessibility key="accessibilityConfiguration">
@@ -732,19 +731,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </tableViewSection>
                             <tableViewSection headerTitle="Color" id="j8w-2L-sAW" userLabel="Color">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nsT-WJ-Lza" userLabel="colorCell">
-                                        <rect key="frame" x="0.0" y="211" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="190" id="nsT-WJ-Lza" userLabel="colorCell">
+                                        <rect key="frame" x="0.0" y="211" width="320" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nsT-WJ-Lza" id="Bhj-fA-5Pb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="White" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bxZ-N6-9ra" userLabel="Color">
-                                                    <rect key="frame" x="20" y="7" width="280" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eCC-JR-B1M">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="L0q-eA-NcT" id="v63-LW-mFa"/>
+                                                        <outlet property="delegate" destination="L0q-eA-NcT" id="Fs5-TN-g7c"/>
+                                                    </connections>
+                                                </pickerView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -758,8 +759,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <navigationItem key="navigationItem" title="New Category" id="uFn-Db-4LT"/>
                     <connections>
-                        <outlet property="color" destination="bxZ-N6-9ra" id="MaH-dc-uZJ"/>
-                        <outlet property="keyword" destination="meU-yg-bff" id="FXX-cX-oJ3"/>
+                        <outlet property="name" destination="meU-yg-bff" id="baB-BE-D1F"/>
+                        <outlet property="picker" destination="eCC-JR-B1M" id="QYg-az-mjK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xCX-cy-Waq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -773,6 +774,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="415-ro-qTS"/>
+        <segue reference="KX1-WN-Iyo"/>
+        <segue reference="oyF-g7-0mD"/>
+        <segue reference="815-QF-1B4"/>
     </inferredMetricsTieBreakers>
 </document>

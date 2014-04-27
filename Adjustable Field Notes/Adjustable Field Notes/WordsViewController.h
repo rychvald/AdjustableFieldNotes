@@ -7,11 +7,14 @@
 //
 
 #import "MasterVCTemplate.h"
+#import "WordSetInputController.h"
 
 @class WordSetInputController;
 
-@interface WordsViewController : MasterVCTemplate
+@interface WordsViewController : MasterVCTemplate <WordSetInputDelegate>
 
 @property (nonatomic,retain) WordSetInputController *inputController;
+
+- (void)createNewWordSet:(NSString *)name withDate:(NSDate *)date active:(BOOL)active;
 
 @end

@@ -13,6 +13,9 @@
 
 + (Keyword *)getRootForContext:(NSManagedObjectContext *)context;
 + (NSArray *)getWordSetsForContext:(NSManagedObjectContext *)context;
++ (NSArray *)getInactiveWordSetsForContext:(NSManagedObjectContext *)context;
++ (Keyword *)getActiveWordSetForContext:(NSManagedObjectContext *)context;
++ (Keyword *)createInitialWordSetInContext:(NSManagedObjectContext *)context;
 - (BOOL)hasEntries;
 - (BOOL)hasKeywords;
 - (BOOL)hasRelations;
@@ -28,5 +31,7 @@
 - (void)replaceObjectInRelationsAtIndex:(NSUInteger)idx withObject:(Relation *)value;
 - (void)addRelationsObject:(Relation *)value;
 - (void)removeRelationsObject:(Relation *)value;
+- (BOOL)isActive;
+- (void)setIsActive:(BOOL)newValue;
 
 @end

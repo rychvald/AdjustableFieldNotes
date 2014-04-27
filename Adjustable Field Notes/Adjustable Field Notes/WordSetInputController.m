@@ -39,7 +39,7 @@
     self.currentWordSet = keyword;
     self.name.text = keyword.keyword;
     self.picker.date = keyword.dateCreated;
-    if (keyword.active == YES) {
+    if (keyword.isActive == YES) {
         self.activeSwitch.on = YES;
         self.activeSwitch.enabled = NO;
     } else {
@@ -58,7 +58,7 @@
     } else {
         self.currentWordSet.keyword = self.name.text;
         self.currentWordSet.dateCreated = self.picker.date;
-        self.currentWordSet.active = self.activeSwitch.on;
+        self.currentWordSet.isActive = self.activeSwitch.on;
     }
     [self cancel];
 }
@@ -67,6 +67,13 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     self.currentWordSet = nil;
     [self.inputDelegate reload];
+}
+
+#pragma mark - UITextField Delegate method
+
+-(BOOL)textFieldShouldReturn:(UITextField*)textField {
+    [self saveItem];
+    return YES;
 }
 
 @end

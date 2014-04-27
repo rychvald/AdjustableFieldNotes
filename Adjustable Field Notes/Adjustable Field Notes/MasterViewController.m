@@ -293,14 +293,10 @@
     //}
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //NSManagedObject *object = [self getManagedObjectAtIndexPath:indexPath];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MasterViewController *newVC = [[MasterViewController alloc]init];
     [self.navigationController pushViewController:newVC animated:YES];
-    
     return;
-    //self.detailViewController.detailItem = object;
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
@@ -323,8 +319,6 @@
 //helper method for dividing indexPaths between the two object types
 - (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Fetching object for section: %ld with row: %ld", (long)indexPath.section, (long)indexPath.row);
-    //NSFetchedResultsController *controller;
-    //NSIndexPath *myIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
     Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
     AbstractWord *returnWord;
     switch (indexPath.section) {
@@ -333,77 +327,18 @@
                 returnWord = nil;
             else
                 returnWord = [rootKeyword.children objectAtIndex:indexPath.row];
-            //controller = self.fetchedKeywordResultsController;
             break;
         case 1:
             if ([rootKeyword.relations count] < indexPath.row+1)
                 returnWord = nil;
             else
                 returnWord = [rootKeyword.relations objectAtIndex:indexPath.row];
-            //controller = self.fetchedRelationResultsController;
             break;
         default:
             return nil;;
             break;
     }
-    /*if ([[controller fetchedObjects] count] == 0) {
-        return nil;
-    }
-    return [controller objectAtIndexPath:myIndexPath];*/
     return returnWord;
-}
-
-
-#pragma mark - Fetched results controller
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    UITableView *tableView = self.tableView;
-    
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            //[self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
 }
 
 @end

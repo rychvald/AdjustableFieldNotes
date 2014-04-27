@@ -24,21 +24,20 @@
 @synthesize managedObjectContext;
 @synthesize itemInputNC;
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     self.clearsSelectionOnViewWillAppear = NO;
     self.preferredContentSize = CGSizeMake(320.0, 600.0);
     [super awakeFromNib];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     
     //init top bar buttons
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     //init bottom bar buttons
@@ -84,6 +83,10 @@
     [self.tableView reloadData];
 }
 
+- (void)reload {
+    [self.tableView reloadData];
+}
+
 #pragma mark - Methods for Toolbar buttons
 
 - (void)showRecords:(id)sender {
@@ -105,10 +108,6 @@
 
 - (void)export:(id)sender {
     
-}
-
-- (void)reload {
-    [self.tableView reloadData];
 }
 
 #pragma mark - Table View
@@ -197,28 +196,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        switch (indexPath.section) {
-            case 0:
-                [self.myKeyword removeObjectFromChildrenAtIndex:indexPath.row];
-                break;
-            case 1:
-                [self.myKeyword removeObjectFromRelationsAtIndex:indexPath.row];
-                break;
-            default:
-                break;
-        }
-    } else
-        return;
-    
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    [self.tableView reloadData];
+    return;
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
@@ -257,50 +235,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
-    switch (indexPath.section) {
-        case 0:
-            [self performSegueWithIdentifier:@"editKeyword" sender:editingObject];
-            break;
-        case 1:
-            [self performSegueWithIdentifier:@"editRelation" sender:editingObject];
-            break;
-        default:
-            break;
-    }
     NSLog(@"Pressed Accessory Button");
+    return;
 }
 
 //helper method for dividing indexPaths between the two object types
 - (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Fetching object for section: %ld with row: %ld", (long)indexPath.section, (long)indexPath.row);
-    //NSFetchedResultsController *controller;
-    //NSIndexPath *myIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
-    AbstractWord *returnWord;
-    switch (indexPath.section) {
-        case 0:
-            if ([self.myKeyword.children count] < indexPath.row+1)
-                returnWord = nil;
-            else
-                returnWord = [self.myKeyword.children objectAtIndex:indexPath.row];
-            //controller = self.fetchedKeywordResultsController;
-            break;
-        case 1:
-            if ([self.myKeyword.relations count] < indexPath.row+1)
-                returnWord = nil;
-            else
-                returnWord = [self.myKeyword.relations objectAtIndex:indexPath.row];
-            //controller = self.fetchedRelationResultsController;
-            break;
-        default:
-            return nil;;
-            break;
-    }
-    /*if ([[controller fetchedObjects] count] == 0) {
-     return nil;
-     }
-     return [controller objectAtIndexPath:myIndexPath];*/
-    return returnWord;
+    return nil;
 }
 
 @end

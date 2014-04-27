@@ -22,6 +22,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     [self reloadRecordings];
+    self.title = @"Records";
 }
 
 - (void)reloadRecordings {

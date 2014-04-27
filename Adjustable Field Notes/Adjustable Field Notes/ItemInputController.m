@@ -127,4 +127,11 @@
     [self.inputDelegate reload];
 }
 
+#pragma mark - UITextField Delegate method
+
+-(BOOL)textFieldShouldReturn:(UITextField*)textField {
+    [self saveItem];
+    return YES;
+}
+
 @end

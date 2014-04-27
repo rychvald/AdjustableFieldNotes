@@ -15,7 +15,6 @@
 
 @implementation AppDelegate
 
-@synthesize activeKeyword;
 @synthesize activeRecording;
 @synthesize recordingsHandler;
 
@@ -32,12 +31,10 @@
 
     [self initRecordings];
     [self initRecordingsHandler];
-    [self initWords];
     
     UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
     WordsViewController *controller = (WordsViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
-    controller.myKeyword = self.activeKeyword;
     return YES;
 }
 							
@@ -61,7 +58,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [self initWords];
     [self initRecordings];
     [self initRecordingsHandler];
     
@@ -72,7 +68,6 @@
     UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
     WordsViewController *controller = (WordsViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
-    controller.myKeyword = self.activeKeyword;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -101,13 +96,6 @@
         self.activeRecording = recording;
     } else if (self.activeRecording == nil) {
         self.activeRecording = (Recording *)[[Recording getAllRecordingsInContext:self.managedObjectContext]objectAtIndex:0];
-    }
-}
-
-- (void)initWords {
-    NSArray *array = [Keyword getWordSetsForContext:self.managedObjectContext];
-    if (self.activeKeyword == nil) {
-        self.activeKeyword = [array objectAtIndex:0];
     }
 }
 

@@ -15,7 +15,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, retain) Keyword *activeKeyword;
 @property (nonatomic, retain) Recording *activeRecording;
 @property (nonatomic, retain) RecordingsHandler *recordingsHandler;
 

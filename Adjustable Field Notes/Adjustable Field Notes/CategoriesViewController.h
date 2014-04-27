@@ -7,7 +7,15 @@
 //
 
 #import "MasterVCTemplate.h"
+#import "CategoryInputController.h"
 
-@interface CategoriesViewController : MasterVCTemplate
+@class Keyword;
+
+@interface CategoriesViewController : MasterVCTemplate <CategoryInputDelegate>
+
+@property (nonatomic,retain) Keyword *wordSet;
+@property (nonatomic,retain) CategoryInputController *inputController;
+
+- (void)createNewCategory:(NSString *)name withColor:(UIColor *)color;
 
 @end

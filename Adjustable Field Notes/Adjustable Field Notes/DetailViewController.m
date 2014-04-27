@@ -85,7 +85,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *header = nil;
-    if (tableView == self.keywordTableview) {
+    if (tableView == self.categoriesTableview) {
         header = @"Categories";
     }
     return header;
@@ -94,31 +94,25 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger retVal = 0;
-    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
-    if (tableView == self.keywordTableview) {
-        retVal = [rootKeyword.children count];
+    if (tableView == self.categoriesTableview) {
+        retVal = [[Keyword getActiveWordSetForContext:self.managedObjectContext].children count];
     }
     return retVal;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    if (tableView == self.keywordTableview) {
-        Keyword *keyword = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
-        if ([keyword.label isEqualToString:@""] || keyword.label == nil) {
-            cell.textLabel.text = keyword.keyword;
-        } else {
-            cell.textLabel.text = keyword.label;
-        }
+    if (tableView == self.categoriesTableview) {
+        Keyword *keyword = [[Keyword getActiveWordSetForContext:self.managedObjectContext].children objectAtIndex:indexPath.row];
+        cell.textLabel.text = keyword.keyword;
+        cell.backgroundColor = keyword.color;
     } else if (tableView == self.recordingTableview) {
         
     }
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self getManagedObjectAtIndexPath:indexPath] == nil)
         return NO;
     else
@@ -149,7 +143,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    [self.keywordTableview reloadData];
+    [self.categoriesTableview reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
