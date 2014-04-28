@@ -15,7 +15,6 @@
 
 @implementation AppDelegate
 
-@synthesize activeRecording;
 @synthesize recordingsHandler;
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -29,7 +28,6 @@
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     splitViewController.delegate = (id)navigationController.topViewController;
 
-    [self initRecordings];
     [self initRecordingsHandler];
     
     UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
@@ -58,7 +56,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [self initRecordings];
     [self initRecordingsHandler];
     
     // Override point for customization after application launch.
@@ -87,15 +84,6 @@
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         } 
-    }
-}
-
-- (void)initRecordings {
-    if ([[Recording getAllRecordingsInContext:self.managedObjectContext] count] == 0) {
-        Recording *recording = [Recording createRecordingInContext:self.managedObjectContext];
-        self.activeRecording = recording;
-    } else if (self.activeRecording == nil) {
-        self.activeRecording = (Recording *)[[Recording getAllRecordingsInContext:self.managedObjectContext]objectAtIndex:0];
     }
 }
 

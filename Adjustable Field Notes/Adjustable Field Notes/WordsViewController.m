@@ -11,6 +11,7 @@
 #import "Keyword+KeywordAccessors.h"
 #import "WordSetInputController.h"
 #import "CategoriesViewController.h"
+#import "DetailViewController.h"
 
 @implementation WordsViewController
 
@@ -67,6 +68,7 @@
 - (void)reload {
     [self.managedObjectContext save:nil];
     [self.tableView reloadData];
+    [self.detailViewController reload];
 }
 
 #pragma mark - Table View
@@ -124,7 +126,7 @@
         Keyword *keyword = [Keyword getActiveWordSetForContext:self.managedObjectContext];
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         cell.textLabel.text = keyword.keyword;
-        cell.detailTextLabel.text = [keyword.dateCreated descriptionWithLocale:[NSLocale currentLocale]];
+        cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:keyword.dateCreated dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
     } else if (indexPath.section == 1) {
         NSArray *wordSets = [Keyword getInactiveWordSetsForContext:self.managedObjectContext];
         if ([wordSets count] == 0) {
@@ -136,7 +138,7 @@
             Keyword *keyword = [wordSets objectAtIndex:indexPath.row];
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
             cell.textLabel.text = keyword.keyword;
-            cell.detailTextLabel.text = [keyword.dateCreated descriptionWithLocale:[NSLocale currentLocale]];
+            cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:keyword.dateCreated dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
         }
     } else {
         NSLog(@"Wrong indexPath indication in WordsViewController!");

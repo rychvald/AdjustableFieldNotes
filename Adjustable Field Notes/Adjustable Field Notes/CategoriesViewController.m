@@ -11,6 +11,7 @@
 #import "Keyword+KeywordAccessors.h"
 #import "CategoryInputController.h"
 #import "KeywordsViewController.h"
+#import "DetailViewController.h"
 
 @implementation CategoriesViewController
 
@@ -90,6 +91,7 @@
 - (void)reload {
     [self.managedObjectContext save:nil];
     [self.tableView reloadData];
+    [self.detailViewController reload];
 }
 
 #pragma mark - Table View

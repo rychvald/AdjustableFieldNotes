@@ -14,38 +14,31 @@
 @implementation RecordingsHandler
 
 @synthesize managedObjectContext;
-@synthesize recordings;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    [self reloadRecordings];
     self.title = @"Records";
 }
 
 - (void)reloadRecordings {
-    self.recordings = [Recording getAllRecordingsInContext:self.managedObjectContext];
     [self.tableView reloadData];
 }
 
 #pragma mark - Table View
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-    //return [[self.fetchedResultsController sections] count];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *header = @"";
     switch (section) {
         case 0:
-            header = @"Active Recording";
+            header = @"Select Active Record";
             break;
-        case 1:
-            header = @"Inactve Recordings";
         default:
             break;
     }
@@ -53,44 +46,39 @@
     return header;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    //NSFetchedResultsController *controller;
-    NSInteger retVal = 1;
-    if (section == 0) {
-        retVal = [self.recordings count];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.managedObjectContext == nil) {
+        NSLog(@"ManagedObjectContext is nil!");
     }
     
+    NSInteger retVal = [[Recording getRecordingsInContext:self.managedObjectContext]count];
     return retVal;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Fetching cell for row: %zd in Section: %zd",indexPath.row,indexPath.section);
+    
     UITableViewCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"RecordingCell" forIndexPath:indexPath];
+    Recording *recording = [[Recording getRecordingsInContext:self.managedObjectContext]objectAtIndex:indexPath.row];
+    cell.textLabel.text = recording.name;
+    cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:recording.dateCreated dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+    if (recording.isActive)
+        cell.accessoryView.hidden = NO;
+    else
+        cell.accessoryView.hidden = YES;
     
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        switch (indexPath.section) {
-            case 0:
-                [rootKeyword removeObjectFromChildrenAtIndex:indexPath.row];
-                break;
-            case 1:
-                [rootKeyword removeObjectFromRelationsAtIndex:indexPath.row];
-                break;
-            default:
-                break;
-        }
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    Recording *recording = [[Recording getRecordingsInContext:self.managedObjectContext]objectAtIndex:indexPath.row];
+    if (editingStyle == UITableViewCellEditingStyleDelete && !recording.isActive) {
+        [self.managedObjectContext deleteObject:recording];
     } else
         return;
     
@@ -105,26 +93,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    if (fromIndexPath.section != toIndexPath.section) {
-        return;
-    }
-    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
-    Keyword *movingKeyword;
-    Relation *movingRelation;
-    switch (fromIndexPath.section) {
-        case 0:
-            movingKeyword = [rootKeyword.children objectAtIndex:fromIndexPath.row];
-            [rootKeyword removeObjectFromChildrenAtIndex:fromIndexPath.row];
-            [rootKeyword insertObject:movingKeyword inChildrenAtIndex:toIndexPath.row];
-            break;
-        case 1:
-            movingRelation = [rootKeyword.relations objectAtIndex:fromIndexPath.row];
-            [rootKeyword removeObjectFromRelationsAtIndex:fromIndexPath.row];
-            [rootKeyword insertObject:movingRelation inRelationsAtIndex:toIndexPath.row];
-            break;
-        default:
-            break;
-    }
+    return;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
@@ -135,11 +104,8 @@
     //}
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //NSManagedObject *object = [self getManagedObjectAtIndexPath:indexPath];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return;
-    //self.detailViewController.detailItem = object;
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {

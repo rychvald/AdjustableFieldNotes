@@ -121,7 +121,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
+    Keyword *rootKeyword = [Keyword getActiveWordSetForContext:self.managedObjectContext];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         switch (indexPath.section) {
             case 0:
@@ -163,7 +163,7 @@
     NSLog(@"Fetching object for section: %ld with row: %ld", (long)indexPath.section, (long)indexPath.row);
     //NSFetchedResultsController *controller;
     //NSIndexPath *myIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
-    Keyword *rootKeyword = [Keyword getRootForContext:self.managedObjectContext];
+    Keyword *rootKeyword = [Keyword getActiveWordSetForContext:self.managedObjectContext];
     AbstractWord *returnWord;
     switch (indexPath.section) {
         case 0:
@@ -189,6 +189,12 @@
      }
      return [controller objectAtIndexPath:myIndexPath];*/
     return returnWord;
+}
+
+- (void)reload {
+    [self.categoriesTableview reloadData];
+    [self.recordingTableview reloadData];
+    [self.keywordCollectionView reloadData];
 }
 
 

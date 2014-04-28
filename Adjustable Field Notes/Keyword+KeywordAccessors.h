@@ -11,7 +11,6 @@
 
 @interface Keyword (KeywordAccessors)
 
-+ (Keyword *)getRootForContext:(NSManagedObjectContext *)context;
 + (NSArray *)getWordSetsForContext:(NSManagedObjectContext *)context;
 + (NSArray *)getInactiveWordSetsForContext:(NSManagedObjectContext *)context;
 + (Keyword *)getActiveWordSetForContext:(NSManagedObjectContext *)context;

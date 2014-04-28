@@ -10,7 +10,16 @@
 
 @interface Recording (Additions)
 
-+ (NSArray *)getAllRecordingsInContext:(NSManagedObjectContext *)context;
-+ (Recording *)createRecordingInContext:(NSManagedObjectContext *)context;
++ (NSArray *)getRecordingsInContext:(NSManagedObjectContext *)context;
++ (NSArray *)getInactiveRecordingsForContext:(NSManagedObjectContext *)context;
++ (Recording *)getActiveRecordingForContext:(NSManagedObjectContext *)context;
++ (Recording *)createInitialRecordingInContext:(NSManagedObjectContext *)context;
+- (BOOL)hasEntries;
++ (Recording *)createRecording:(NSString *)recording inContext:(NSManagedObjectContext *)context;
+
+- (void)addEntriesObject:(Entry *)value;
+- (void)removeEntriesObject:(Entry *)value;
+- (BOOL)isActive;
+- (void)setIsActive:(BOOL)newValue;
 
 @end

@@ -11,7 +11,6 @@
 @interface RecordingsHandler : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic,retain) NSArray *recordings;
 
 @property (nonatomic,retain) IBOutlet UITableView *tableView;
 

@@ -47,6 +47,9 @@
     UIBarButtonItem *exportButton = [[UIBarButtonItem alloc] initWithTitle:@"Export" style:UIBarButtonItemStylePlain target:self action:@selector(export:)];
     [self setToolbarItems:@[recordsButton,wordsButton,importButton,exportButton]];
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    if (self.detailViewController == nil) {
+        NSLog(@"Something went wrong assigning detailViewController!");
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,20 +88,26 @@
 
 - (void)reload {
     [self.tableView reloadData];
+    [self.detailViewController reload];
 }
 
 #pragma mark - Methods for Toolbar buttons
 
 - (void)showRecords:(id)sender {
     RecordingsHandler *handler = [(AppDelegate *)[[UIApplication sharedApplication] delegate] recordingsHandler];
+    handler.managedObjectContext = self.managedObjectContext;
     self.tableView.dataSource = handler;
     self.tableView.delegate = handler;
     [self.tableView reloadData];
 }
 
 - (void)showWords:(id)sender {
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    if (self.tableView.dataSource == self && self.tableView.delegate == self) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } else {
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+    }
     [self.tableView reloadData];
 }
 

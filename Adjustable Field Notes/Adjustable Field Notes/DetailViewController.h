@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *keywordCollectionView;
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
 
+- (void)reload;
+
 @end

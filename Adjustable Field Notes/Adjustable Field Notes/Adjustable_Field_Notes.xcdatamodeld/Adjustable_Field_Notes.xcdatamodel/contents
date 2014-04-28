@@ -26,6 +26,7 @@
         <userInfo/>
     </entity>
     <entity name="Recording" representedClassName="Recording" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="dateCreated" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Entry" inverseName="recording" inverseEntity="Entry" syncable="YES"/>
@@ -37,7 +38,7 @@
         <element name="AbstractWord" positionX="160" positionY="-433" width="128" height="133"/>
         <element name="Entry" positionX="-101" positionY="-343" width="128" height="103"/>
         <element name="Keyword" positionX="232" positionY="-207" width="128" height="118"/>
-        <element name="Recording" positionX="-254" positionY="-189" width="128" height="88"/>
+        <element name="Recording" positionX="-254" positionY="-189" width="128" height="103"/>
         <element name="Relation" positionX="25" positionY="-193" width="128" height="58"/>
     </elements>
 </model>
