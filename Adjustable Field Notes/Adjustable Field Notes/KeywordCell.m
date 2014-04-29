@@ -10,4 +10,6 @@
 
 @implementation KeywordCell
 
+@synthesize label;
+
 @end

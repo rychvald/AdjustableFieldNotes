@@ -42,6 +42,7 @@
 		41A80E89190932EC008FDB42 /* KeywordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A80E88190932EC008FDB42 /* KeywordCell.m */; };
 		41A80E8C1909551B008FDB42 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A80E8A1909551B008FDB42 /* bg_cork.png */; };
 		41A80E8D1909551B008FDB42 /* bg_cork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A80E8B1909551B008FDB42 /* bg_cork@2x.png */; };
+		41A9D09C190F8AB4004EF528 /* Entry+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A9D09B190F8AB4004EF528 /* Entry+Additions.m */; };
 		41D4242618F336AA00068102 /* ItemInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4242518F336AA00068102 /* ItemInputController.m */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,8 @@
 		41A80E88190932EC008FDB42 /* KeywordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordCell.m; sourceTree = "<group>"; };
 		41A80E8A1909551B008FDB42 /* bg_cork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cork.png; sourceTree = "<group>"; };
 		41A80E8B1909551B008FDB42 /* bg_cork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cork@2x.png"; sourceTree = "<group>"; };
+		41A9D09A190F8AB4004EF528 /* Entry+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entry+Additions.h"; sourceTree = "<group>"; };
+		41A9D09B190F8AB4004EF528 /* Entry+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entry+Additions.m"; sourceTree = "<group>"; };
 		41D4242418F336AA00068102 /* ItemInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemInputController.h; sourceTree = "<group>"; };
 		41D4242518F336AA00068102 /* ItemInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemInputController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -256,6 +259,8 @@
 				41201BA9190D516200B0E8DB /* AbstractWord.m */,
 				41201BA2190D516100B0E8DB /* Relation.h */,
 				41201BA3190D516100B0E8DB /* Relation.m */,
+				41A9D09A190F8AB4004EF528 /* Entry+Additions.h */,
+				41A9D09B190F8AB4004EF528 /* Entry+Additions.m */,
 				4145CD5B190A4A49006B141D /* Recording+Additions.h */,
 				4145CD5C190A4A49006B141D /* Recording+Additions.m */,
 				418EA93218F7D014000EA9E7 /* Keyword+KeywordAccessors.h */,
@@ -384,6 +389,7 @@
 				4145CD5A190A49F9006B141D /* RecordingsHandler.m in Sources */,
 				411245E4190D976600B73184 /* Keyword.m in Sources */,
 				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
+				41A9D09C190F8AB4004EF528 /* Entry+Additions.m in Sources */,
 				41201BB3190D5EE000B0E8DB /* WordSetInputController.m in Sources */,
 				41201BB0190D516200B0E8DB /* Entry.m in Sources */,
 				41201BAA190D516200B0E8DB /* AbstractWord.m in Sources */,

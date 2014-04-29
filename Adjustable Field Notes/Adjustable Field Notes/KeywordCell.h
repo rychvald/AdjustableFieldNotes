@@ -10,4 +10,6 @@
 
 @interface KeywordCell : UICollectionViewCell
 
+@property (nonatomic,retain) IBOutlet UITextField *label;
+
 @end
