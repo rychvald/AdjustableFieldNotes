@@ -107,10 +107,8 @@
 
 #pragma mark - Table View
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-    //return [[self.fetchedResultsController sections] count];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -162,12 +160,12 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         cell.detailTextLabel.textColor =[UIColor grayColor];
         cell.textLabel.textColor = [UIColor blackColor];
-        if (keyword.label == nil) {
+        if (keyword.label == nil || [keyword.label isEqualToString:@""]) {
             cell.detailTextLabel.text = @"";
             cell.textLabel.text = keyword.keyword;
         } else {
-            cell.detailTextLabel.text = keyword.label;
-            cell.textLabel.text = keyword.keyword;
+            cell.detailTextLabel.text = keyword.keyword;
+            cell.textLabel.text = keyword.label;
         }
         
     } else {

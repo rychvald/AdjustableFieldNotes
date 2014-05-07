@@ -1,5 +1,5 @@
 //
-//  Relation.h
+//  WordWrapper.h
 //  Adjustable Field Notes
 //
 //  Created by Marcel Stolz on 06.05.14.
@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "AbstractWord.h"
 
-@class Keyword;
+@class AbstractWord, Entry;
 
-@interface Relation : AbstractWord
+@interface WordWrapper : NSManagedObject
 
-@property (nonatomic, retain) Keyword *parent;
+@property (nonatomic, retain) Entry *heldByEntry;
+@property (nonatomic, retain) AbstractWord *word;
 
 @end

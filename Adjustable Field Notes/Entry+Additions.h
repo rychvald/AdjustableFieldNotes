@@ -8,16 +8,16 @@
 
 #import "Entry.h"
 
+@class AbstractWord;
+
 @interface Entry (Additions)
 
 + (Entry *)createNewEntryForRecording:(Recording *)recording inContext:(NSManagedObjectContext *)context;
 
 - (NSString *)asString;
-- (void)insertObject:(AbstractWord *)value inWordsAtIndex:(NSUInteger)idx;
-- (void)removeObjectFromWordsAtIndex:(NSUInteger)idx;
+- (NSString *)serialise;
 - (void)addWordsObject:(AbstractWord *)value;
-- (void)removeWordsObject:(AbstractWord *)value;
-- (void)addWords:(NSOrderedSet *)values;
-- (void)removeWords:(NSOrderedSet *)values;
+- (void)removeLastObject;
+- (void)addWords:(NSArray *)values;
 
 @end

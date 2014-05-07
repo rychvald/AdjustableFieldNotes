@@ -8,14 +8,14 @@
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="linebreak" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="orderNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="usedByEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="words" inverseEntity="Entry" syncable="YES"/>
+        <relationship name="wordwrappers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WordWrapper" inverseName="word" inverseEntity="WordWrapper" syncable="YES"/>
         <userInfo/>
     </entity>
     <entity name="Entry" representedClassName="Entry" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" syncable="YES"/>
         <relationship name="recording" maxCount="1" deletionRule="Nullify" destinationEntity="Recording" inverseName="entries" inverseEntity="Recording" syncable="YES"/>
-        <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="AbstractWord" inverseName="usedByEntries" inverseEntity="AbstractWord" syncable="YES"/>
+        <relationship name="wordwrappers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="WordWrapper" inverseName="heldByEntry" inverseEntity="WordWrapper" syncable="YES"/>
     </entity>
     <entity name="Keyword" representedClassName="Keyword" parentEntity="AbstractWord">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -34,11 +34,16 @@
     <entity name="Relation" representedClassName="Relation" parentEntity="AbstractWord" syncable="YES">
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Keyword" inverseName="relations" inverseEntity="Keyword" syncable="YES"/>
     </entity>
+    <entity name="WordWrapper" representedClassName="WordWrapper" syncable="YES">
+        <relationship name="heldByEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="wordwrappers" inverseEntity="Entry" syncable="YES"/>
+        <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AbstractWord" inverseName="wordwrappers" inverseEntity="AbstractWord" syncable="YES"/>
+    </entity>
     <elements>
         <element name="AbstractWord" positionX="160" positionY="-433" width="128" height="133"/>
-        <element name="Entry" positionX="-101" positionY="-343" width="128" height="103"/>
+        <element name="Entry" positionX="-225" positionY="-369" width="128" height="103"/>
         <element name="Keyword" positionX="232" positionY="-207" width="128" height="118"/>
         <element name="Recording" positionX="-254" positionY="-189" width="128" height="103"/>
         <element name="Relation" positionX="25" positionY="-193" width="128" height="58"/>
+        <element name="WordWrapper" positionX="-38" positionY="-378" width="128" height="73"/>
     </elements>
 </model>

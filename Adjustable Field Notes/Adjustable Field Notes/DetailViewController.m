@@ -15,6 +15,7 @@
 #import "Entry.h"
 #import "Entry+Additions.h"
 #import "KeywordCell.h"
+#import "EntryTextField.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -76,51 +77,35 @@
     self.masterPopoverController = nil;
 }
 
+#pragma mark - Method for committing entries from EntryTextField
+
+- (IBAction)commit:(id)sender {
+    [self.inputField commitToRecording:[Recording getActiveRecordingForContext:self.managedObjectContext]];
+    [self.inputField removeAllKeywords:nil];
+    [self reload];
+}
+
+
 #pragma mark - UICollectionView Datasource
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
     NSInteger retVal;
-    switch (section) {
-        case 0:
-            retVal = [[self selectedCategory].children count];
-            break;
-        case 1:
-            retVal = [[self selectedCategory].relations count];
-            break;
-        default:
-            retVal = 0;
-            break;
-    }
+    Keyword *category = [[Keyword getActiveWordSetForContext:self.managedObjectContext].children objectAtIndex:section];
+    retVal = [category.children count];
     NSLog(@"Number of Item in section :%zd is: %zd",section,retVal);
     return retVal;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
-    return 1;
+    return [[Keyword getActiveWordSetForContext:self.managedObjectContext].children count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     KeywordCell *cell = (KeywordCell *)[cv dequeueReusableCellWithReuseIdentifier:@"WordCell" forIndexPath:indexPath];
-    AbstractWord *word;
-    switch (indexPath.section) {
-        case 0:
-            word = [[self selectedCategory].children objectAtIndex:indexPath.row];
-            break;
-        case 1:
-            //word = [[self selectedCategory].relations objectAtIndex:indexPath.row];
-            break;
-        default:
-            word = nil;
-            NSLog(@"Wrong section in collection view in detailViewController!");
-            break;
-    }
+    Keyword *word = [self getKeywordForIndexPath:indexPath];
     NSLog(@"Word: %@",word.keyword);
     //cell.backgroundColor = [UIColor blueColor];//[self selectedCategory].color;
-    if (word.label == nil || [word.label isEqualToString:@""]) {
-        cell.label.text = word.keyword;
-    } else {
-        cell.label.text = word.keyword;
-    }
+    cell.keyword = word;
     
     return cell;
 }
@@ -131,7 +116,9 @@ return [[UICollectionReusableView alloc] init];
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Select Item
+    Keyword *keyword = [self getKeywordForIndexPath:indexPath];
+    NSLog(@"selected %@",keyword.keyword);
+    [self.inputField addKeyword:keyword];
     return;
 }
 
@@ -161,37 +148,21 @@ return [[UICollectionReusableView alloc] init];
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *header = nil;
-    if (tableView == self.categoriesTableview) {
-        header = @"Categories";
-    } else if (tableView == self.recordingTableview) {
-        header = @"";
-    }
+    header = @"";
     return header;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger retVal = 0;
-    if (tableView == self.categoriesTableview) {
-        retVal = [[Keyword getActiveWordSetForContext:self.managedObjectContext].children count];
-    } else if (tableView == self.recordingTableview) {
-        retVal = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries count];
-    }
+    retVal = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries count];
     return retVal;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCell" forIndexPath:indexPath];
-    if (tableView == self.categoriesTableview) {
-        Keyword *keyword = [[Keyword getActiveWordSetForContext:self.managedObjectContext].children objectAtIndex:indexPath.row];
-        NSLog(@"Creating category cell for keyword %@",keyword.keyword);
-        cell.textLabel.text = keyword.keyword;
-        cell.backgroundColor = keyword.color;
-    } else if (tableView == self.recordingTableview) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"EntryCell" forIndexPath:indexPath];
-        Entry *entry = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries objectAtIndex:indexPath.row];
-        cell.textLabel.text = [entry asString];
-        cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:entry.timestamp dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EntryCell" forIndexPath:indexPath];
+    Entry *entry = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries objectAtIndex:indexPath.row];
+    cell.textLabel.text = [entry asString];
+    cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:entry.timestamp dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
     return cell;
 }
 
@@ -220,7 +191,6 @@ return [[UICollectionReusableView alloc] init];
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    [self.categoriesTableview reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -237,7 +207,6 @@ return [[UICollectionReusableView alloc] init];
 }
 
 - (void)reload {
-    [self.categoriesTableview reloadData];
     [self.recordingTableview reloadData];
     [self.keywordCollectionView reloadData];
 }
@@ -254,21 +223,9 @@ return [[UICollectionReusableView alloc] init];
     return nil;
 }
 
-- (Keyword *)selectedCategory {
-    NSLog(@"retrieving selected category");
-    NSIndexPath *indexPath = [self.categoriesTableview indexPathForSelectedRow];
-    Keyword *category;
-    if (indexPath == nil) {
-        NSLog(@"indexPath in categoriesView is Nil!");
-        indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.categoriesTableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-    } else if ([[Keyword getActiveWordSetForContext:self.managedObjectContext].children count] == 0)
-        category =  nil;
-    else {
-        category = [[Keyword getActiveWordSetForContext:self.managedObjectContext].children objectAtIndex:indexPath.row];
-    }
-    NSLog(@"retrieving selected category: %@",category.keyword);
-    return category;
+- (Keyword *)getKeywordForIndexPath:(NSIndexPath *)indexPath {
+    Keyword *category = [[Keyword getActiveWordSetForContext:self.managedObjectContext].children objectAtIndex:indexPath.section];
+    return [category.children objectAtIndex:indexPath.row];
 }
 
 @end

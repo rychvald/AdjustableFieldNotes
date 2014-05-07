@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class EntryTextField;
+
 @interface DetailViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UISplitViewControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) id detailItem;
@@ -15,9 +17,8 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITableView *recordingTableview;
-@property (weak, nonatomic) IBOutlet UITableView *categoriesTableview;
 @property (weak, nonatomic) IBOutlet UICollectionView *keywordCollectionView;
-@property (weak, nonatomic) IBOutlet UITextField *inputField;
+@property (weak, nonatomic) IBOutlet EntryTextField *inputField;
 
 - (void)reload;
 

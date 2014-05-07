@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class Keyword;
+
 @interface KeywordCell : UICollectionViewCell
 
 @property (nonatomic,retain) IBOutlet UITextField *label;
+@property (nonatomic,retain) Keyword *keyword;
 
 @end

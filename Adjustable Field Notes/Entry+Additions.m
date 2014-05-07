@@ -11,6 +11,8 @@
 #import "Recording.h"
 #import "Recording+Additions.h"
 #import "AbstractWord.h"
+#import "WordWrapper.h"
+#import "WordWrapper+Additions.h"
 
 @implementation Entry (Additions)
 
@@ -29,51 +31,53 @@
 
 - (NSString *)asString {
     NSString *string = @"";
-    if ([self.words count] == 0) {
+    NSArray *wordsArray = [self getWordsArray];
+    if ([wordsArray count] == 0) {
         string = @"";
     } else {
-        for (AbstractWord *word in self.words) {
+        for (AbstractWord *word in wordsArray) {
             string = [string stringByAppendingFormat:@" %@",word.keyword];
         }
     }
     return string;
 }
 
+- (NSArray *)getWordsArray {
+    NSMutableArray *wordsArray = [NSMutableArray arrayWithCapacity:0];
+    for (WordWrapper *wrapper in self.wordwrappers) {
+        [wordsArray addObject:wrapper.word];
+    }
+    return wordsArray;
+}
+
+- (NSString *)serialise {
+    NSArray *wordsArray = [self getWordsArray];
+    NSString *serialisedEntry = @"";
+    for (AbstractWord *word in wordsArray) {
+        serialisedEntry = [serialisedEntry stringByAppendingFormat:@"%@,",word.keyword];
+    }
+    return serialisedEntry;
+}
+
 #pragma mark - Accessor Methods
 
-- (void)insertObject:(AbstractWord *)value inWordsAtIndex:(NSUInteger)idx {
-    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.words];
-    [newSet insertObject:value atIndex:idx];
-    self.words = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
-}
-
-- (void)removeObjectFromWordsAtIndex:(NSUInteger)idx{
-    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.words];
-    [newSet removeObjectAtIndex:idx];
-    self.words = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
-}
-
 - (void)addWordsObject:(AbstractWord *)value {
-    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.words];
-    [newSet addObject:value];
-    self.words = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.wordwrappers];
+    WordWrapper *wordwrapper = [WordWrapper createNewWordWrapperInEntry:self inContext:self.managedObjectContext];
+    wordwrapper.word = value;
+    [newSet addObject:wordwrapper];
+    self.wordwrappers = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
-- (void)removeWordsObject:(AbstractWord *)value {
-    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.words];
-    [newSet removeObject:value];
-    self.words = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
+- (void)removeLastObject {
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.wordwrappers];
+    [newSet removeObjectAtIndex:([newSet count]-1)];
+    self.wordwrappers = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
-- (void)addWords:(NSOrderedSet *)values {
+- (void)addWords:(NSArray *)values {
     for (AbstractWord *word in values) {
         [self addWordsObject:word];
-    }
-}
-
-- (void)removeWords:(NSOrderedSet *)values {
-    for (AbstractWord *word in values) {
-        [self removeWordsObject:word];
     }
 }
 

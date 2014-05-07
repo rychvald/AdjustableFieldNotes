@@ -2,8 +2,8 @@
 //  Keyword.m
 //  Adjustable Field Notes
 //
-//  Created by mars on 27.04.14.
-//  Copyright (c) 2014 mars. All rights reserved.
+//  Created by Marcel Stolz on 06.05.14.
+//  Copyright (c) 2014 Marcel Stolz. All rights reserved.
 //
 
 #import "Keyword.h"

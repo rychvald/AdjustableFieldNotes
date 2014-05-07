@@ -14,8 +14,9 @@
 + (NSArray *)getInactiveRecordingsForContext:(NSManagedObjectContext *)context;
 + (Recording *)getActiveRecordingForContext:(NSManagedObjectContext *)context;
 + (Recording *)createInitialRecordingInContext:(NSManagedObjectContext *)context;
-- (BOOL)hasEntries;
 + (Recording *)createRecording:(NSString *)recording inContext:(NSManagedObjectContext *)context;
+- (BOOL)hasEntries;
+- (void)addEntryWithTimestamp:(NSDate *)timestamp keywords:(NSMutableArray *)keywords;
 
 - (void)addEntriesObject:(Entry *)value;
 - (void)removeEntriesObject:(Entry *)value;

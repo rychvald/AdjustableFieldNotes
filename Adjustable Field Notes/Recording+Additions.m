@@ -8,6 +8,8 @@
 
 #import "Recording.h"
 #import "Recording+Additions.h"
+#import "Entry.h"
+#import "Entry+Additions.h"
 
 @implementation Recording (Additions)
 
@@ -81,12 +83,24 @@
         return NO;
 }
 
+- (void)addEntryWithTimestamp:(NSDate *)timestamp keywords:(NSMutableArray *)keywords {
+    Entry *entry = (Entry *)[NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:self.managedObjectContext];
+    entry.timestamp = timestamp;
+    [entry addWords:keywords];
+    [self addEntriesObject:entry];
+    [self.managedObjectContext save:nil];
+}
+
 - (void)addEntriesObject:(Entry *)value {
-    
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.entries];
+    [newSet addObject:value];
+    self.entries = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
 - (void)removeEntriesObject:(Entry *)value {
-    
+    NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.entries];
+    [newSet removeObject:value];
+    self.entries = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
 - (BOOL)isActive {
@@ -105,6 +119,16 @@
     }
     [self setActive:[NSNumber numberWithBool:newValue]];
     [self didChangeValueForKey:@"active"];
+}
+
+- (NSString *)serialize {
+    NSString *serialisedRecording = @"";
+    NSString *entryString;
+    for (Entry *entry in self.entries) {
+        entryString = [entry serialise];
+        serialisedRecording = [serialisedRecording stringByAppendingFormat:@"%@\n",entryString];
+    }
+    return serialisedRecording;
 }
 
 @end
