@@ -43,8 +43,6 @@
 		417C7DB9190BEC4E003C8AC5 /* KeywordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 417C7DB8190BEC4E003C8AC5 /* KeywordsViewController.m */; };
 		418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */; };
 		41A80E89190932EC008FDB42 /* KeywordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A80E88190932EC008FDB42 /* KeywordCell.m */; };
-		41A80E8C1909551B008FDB42 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A80E8A1909551B008FDB42 /* bg_cork.png */; };
-		41A80E8D1909551B008FDB42 /* bg_cork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A80E8B1909551B008FDB42 /* bg_cork@2x.png */; };
 		41A9D09C190F8AB4004EF528 /* Entry+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A9D09B190F8AB4004EF528 /* Entry+Additions.m */; };
 		41D4242618F336AA00068102 /* ItemInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4242518F336AA00068102 /* ItemInputController.m */; };
 /* End PBXBuildFile section */
@@ -125,8 +123,6 @@
 		418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Keyword+KeywordAccessors.m"; sourceTree = "<group>"; };
 		41A80E87190932EC008FDB42 /* KeywordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordCell.h; sourceTree = "<group>"; };
 		41A80E88190932EC008FDB42 /* KeywordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordCell.m; sourceTree = "<group>"; };
-		41A80E8A1909551B008FDB42 /* bg_cork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cork.png; sourceTree = "<group>"; };
-		41A80E8B1909551B008FDB42 /* bg_cork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cork@2x.png"; sourceTree = "<group>"; };
 		41A9D09A190F8AB4004EF528 /* Entry+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entry+Additions.h"; sourceTree = "<group>"; };
 		41A9D09B190F8AB4004EF528 /* Entry+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entry+Additions.m"; sourceTree = "<group>"; };
 		41D4242418F336AA00068102 /* ItemInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemInputController.h; sourceTree = "<group>"; };
@@ -194,35 +190,14 @@
 		086AAC0B18D6E61900B0BEAE /* Adjustable Field Notes */ = {
 			isa = PBXGroup;
 			children = (
+				41582363191C314E005A2E02 /* Master */,
+				41582364191C316B005A2E02 /* InputControllers */,
+				41582365191C3195005A2E02 /* Detail */,
 				086AAC1418D6E61900B0BEAE /* AppDelegate.h */,
 				086AAC1518D6E61900B0BEAE /* AppDelegate.m */,
 				086AAC1718D6E61900B0BEAE /* Main.storyboard */,
-				4145CD55190A475C006B141D /* MasterVCTemplate.h */,
-				4145CD56190A475C006B141D /* MasterVCTemplate.m */,
-				417C7DB1190BEA17003C8AC5 /* WordsViewController.h */,
-				417C7DB2190BEA17003C8AC5 /* WordsViewController.m */,
-				417C7DB4190BEC31003C8AC5 /* CategoriesViewController.h */,
-				417C7DB5190BEC31003C8AC5 /* CategoriesViewController.m */,
-				417C7DB7190BEC4E003C8AC5 /* KeywordsViewController.h */,
-				417C7DB8190BEC4E003C8AC5 /* KeywordsViewController.m */,
-				086AAC2018D6E61900B0BEAE /* DetailViewController.h */,
-				086AAC2118D6E61900B0BEAE /* DetailViewController.m */,
-				41A80E8A1909551B008FDB42 /* bg_cork.png */,
-				41A80E8B1909551B008FDB42 /* bg_cork@2x.png */,
-				41D4242418F336AA00068102 /* ItemInputController.h */,
-				41D4242518F336AA00068102 /* ItemInputController.m */,
-				41201BB1190D5EE000B0E8DB /* WordSetInputController.h */,
-				41201BB2190D5EE000B0E8DB /* WordSetInputController.m */,
-				41201BB4190D5EF800B0E8DB /* CategoryInputController.h */,
-				41201BB5190D5EF800B0E8DB /* CategoryInputController.m */,
-				4145CD58190A49F9006B141D /* RecordingsHandler.h */,
-				4145CD59190A49F9006B141D /* RecordingsHandler.m */,
 				086AAC2318D6E61900B0BEAE /* Images.xcassets */,
 				086AAC0C18D6E61900B0BEAE /* Supporting Files */,
-				41A80E87190932EC008FDB42 /* KeywordCell.h */,
-				41A80E88190932EC008FDB42 /* KeywordCell.m */,
-				41740C55191905D900C78AF2 /* EntryTextField.h */,
-				41740C56191905D900C78AF2 /* EntryTextField.m */,
 			);
 			path = "Adjustable Field Notes";
 			sourceTree = "<group>";
@@ -254,6 +229,49 @@
 				086AAC3418D6E61900B0BEAE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		41582363191C314E005A2E02 /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				4145CD58190A49F9006B141D /* RecordingsHandler.h */,
+				4145CD59190A49F9006B141D /* RecordingsHandler.m */,
+				4145CD55190A475C006B141D /* MasterVCTemplate.h */,
+				4145CD56190A475C006B141D /* MasterVCTemplate.m */,
+				417C7DB1190BEA17003C8AC5 /* WordsViewController.h */,
+				417C7DB2190BEA17003C8AC5 /* WordsViewController.m */,
+				417C7DB4190BEC31003C8AC5 /* CategoriesViewController.h */,
+				417C7DB5190BEC31003C8AC5 /* CategoriesViewController.m */,
+				417C7DB7190BEC4E003C8AC5 /* KeywordsViewController.h */,
+				417C7DB8190BEC4E003C8AC5 /* KeywordsViewController.m */,
+			);
+			name = Master;
+			sourceTree = "<group>";
+		};
+		41582364191C316B005A2E02 /* InputControllers */ = {
+			isa = PBXGroup;
+			children = (
+				41D4242418F336AA00068102 /* ItemInputController.h */,
+				41D4242518F336AA00068102 /* ItemInputController.m */,
+				41201BB1190D5EE000B0E8DB /* WordSetInputController.h */,
+				41201BB2190D5EE000B0E8DB /* WordSetInputController.m */,
+				41201BB4190D5EF800B0E8DB /* CategoryInputController.h */,
+				41201BB5190D5EF800B0E8DB /* CategoryInputController.m */,
+			);
+			name = InputControllers;
+			sourceTree = "<group>";
+		};
+		41582365191C3195005A2E02 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				086AAC2018D6E61900B0BEAE /* DetailViewController.h */,
+				086AAC2118D6E61900B0BEAE /* DetailViewController.m */,
+				41A80E87190932EC008FDB42 /* KeywordCell.h */,
+				41A80E88190932EC008FDB42 /* KeywordCell.m */,
+				41740C55191905D900C78AF2 /* EntryTextField.h */,
+				41740C56191905D900C78AF2 /* EntryTextField.m */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 		41752FF018DF1E2600F3ECCA /* Model Classes */ = {
@@ -368,8 +386,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				086AAC2418D6E61900B0BEAE /* Images.xcassets in Resources */,
-				41A80E8C1909551B008FDB42 /* bg_cork.png in Resources */,
-				41A80E8D1909551B008FDB42 /* bg_cork@2x.png in Resources */,
 				086AAC1018D6E61900B0BEAE /* InfoPlist.strings in Resources */,
 				086AAC1918D6E61900B0BEAE /* Main.storyboard in Resources */,
 			);
