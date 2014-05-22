@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -82,13 +82,13 @@
                                 <rect key="frame" x="0.0" y="339" width="703" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gpf-Ce-P79" customClass="EntryTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gpf-Ce-P79" customClass="EntryTextField">
                                         <rect key="frame" x="20" y="8" width="663" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-qY-XQD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-qY-XQD">
                                         <rect key="frame" x="629" y="45" width="54" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Commit">
@@ -99,7 +99,7 @@
                                             <action selector="commit:" destination="JEX-9P-axG" eventType="touchDown" id="V1F-M5-d8M"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nh-nT-iHl">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nh-nT-iHl">
                                         <rect key="frame" x="527" y="45" width="94" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Clear">
@@ -110,7 +110,7 @@
                                             <action selector="removeAllKeywords:" destination="Gpf-Ce-P79" eventType="touchDown" id="3Vu-0F-cOX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y0-lp-a7i">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y0-lp-a7i">
                                         <rect key="frame" x="445" y="45" width="77" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Backspace">
@@ -125,10 +125,22 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="tintColor" red="1" green="0.0186293742" blue="0.014070230410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="7y0-lp-a7i" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="0t0-3Z-2bB"/>
+                                    <constraint firstItem="4ca-qY-XQD" firstAttribute="leading" secondItem="2nh-nT-iHl" secondAttribute="trailing" constant="8" id="1R0-im-q3M"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gpf-Ce-P79" secondAttribute="trailing" constant="20" id="8c1-1E-tOZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="4ca-qY-XQD" secondAttribute="bottom" constant="4" id="90b-uC-ust"/>
                                     <constraint firstItem="7y0-lp-a7i" firstAttribute="baseline" secondItem="4ca-qY-XQD" secondAttribute="baseline" id="9d8-V2-PZT"/>
                                     <constraint firstItem="2nh-nT-iHl" firstAttribute="leading" secondItem="7y0-lp-a7i" secondAttribute="trailing" constant="5" id="BFz-hK-3fc"/>
+                                    <constraint firstAttribute="bottom" secondItem="2nh-nT-iHl" secondAttribute="bottom" constant="4" id="BtN-Os-slX"/>
+                                    <constraint firstItem="7y0-lp-a7i" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="CPI-3q-562"/>
                                     <constraint firstItem="4ca-qY-XQD" firstAttribute="leading" secondItem="2nh-nT-iHl" secondAttribute="trailing" constant="8" id="IOa-lt-eeV"/>
+                                    <constraint firstItem="2nh-nT-iHl" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="IvH-pF-7pt"/>
+                                    <constraint firstItem="4ca-qY-XQD" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="LOQ-zB-Ac4"/>
+                                    <constraint firstItem="Gpf-Ce-P79" firstAttribute="leading" secondItem="XsR-U0-QIx" secondAttribute="leading" constant="20" id="Sva-Bb-Nox"/>
                                     <constraint firstItem="7y0-lp-a7i" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="bqD-oQ-b11"/>
+                                    <constraint firstItem="2nh-nT-iHl" firstAttribute="leading" secondItem="7y0-lp-a7i" secondAttribute="trailing" constant="5" id="hAe-45-5Hu"/>
+                                    <constraint firstAttribute="trailing" secondItem="4ca-qY-XQD" secondAttribute="trailing" constant="20" id="pFz-KO-3jt"/>
+                                    <constraint firstAttribute="bottom" secondItem="7y0-lp-a7i" secondAttribute="bottom" constant="4" id="rLo-cf-SV9"/>
                                     <constraint firstAttribute="height" constant="79" id="s5Q-h4-Mzk"/>
                                     <constraint firstItem="7y0-lp-a7i" firstAttribute="baseline" secondItem="2nh-nT-iHl" secondAttribute="baseline" id="wAl-Ed-rxT"/>
                                 </constraints>
@@ -208,6 +220,9 @@
                         <outlet property="inputField" destination="Gpf-Ce-P79" id="O9Y-pU-IR0"/>
                         <outlet property="keywordCollectionView" destination="ZgG-4q-VL8" id="ydH-nY-JjE"/>
                         <outlet property="recordingTableview" destination="JwA-6L-atR" id="bO4-Uv-cOR"/>
+                        <segue destination="96H-Dl-b8e" kind="popover" identifier="comment" popoverAnchorView="JwA-6L-atR" id="czI-wq-Z1Q">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -897,6 +912,42 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xCX-cy-Waq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1373" y="-2461"/>
+        </scene>
+        <!--Comment Popover-->
+        <scene sceneID="jyJ-EO-yYE">
+            <objects>
+                <viewController id="96H-Dl-b8e" userLabel="Comment Popover" customClass="CommentInputController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m6g-FT-KQR"/>
+                        <viewControllerLayoutGuide type="bottom" id="WJg-eg-VHf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uMN-Ns-Tbt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c8-Up-XxN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="96H-Dl-b8e" id="Qql-jL-GWz"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="200"/>
+                    <connections>
+                        <outlet property="textView" destination="3c8-Up-XxN" id="YYe-lV-xvO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h42-LW-AwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1322" y="626"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -16,6 +16,7 @@
 #import "Entry+Additions.h"
 #import "KeywordCell.h"
 #import "EntryTextField.h"
+#import "CommentInputController.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -25,6 +26,7 @@
 @implementation DetailViewController
 
 @synthesize managedObjectContext;
+@synthesize commentIC;
 
 #pragma mark - Managing the detail item
 
@@ -61,6 +63,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - commenInputController methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqual:@"comment"]) {
+        NSLog(@"preparing for segue comment");
+        self.commentIC = (CommentInputController *)segue.destinationViewController;
+        UIStoryboardPopoverSegue *pop = (UIStoryboardPopoverSegue*)segue;
+        [self.commentIC prepareForEditingEntry:sender fromDelegate:self];
+        pop.popoverController.delegate = self.commentIC;
+    } else
+        NSLog(@"No handler defined for segue %@ in WordsViewController", segue.identifier);
 }
 
 #pragma mark - Split view
@@ -194,10 +210,11 @@ return [[UICollectionReusableView alloc] init];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    Keyword *category = (Keyword *)[[Keyword getActiveWordSetForContext:self.managedObjectContext].children objectAtIndex:indexPath.row];
-    cell.contentView.backgroundColor = [self lighterColorForColor:category.color];
-    [self.keywordCollectionView reloadData];
+    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    Entry *entry = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries objectAtIndex:indexPath.row];
+    NSLog(@"Sending entry %@",[entry asString]);
+    [self performSegueWithIdentifier:@"comment" sender:entry];
+    [self.commentIC prepareForEditingEntry:entry fromDelegate:self];
     return;
 }
 

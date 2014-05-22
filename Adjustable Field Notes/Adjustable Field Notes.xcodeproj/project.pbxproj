@@ -44,6 +44,7 @@
 		418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */; };
 		41A80E89190932EC008FDB42 /* KeywordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A80E88190932EC008FDB42 /* KeywordCell.m */; };
 		41A9D09C190F8AB4004EF528 /* Entry+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A9D09B190F8AB4004EF528 /* Entry+Additions.m */; };
+		41C829D4192E4044004421C3 /* CommentInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C829D3192E4044004421C3 /* CommentInputController.m */; };
 		41D4242618F336AA00068102 /* ItemInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4242518F336AA00068102 /* ItemInputController.m */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,8 @@
 		41A80E88190932EC008FDB42 /* KeywordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordCell.m; sourceTree = "<group>"; };
 		41A9D09A190F8AB4004EF528 /* Entry+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entry+Additions.h"; sourceTree = "<group>"; };
 		41A9D09B190F8AB4004EF528 /* Entry+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entry+Additions.m"; sourceTree = "<group>"; };
+		41C829D2192E4044004421C3 /* CommentInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInputController.h; sourceTree = "<group>"; };
+		41C829D3192E4044004421C3 /* CommentInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInputController.m; sourceTree = "<group>"; };
 		41D4242418F336AA00068102 /* ItemInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemInputController.h; sourceTree = "<group>"; };
 		41D4242518F336AA00068102 /* ItemInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemInputController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,6 +260,8 @@
 				41201BB2190D5EE000B0E8DB /* WordSetInputController.m */,
 				41201BB4190D5EF800B0E8DB /* CategoryInputController.h */,
 				41201BB5190D5EF800B0E8DB /* CategoryInputController.m */,
+				41C829D2192E4044004421C3 /* CommentInputController.h */,
+				41C829D3192E4044004421C3 /* CommentInputController.m */,
 			);
 			name = InputControllers;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				4145CD5A190A49F9006B141D /* RecordingsHandler.m in Sources */,
 				41740C57191905D900C78AF2 /* EntryTextField.m in Sources */,
 				086AAC1C18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld in Sources */,
+				41C829D4192E4044004421C3 /* CommentInputController.m in Sources */,
 				41A9D09C190F8AB4004EF528 /* Entry+Additions.m in Sources */,
 				41201BB3190D5EE000B0E8DB /* WordSetInputController.m in Sources */,
 				41740C6019191B5500C78AF2 /* Keyword.m in Sources */,
