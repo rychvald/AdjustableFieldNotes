@@ -28,6 +28,16 @@
 @synthesize managedObjectContext;
 @synthesize commentIC;
 
+#pragma mark - UIViewController lifecycle
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.recordingTableview.contentSize.height > self.recordingTableview.frame.size.height) {
+        CGPoint offset = CGPointMake(0, self.recordingTableview.contentSize.height - self.recordingTableview.frame.size.height);
+        [self.recordingTableview setContentOffset:offset animated:NO];
+    }
+}
+
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem {
@@ -50,33 +60,21 @@
     self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
     self.title = [Recording getActiveRecordingForContext:self.managedObjectContext].name;
+    if (self.recordingTableview.contentSize.height > self.recordingTableview.frame.size.height) {
+        CGPoint offset = CGPointMake(0, self.recordingTableview.contentSize.height - self.recordingTableview.frame.size.height);
+        [self.recordingTableview setContentOffset:offset animated:NO];
+    }
     [self reload];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self configureView];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - commenInputController methods
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqual:@"comment"]) {
-        NSLog(@"preparing for segue comment");
-        self.commentIC = (CommentInputController *)segue.destinationViewController;
-        UIStoryboardPopoverSegue *pop = (UIStoryboardPopoverSegue*)segue;
-        [self.commentIC prepareForEditingEntry:sender fromDelegate:self];
-        pop.popoverController.delegate = self.commentIC;
-    } else
-        NSLog(@"No handler defined for segue %@ in WordsViewController", segue.identifier);
 }
 
 #pragma mark - Split view
@@ -99,6 +97,7 @@
     [self.inputField commitToRecording:[Recording getActiveRecordingForContext:self.managedObjectContext]];
     [self.inputField removeAllKeywords:nil];
     [self reload];
+    [self selectLastEntry];
 }
 
 
@@ -210,16 +209,10 @@ return [[UICollectionReusableView alloc] init];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    Entry *entry = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries objectAtIndex:indexPath.row];
-    NSLog(@"Sending entry %@",[entry asString]);
-    [self performSegueWithIdentifier:@"comment" sender:entry];
-    [self.commentIC prepareForEditingEntry:entry fromDelegate:self];
-    return;
+    [self showPopoverForCellAtIndexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    //NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
     NSLog(@"Pressed Accessory Button");
 }
 
@@ -243,6 +236,33 @@ return [[UICollectionReusableView alloc] init];
 - (Keyword *)getKeywordForIndexPath:(NSIndexPath *)indexPath {
     Keyword *category = [[Keyword getActiveWordSetForContext:self.managedObjectContext].children objectAtIndex:indexPath.section];
     return [category.children objectAtIndex:indexPath.row];
+}
+
+- (void)selectLastEntry {
+    NSInteger lastrow = [self.recordingTableview numberOfRowsInSection:0]-1;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastrow inSection:0];
+    [self.recordingTableview scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    [self.recordingTableview selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
+    [self.view reloadInputViews];
+    //[self showPopoverForCellAtIndexPath:indexPath];
+}
+
+- (void)showPopoverForCellAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self tableView:self.recordingTableview cellForRowAtIndexPath:indexPath];
+    Entry *entry = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries objectAtIndex:indexPath.row];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    if (self.commentIC == nil)
+        self.commentIC = (CommentInputController *)[sb instantiateViewControllerWithIdentifier:@"commentVC"];
+    [self reload];
+    UIPopoverController *popoverVC = [[UIPopoverController alloc] initWithContentViewController:self.commentIC];
+    [self.commentIC prepareForEditingEntry:entry fromDelegate:self withPopover:popoverVC];
+    [popoverVC presentPopoverFromRect:cell.bounds inView:cell permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+#pragma mark - Comment Input Delegate
+
+- (void) releaseSelection {
+    [self.recordingTableview deselectRowAtIndexPath:self.recordingTableview.indexPathForSelectedRow animated:NO];
 }
 
 @end

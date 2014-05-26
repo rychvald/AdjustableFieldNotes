@@ -37,9 +37,6 @@
     } else if ([segue.identifier isEqual:@"editKeyword"]) {
         self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
         [self.itemInputController prepareForEditingKeyword:(NSManagedObject *)sender fromDelegate:self];
-    } else if ([segue.identifier isEqual:@"editRelation"]) {
-        self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
-        [self.itemInputController prepareForEditingRelation:(NSManagedObject *)sender fromDelegate:self];
     } else
         NSLog(@"No handler defined for segue %@", segue.identifier);
 }
@@ -250,10 +247,6 @@
         case 0:
             [self performSegueWithIdentifier:@"editKeyword" sender:editingObject];
             [self.itemInputController prepareForEditingKeyword:editingObject fromDelegate:self];
-            break;
-        case 1:
-            [self performSegueWithIdentifier:@"editRelation" sender:editingObject];
-            [self.itemInputController prepareForEditingRelation:editingObject fromDelegate:self];
             break;
         default:
             break;

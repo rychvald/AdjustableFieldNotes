@@ -13,7 +13,6 @@
 @property BOOL isRoot;
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
-- (void)createNewRelation:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
 - (NSManagedObject *)changeTypeOfObject:(NSManagedObject *)managedObject;
 - (void)reload;
 
@@ -21,7 +20,6 @@
 
 @interface ItemInputController : UITableViewController
 
-@property (nonatomic, retain) IBOutlet UISegmentedControl *typeSelector;
 @property (nonatomic, retain) IBOutlet UITextField *label;
 @property (nonatomic, retain) IBOutlet UITextField *keyword;
 @property (nonatomic, retain) IBOutlet UITextField *color;
@@ -31,7 +29,5 @@
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate;
 - (void)prepareForEditingKeyword:(NSManagedObject *)keyword fromDelegate:(id)delegate;
-- (void)prepareForEditingRelation:(NSManagedObject *)Keyword fromDelegate:(id)delegate;
-- (IBAction)typeChanged:(id)sender;
 
 @end

@@ -13,13 +13,16 @@
 @implementation CommentInputController
 
 @synthesize currentEntry;
+@synthesize popoverVC;
+@synthesize delegate;
 
-- (void)prepareForEditingEntry:(Entry *)entry fromDelegate:(id)delegate {
+- (void)prepareForEditingEntry:(Entry *)entry fromDelegate:(id)myDelegate withPopover:(UIPopoverController *)popover {
     self.currentEntry = entry;
+    self.delegate = myDelegate;
+    self.popoverVC = popover;
+    self.popoverVC.delegate = self;
+    
     self.textView.text = self.currentEntry.comment;
-    NSLog(@"Showing for Entry %@",[entry asString]);
-    UIPopoverController *popoverVC = (UIPopoverController *)self.parentViewController;
-    popoverVC.delegate = self;
     [self.view reloadInputViews];
 }
 
@@ -27,7 +30,17 @@
     [self.currentEntry.managedObjectContext save:nil];
     self.currentEntry.comment = self.textView.text;
     [self.currentEntry.managedObjectContext save:nil];
-    NSLog(@"edited and saved comment");
+    [self.delegate releaseSelection];
+}
+
+- (IBAction)clearButtonPressed:(id)sender {
+    self.textView.text = @"";
+    [self.view reloadInputViews];
+}
+
+- (IBAction)closeAndSaveButtonPressed:(id)sender {
+    [self popoverControllerDidDismissPopover:self.popoverVC];
+    [self.popoverVC dismissPopoverAnimated:YES];
 }
 
 @end
