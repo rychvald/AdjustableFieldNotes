@@ -34,7 +34,7 @@
     if ([segue.identifier isEqual:@"addItem"]) {
         self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
         [self.itemInputController prepareForNewEntryFromDelegate:self];
-    } else if ([segue.identifier isEqual:@"editKeyword"]) {
+    } else if ([segue.identifier isEqual:@"editItem"]) {
         self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
         [self.itemInputController prepareForEditingKeyword:(NSManagedObject *)sender fromDelegate:self];
     } else
@@ -245,7 +245,7 @@
     NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
     switch (indexPath.section) {
         case 0:
-            [self performSegueWithIdentifier:@"editKeyword" sender:editingObject];
+            [self performSegueWithIdentifier:@"editItem" sender:editingObject];
             [self.itemInputController prepareForEditingKeyword:editingObject fromDelegate:self];
             break;
         default:

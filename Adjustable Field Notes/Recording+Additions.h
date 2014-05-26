@@ -22,5 +22,6 @@
 - (void)removeEntriesObject:(Entry *)value;
 - (BOOL)isActive;
 - (void)setIsActive:(BOOL)newValue;
+- (NSString *)serialise;
 
 @end

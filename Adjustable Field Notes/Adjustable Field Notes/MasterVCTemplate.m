@@ -17,12 +17,15 @@
 #import "Relation+RelationAccessors.h"
 #import "AppDelegate.h"
 #import "RecordingsHandler.h"
+#import "Recording.h"
+#import "Recording+Additions.h"
 
 @implementation MasterVCTemplate
 
 @synthesize myKeyword;
 @synthesize managedObjectContext;
 @synthesize itemInputNC;
+@synthesize docInteractionController;
 
 - (void)awakeFromNib {
     self.clearsSelectionOnViewWillAppear = NO;
@@ -116,7 +119,29 @@
 }
 
 - (void)export:(id)sender {
+    UIBarButtonItem *button = (UIBarButtonItem *)sender;
+    NSString *exportData = [[Recording getActiveRecordingForContext:self.managedObjectContext] serialise];
     
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
+    NSString *filename = [docPath stringByAppendingPathComponent:@"Recording"];
+    NSString *extension = @".csv";
+    
+    while ([[NSFileManager defaultManager] fileExistsAtPath:[filename stringByAppendingString:extension]]) {
+        filename = [filename stringByAppendingString:@"-1"];
+    }
+    filename = [filename stringByAppendingString:extension];
+    NSLog(@"Filename: %@",filename);
+    [[NSFileManager defaultManager] createFileAtPath:filename contents:nil attributes:nil];
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForUpdatingAtPath:filename];
+    [fileHandle seekToEndOfFile];
+    [fileHandle writeData:[exportData dataUsingEncoding:NSUTF8StringEncoding]];
+    [fileHandle closeFile];
+    if (self.docInteractionController == nil) {
+        self.docInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
+    } else {
+        self.docInteractionController.URL = [NSURL fileURLWithPath:filename];
+    }
+    [self.docInteractionController presentOptionsMenuFromBarButtonItem:button animated:YES];
 }
 
 #pragma mark - Table View

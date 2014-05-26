@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) id detailItem;
 
+@property (nonatomic,retain) UIPopoverController *popoverVC;
 @property (strong, nonatomic) CommentInputController *commentIC;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
