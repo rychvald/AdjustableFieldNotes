@@ -242,27 +242,33 @@ return [[UICollectionReusableView alloc] init];
     NSInteger lastrow = [self.recordingTableview numberOfRowsInSection:0]-1;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastrow inSection:0];
     [self.recordingTableview scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-    [self.recordingTableview selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
-    [self.view reloadInputViews];
-    //[self showPopoverForCellAtIndexPath:indexPath];
+    [self.recordingTableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+    [self tableView:self.recordingTableview didSelectRowAtIndexPath:indexPath];
 }
 
 - (void)showPopoverForCellAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self tableView:self.recordingTableview cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [self.recordingTableview cellForRowAtIndexPath:indexPath];
     Entry *entry = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries objectAtIndex:indexPath.row];
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    if (self.commentIC == nil)
+    if (self.commentIC == nil) {
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.commentIC = (CommentInputController *)[sb instantiateViewControllerWithIdentifier:@"commentVC"];
+    }
     [self reload];
-    UIPopoverController *popoverVC = [[UIPopoverController alloc] initWithContentViewController:self.commentIC];
-    [self.commentIC prepareForEditingEntry:entry fromDelegate:self withPopover:popoverVC];
-    [popoverVC presentPopoverFromRect:cell.bounds inView:cell permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    if (self.popoverVC == nil) {
+        self.popoverVC = [[UIPopoverController alloc] initWithContentViewController:self.commentIC];
+    }
+    [self.commentIC prepareForEditingEntry:entry fromDelegate:self withPopover:self.popoverVC];
+    [self.popoverVC presentPopoverFromRect:cell.bounds inView:cell permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 #pragma mark - Comment Input Delegate
 
 - (void) releaseSelection {
-    [self.recordingTableview deselectRowAtIndexPath:self.recordingTableview.indexPathForSelectedRow animated:NO];
+    if (self.recordingTableview == nil) {
+        NSLog(@"RecordingTableView is nil!");
+    }
+    NSLog(@"Releasing row: %ld in section: %ld",(long)[self.recordingTableview indexPathForSelectedRow].row,(long)[self.recordingTableview indexPathForSelectedRow].section);
+    [self.recordingTableview deselectRowAtIndexPath:[self.recordingTableview indexPathForSelectedRow] animated:YES];
 }
 
 @end

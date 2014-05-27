@@ -21,6 +21,7 @@
 
 @property (retain, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) UINavigationController *itemInputNC;
+@property (strong, nonatomic) UIDocumentInteractionController *docInteractionController;
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
 - (void)reload;

@@ -16,9 +16,16 @@
 @synthesize popoverVC;
 @synthesize delegate;
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self.textView becomeFirstResponder];
+}
+
 - (void)prepareForEditingEntry:(Entry *)entry fromDelegate:(id)myDelegate withPopover:(UIPopoverController *)popover {
     self.currentEntry = entry;
     self.delegate = myDelegate;
+    if (popover == nil || self.delegate == nil) {
+        NSLog(@"Popover or delegate  is nil!");
+    }
     self.popoverVC = popover;
     self.popoverVC.delegate = self;
     

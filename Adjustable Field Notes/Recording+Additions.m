@@ -121,7 +121,7 @@
     [self didChangeValueForKey:@"active"];
 }
 
-- (NSString *)serialize {
+- (NSString *)serialise {
     NSString *serialisedRecording = @"";
     NSString *entryString;
     for (Entry *entry in self.entries) {
