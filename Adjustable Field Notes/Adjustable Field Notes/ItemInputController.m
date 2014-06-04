@@ -12,7 +12,7 @@
 
 @synthesize label;
 @synthesize keyword;
-@synthesize color;
+@synthesize picker;
 @synthesize currentObject;
 @synthesize inputDelegate;
 @synthesize typeChange;
@@ -75,6 +75,49 @@
 -(BOOL)textFieldShouldReturn:(UITextField*)textField {
     [self saveItem];
     return YES;
+}
+
+#pragma mark - Class Helper Methods for Color
+
+- (NSInteger)getRowForColor:(UIColor *)color {
+    NSArray *colors = [CategoryInputController colors];
+    for (int i = 0; i < [colors count]; i++) {
+        if (colors[i] == color) {
+            return i;
+        }
+    }
+    return 0;
+}
+
++ (NSArray *)colors {
+    return @[
+             [UIColor whiteColor],
+             [UIColor yellowColor],
+             [UIColor redColor],
+             [UIColor purpleColor],
+             [UIColor orangeColor],
+             [UIColor magentaColor],
+             [UIColor greenColor],
+             [UIColor cyanColor],
+             [UIColor blueColor],
+             [UIColor grayColor],
+             ];
+}
+
++ (NSArray *)colorStrings {
+    
+    return @[
+             @"White",
+             @"Yellow",
+             @"Red",
+             @"Purple",
+             @"Orange",
+             @"Magenta",
+             @"Green",
+             @"Cyan",
+             @"Blue",
+             @"Gray",
+             ];
 }
 
 @end
