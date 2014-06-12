@@ -56,7 +56,7 @@
     for (AbstractWord *word in wordsArray) {
         serialisedEntry = [serialisedEntry stringByAppendingFormat:@"%@,",word.keyword];
     }
-    [serialisedEntry stringByAppendingString:self.comment];
+    serialisedEntry = [serialisedEntry stringByAppendingFormat:@"%@,",self.comment];
     return serialisedEntry;
 }
 

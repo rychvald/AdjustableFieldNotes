@@ -238,20 +238,20 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    return;
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
-    switch (indexPath.section) {
-        case 0:
-            [self performSegueWithIdentifier:@"editItem" sender:editingObject];
-            [self.itemInputController prepareForEditingKeyword:editingObject fromDelegate:self];
-            break;
-        default:
-            break;
+    if (tableView.isEditing) {
+        NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
+        switch (indexPath.section) {
+            case 0:
+                [self performSegueWithIdentifier:@"editItem" sender:editingObject];
+                [self.itemInputController prepareForEditingKeyword:editingObject fromDelegate:self];
+                break;
+            default:
+                break;
+        }
+        NSLog(@"Pressed Accessory Button");
+    } else {
+        return;
     }
-    NSLog(@"Pressed Accessory Button");
 }
 
 //helper method for dividing indexPaths between the two object types

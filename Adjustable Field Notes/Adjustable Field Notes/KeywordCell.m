@@ -15,6 +15,17 @@
 @synthesize label;
 @synthesize keyword;
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    [self initMethod];
+    return self;
+}
+
+- (void) initMethod {
+    self.contentView.layer.cornerRadius = 5;
+    self.contentView.layer.masksToBounds = YES;
+}
+
 - (Keyword *) keyword {
     return self.keyword;
 }
@@ -26,7 +37,6 @@
     else
         self.label.text = newKeyword.label;
     self.contentView.backgroundColor = newKeyword.parent.color;
-    self.backgroundView.backgroundColor = [UIColor purpleColor];
 }
 
 @end

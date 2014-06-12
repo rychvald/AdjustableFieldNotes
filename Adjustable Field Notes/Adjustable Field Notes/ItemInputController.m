@@ -12,7 +12,7 @@
 
 @synthesize label;
 @synthesize keyword;
-@synthesize picker;
+//@synthesize picker;
 @synthesize currentObject;
 @synthesize inputDelegate;
 @synthesize typeChange;
@@ -34,7 +34,6 @@
     self.inputDelegate = delegate;
     self.keyword.placeholder = @"Keyword";
     self.label.placeholder = @"Label (optional)";
-    self.color.placeholder = @"White";
     self.typeChange = NO;
     [self.tableView reloadData];
 }
@@ -44,7 +43,6 @@
     self.currentObject = Keyword;
     self.keyword.text = (NSString *)[Keyword valueForKey:@"keyword"];
     self.label.text = (NSString *)[Keyword valueForKey:@"label"];
-    self.color.text = (NSString *)[Keyword valueForKey:@"color"];
     self.typeChange = NO;
     [self.tableView reloadData];
 }
@@ -79,7 +77,7 @@
 
 #pragma mark - Class Helper Methods for Color
 
-- (NSInteger)getRowForColor:(UIColor *)color {
+/*- (NSInteger)getRowForColor:(UIColor *)color {
     NSArray *colors = [CategoryInputController colors];
     for (int i = 0; i < [colors count]; i++) {
         if (colors[i] == color) {
@@ -119,5 +117,5 @@
              @"Gray",
              ];
 }
-
+*/
 @end

@@ -162,17 +162,21 @@
     [self.tableView reloadData];
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"editWordSet" sender:editingObject];
-    [self.inputController prepareForEditingWordSet:(Keyword *)[self getManagedObjectAtIndexPath:indexPath] fromDelegate:self];
-    NSLog(@"Pressed Accessory Button");
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.isEditing) {
+        NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
+        [self performSegueWithIdentifier:@"editWordSet" sender:editingObject];
+        [self.inputController prepareForEditingWordSet:(Keyword *)[self getManagedObjectAtIndexPath:indexPath] fromDelegate:self];
+        NSLog(@"Pressed Accessory Button");
+    } else {
+        [self performSegueWithIdentifier:@"showCategories" sender:[self getManagedObjectAtIndexPath:indexPath]];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"showCategories" sender:[self getManagedObjectAtIndexPath:indexPath]];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath {
+    return;
 }
 
 //helper method for dividing indexPaths between the two object types

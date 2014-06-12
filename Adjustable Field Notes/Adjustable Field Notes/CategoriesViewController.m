@@ -167,15 +167,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"editCategory" sender:editingObject];
-    [self.inputController prepareForEditingCategory:(Keyword *)[self getManagedObjectAtIndexPath:indexPath] fromDelegate:self];
-    NSLog(@"Pressed Accessory Button");
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"showKeywordsAndRelations" sender:[self getManagedObjectAtIndexPath:indexPath]];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (tableView.isEditing) {
+        NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
+        [self performSegueWithIdentifier:@"editCategory" sender:editingObject];
+        [self.inputController prepareForEditingCategory:(Keyword *)[self getManagedObjectAtIndexPath:indexPath] fromDelegate:self];
+        NSLog(@"Pressed Accessory Button");
+    } else {
+        [self performSegueWithIdentifier:@"showKeywordsAndRelations" sender:[self getManagedObjectAtIndexPath:indexPath]];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
     
 }
 

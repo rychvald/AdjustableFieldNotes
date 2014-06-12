@@ -119,6 +119,7 @@
 }
 
 - (void)export:(id)sender {
+    [self.managedObjectContext save:nil];
     UIBarButtonItem *button = (UIBarButtonItem *)sender;
     NSString *exportData = [[Recording getActiveRecordingForContext:self.managedObjectContext] serialise];
     
@@ -220,56 +221,26 @@
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self getManagedObjectAtIndexPath:indexPath] == nil)
         return NO;
     else
         return YES;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Querying movement possibility for row: %li",(long)indexPath.row);
+    if ([self getManagedObjectAtIndexPath:indexPath] == nil)
+        return NO;
+    else
+        return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     return;
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    if (fromIndexPath.section != toIndexPath.section) {
-        return;
-    }
-    Keyword *movingKeyword;
-    Relation *movingRelation;
-    switch (fromIndexPath.section) {
-        case 0:
-            movingKeyword = [self.myKeyword.children objectAtIndex:fromIndexPath.row];
-            [self.myKeyword removeObjectFromChildrenAtIndex:fromIndexPath.row];
-            [self.myKeyword insertObject:movingKeyword inChildrenAtIndex:toIndexPath.row];
-            break;
-        case 1:
-            movingRelation = [self.myKeyword.relations objectAtIndex:fromIndexPath.row];
-            [self.myKeyword removeObjectFromRelationsAtIndex:fromIndexPath.row];
-            [self.myKeyword insertObject:movingRelation inRelationsAtIndex:toIndexPath.row];
-            break;
-        default:
-            break;
-    }
-}
-
-- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-    //if (sourceIndexPath.section != proposedDestinationIndexPath.section) {
-    //   return sourceIndexPath;
-    //} else {
-    return proposedDestinationIndexPath;
-    //}
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return;
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Pressed Accessory Button");
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return;
 }
 
