@@ -22,12 +22,11 @@
 
 - (void)insertObject:(Keyword *)value inChildrenAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromChildrenAtIndex:(NSUInteger)idx;
-- (void)replaceObjectInChildrenAtIndex:(NSUInteger)idx withObject:(Keyword *)value;
 - (void)addChildrenObject:(Keyword *)value;
 - (void)removeChildrenObject:(Keyword *)value;
 - (void)insertObject:(Relation *)value inRelationsAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromRelationsAtIndex:(NSUInteger)idx;
-- (void)replaceObjectInRelationsAtIndex:(NSUInteger)idx withObject:(Relation *)value;
+- (void)moveObjectAtIndex:(NSUInteger)sourceIndex toIndex: (NSUInteger)destinationIndex;
 - (void)addRelationsObject:(Relation *)value;
 - (void)removeRelationsObject:(Relation *)value;
 - (BOOL)isActive;

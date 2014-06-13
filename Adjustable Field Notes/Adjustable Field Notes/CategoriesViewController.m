@@ -142,7 +142,7 @@
         cell.textLabel.text = keyword.keyword;
         cell.detailTextLabel.text = @"";
         cell.backgroundColor = keyword.color;
-        if (keyword.color == [UIColor blueColor])
+        if (cell.backgroundColor == [UIColor blueColor] || cell.backgroundColor == [UIColor purpleColor] || cell.backgroundColor == [UIColor grayColor])
             cell.textLabel.textColor = [UIColor whiteColor];
         else
             cell.textLabel.textColor = [UIColor blackColor];
@@ -151,22 +151,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-        [self.wordSet removeChildrenObject:(Keyword *)[self getManagedObjectAtIndexPath:indexPath]];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.wordSet removeObjectFromChildrenAtIndex:indexPath.row];
+    }
     else
         return;
     
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    [self.tableView reloadData];
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    [self.managedObjectContext save:nil];
+    [self reload];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -180,6 +172,16 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    if (sourceIndexPath.section != destinationIndexPath.section) {
+        NSLog(@"Moving to different section!!!");
+        return;
+    } else {
+        [self.wordSet moveObjectAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+        [self reload];
+    }
 }
 
 //helper method for dividing indexPaths between the two object types

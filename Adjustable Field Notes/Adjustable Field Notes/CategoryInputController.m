@@ -54,6 +54,7 @@
         NSArray *colors = [CategoryInputController colors];
         self.currentCategory.color = [colors objectAtIndex:[self.picker selectedRowInComponent:0]];
     }
+    [self.currentCategory.managedObjectContext save:nil];
     [self cancel];
 }
 

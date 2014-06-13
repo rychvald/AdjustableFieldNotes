@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterVCTemplate.h"
 
-@interface RecordingsHandler : UIViewController <UITableViewDataSource,UITableViewDelegate>
-
-@property (nonatomic,retain) NSManagedObjectContext *managedObjectContext;
-
-@property (nonatomic,retain) IBOutlet UITableView *tableView;
+@interface RecordingsHandler : MasterVCTemplate
 
 @end

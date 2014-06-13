@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "ItemInputController.h"
 
 @class DetailViewController;
 @class Keyword;
-
-#import <CoreData/CoreData.h>
-#import "ItemInputController.h"
 
 @interface MasterVCTemplate : UITableViewController
 

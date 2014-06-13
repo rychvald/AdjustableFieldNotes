@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class Keyword;
+
 @protocol ItemInputDelegate <NSObject>
 
 @property BOOL isRoot;
@@ -20,12 +22,11 @@
 
 @interface ItemInputController : UITableViewController
 
-@property (nonatomic, retain) IBOutlet UITextField *label;
-@property (nonatomic, retain) IBOutlet UITextField *keyword;
+@property (nonatomic, retain) IBOutlet UITextField *labelField;
+@property (nonatomic, retain) IBOutlet UITextField *keywordField;
 //@property (nonatomic, retain) IBOutlet UIPickerView *picker;
-@property (nonatomic, retain) NSManagedObject *currentObject;
+@property (nonatomic, retain) Keyword *currentKeyword;
 @property (strong, nonatomic) id<ItemInputDelegate> inputDelegate;
-@property BOOL typeChange;
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate;
 - (void)prepareForEditingKeyword:(NSManagedObject *)keyword fromDelegate:(id)delegate;

@@ -60,7 +60,7 @@
         abort();
     }
     
-    [self.tableView reloadData];
+    [self reload];
 }
 
 - (void)createNewRelation:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color {
@@ -80,7 +80,7 @@
         abort();
     }
     
-    [self.tableView reloadData];
+    [self reload];
 }
 
 - (NSManagedObject *)changeTypeOfObject:(NSManagedObject *)managedObject {
@@ -164,69 +164,35 @@
             cell.detailTextLabel.text = keyword.keyword;
             cell.textLabel.text = keyword.label;
         }
+        cell.backgroundColor = self.category.color;
+        if (cell.backgroundColor == [UIColor blueColor] || cell.backgroundColor == [UIColor purpleColor] || cell.backgroundColor == [UIColor grayColor]) {
+            cell.textLabel.textColor = [UIColor whiteColor];
+            cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        }
+        else {
+            cell.textLabel.textColor = [UIColor blackColor];
+            cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+        }
         
     } else {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
         cell.textLabel.textColor = [UIColor grayColor];
         cell.textLabel.text = @"None";
         cell.detailTextLabel.text = @"";
+        
     }
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([self getManagedObjectAtIndexPath:indexPath] == nil)
-        return NO;
-    else
-        return YES;
-}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        switch (indexPath.section) {
-            case 0:
-                [self.category removeObjectFromChildrenAtIndex:indexPath.row];
-                break;
-            case 1:
-                [self.category removeObjectFromRelationsAtIndex:indexPath.row];
-                break;
-            default:
-                break;
-        }
-    } else
+        [self.category removeObjectFromChildrenAtIndex:indexPath.row];
+    }
+    else
         return;
     
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    [self.tableView reloadData];
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    if (fromIndexPath.section != toIndexPath.section) {
-        return;
-    }
-    Keyword *movingKeyword;
-    Relation *movingRelation;
-    switch (fromIndexPath.section) {
-        case 0:
-            movingKeyword = [self.category.children objectAtIndex:fromIndexPath.row];
-            [self.category removeObjectFromChildrenAtIndex:fromIndexPath.row];
-            [self.category insertObject:movingKeyword inChildrenAtIndex:toIndexPath.row];
-            break;
-        case 1:
-            movingRelation = [self.category.relations objectAtIndex:fromIndexPath.row];
-            [self.category removeObjectFromRelationsAtIndex:fromIndexPath.row];
-            [self.category insertObject:movingRelation inRelationsAtIndex:toIndexPath.row];
-            break;
-        default:
-            break;
-    }
+    [self.managedObjectContext save:nil];
+    [self reload];
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
@@ -239,7 +205,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView.isEditing) {
-        NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
+        Keyword *editingObject = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
         switch (indexPath.section) {
             case 0:
                 [self performSegueWithIdentifier:@"editItem" sender:editingObject];
@@ -251,6 +217,16 @@
         NSLog(@"Pressed Accessory Button");
     } else {
         return;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    if (sourceIndexPath.section != destinationIndexPath.section) {
+        NSLog(@"Moving to different section!!!");
+        return;
+    } else {
+        [self.category moveObjectAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+        [self reload];
     }
 }
 

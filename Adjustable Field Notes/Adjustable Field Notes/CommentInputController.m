@@ -34,7 +34,6 @@
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-    [self.currentEntry.managedObjectContext save:nil];
     self.currentEntry.comment = self.textView.text;
     [self.currentEntry.managedObjectContext save:nil];
     [self.delegate releaseSelection];

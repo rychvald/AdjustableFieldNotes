@@ -134,10 +134,6 @@
     self.children = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
-- (void)replaceObjectInChildrenAtIndex:(NSUInteger)idx withObject:(Keyword *)value; {
-    
-}
-
 - (void)addChildrenObject:(Keyword *)value {
     NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.children];
     [newSet addObject:value];
@@ -150,6 +146,12 @@
     self.children = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
 }
 
+- (void)moveObjectAtIndex:(NSUInteger)sourceIndex toIndex: (NSUInteger)destinationIndex {
+    Keyword *keyword = [self.children objectAtIndex:sourceIndex];
+    [self removeObjectFromChildrenAtIndex:sourceIndex];
+    [self insertObject:keyword inChildrenAtIndex:destinationIndex];
+}
+
 - (void)insertObject:(Relation *)value inRelationsAtIndex:(NSUInteger)idx {
     NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.relations];
     [newSet insertObject:value atIndex:idx];
@@ -160,10 +162,6 @@
     NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.relations];
     [newSet removeObjectAtIndex:idx];
     self.relations = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
-}
-
-- (void)replaceObjectInRelationsAtIndex:(NSUInteger)idx withObject:(Relation *)value {
-    
 }
 
 - (void)addRelationsObject:(Relation *)value {

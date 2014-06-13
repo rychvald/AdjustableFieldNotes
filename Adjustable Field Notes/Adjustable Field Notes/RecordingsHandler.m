@@ -71,10 +71,6 @@
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     Recording *recording = [[Recording getRecordingsInContext:self.managedObjectContext]objectAtIndex:indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete && !recording.isActive) {
@@ -89,7 +85,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    [self.tableView reloadData];
+    [self reloadRecordings];
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {

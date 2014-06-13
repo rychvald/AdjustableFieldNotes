@@ -7,7 +7,8 @@
         <!--Navigation Controller-->
         <scene sceneID="pY4-Hu-kfo">
             <objects>
-                <navigationController toolbarHidden="NO" id="RMx-3f-FxP" sceneMemberID="viewController">
+                <navigationController autoresizesArchivedViewToFullSize="NO" toolbarHidden="NO" id="RMx-3f-FxP" sceneMemberID="viewController">
+                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -424,7 +425,7 @@
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
-                <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
+                <splitViewController autoresizesArchivedViewToFullSize="NO" id="H1p-Uh-vWS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
@@ -439,7 +440,7 @@
         <!--Words View Controller - Master-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController title="Master" id="7bK-jq-Zjz" customClass="WordsViewController" sceneMemberID="viewController">
+                <tableViewController autoresizesArchivedViewToFullSize="NO" title="Master" id="7bK-jq-Zjz" customClass="WordsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -523,6 +524,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Keyword Sets" id="Zdf-7t-Un8"/>
+                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <segue destination="iUk-Za-G51" kind="push" identifier="showCategories" id="mqz-YO-SmD"/>
                         <segue destination="Ba2-Cp-tEU" kind="modal" identifier="addWordSet" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="MXM-N1-i5J"/>
@@ -553,7 +555,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ntb-oA-eE9" userLabel="Keyword">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Keyword" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ntb-oA-eE9" userLabel="Keyword">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <accessibility key="accessibilityConfiguration">
@@ -594,8 +596,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="New Word" id="IMF-Hu-xHN"/>
                     <connections>
-                        <outlet property="keyword" destination="ntb-oA-eE9" id="jXN-md-w6O"/>
-                        <outlet property="label" destination="qMW-R0-cDU" id="KlS-eD-AaI"/>
+                        <outlet property="keywordField" destination="ntb-oA-eE9" id="yCK-MY-JyV"/>
+                        <outlet property="labelField" destination="qMW-R0-cDU" id="WhR-gT-v4R"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72Z-1S-bYY" userLabel="First Responder" sceneMemberID="firstResponder"/>

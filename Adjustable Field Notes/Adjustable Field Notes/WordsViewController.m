@@ -62,7 +62,7 @@
         abort();
     }
     
-    [self.tableView reloadData];
+    [self reload];
 }
 
 - (void)reload {
@@ -146,20 +146,25 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0)
+        return NO;
+    else
+        return [super tableView:tableView canEditRowAtIndexPath:indexPath];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete)
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.managedObjectContext deleteObject:[self getManagedObjectAtIndexPath:indexPath]];
+    }
     else
         return;
-    
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    [self.tableView reloadData];
+    [self.managedObjectContext save:nil];
+    [self reload];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -173,10 +178,6 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath {
-    return;
 }
 
 //helper method for dividing indexPaths between the two object types

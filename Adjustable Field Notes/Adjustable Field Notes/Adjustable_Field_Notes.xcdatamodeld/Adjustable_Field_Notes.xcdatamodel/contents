@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AbstractWord" representedClassName="AbstractWord">
         <attribute name="color" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="keyword" attributeType="String">
@@ -39,11 +39,11 @@
         <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AbstractWord" inverseName="wordwrappers" inverseEntity="AbstractWord" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AbstractWord" positionX="160" positionY="-433" width="128" height="133"/>
-        <element name="Entry" positionX="-225" positionY="-369" width="128" height="103"/>
-        <element name="Keyword" positionX="232" positionY="-207" width="128" height="118"/>
-        <element name="Recording" positionX="-254" positionY="-189" width="128" height="103"/>
-        <element name="Relation" positionX="25" positionY="-193" width="128" height="58"/>
-        <element name="WordWrapper" positionX="-38" positionY="-378" width="128" height="73"/>
+        <element name="AbstractWord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Entry" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Keyword" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Recording" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Relation" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="WordWrapper" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

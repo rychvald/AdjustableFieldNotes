@@ -86,7 +86,7 @@
         abort();
     }
     
-    [self.tableView reloadData];
+    [self reload];
 }
 
 - (void)reload {
@@ -101,7 +101,7 @@
     handler.managedObjectContext = self.managedObjectContext;
     self.tableView.dataSource = handler;
     self.tableView.delegate = handler;
-    [self.tableView reloadData];
+    [self reload];
 }
 
 - (void)showWords:(id)sender {
@@ -111,7 +111,7 @@
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
     }
-    [self.tableView reloadData];
+    [self reload];
 }
 
 - (void)import:(id)sender {
@@ -119,12 +119,31 @@
 }
 
 - (void)export:(id)sender {
-    [self.managedObjectContext save:nil];
-    UIBarButtonItem *button = (UIBarButtonItem *)sender;
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"File Name" message:@"Please enter a file name" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alertView.delegate = self;
+    [alertView show];
+}
+
+- (UIBarButtonItem *)exportButton {
+    return [self.toolbarItems objectAtIndex:3];
+}
+
+
+#pragma mark - FileName Input Controller
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    UITextField *fileNameInput = [alertView textFieldAtIndex:0];
+    NSString *filename;
+    if (fileNameInput.text == nil || [fileNameInput.text isEqualToString:@""]) {
+        filename = [Recording getActiveRecordingForContext:self.managedObjectContext].name;
+    } else {
+        filename = fileNameInput.text;
+    }
     NSString *exportData = [[Recording getActiveRecordingForContext:self.managedObjectContext] serialise];
     
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
-    NSString *filename = [docPath stringByAppendingPathComponent:@"Recording"];
+    filename = [docPath stringByAppendingPathComponent:filename];
     NSString *extension = @".csv";
     
     while ([[NSFileManager defaultManager] fileExistsAtPath:[filename stringByAppendingString:extension]]) {
@@ -142,7 +161,10 @@
     } else {
         self.docInteractionController.URL = [NSURL fileURLWithPath:filename];
     }
-    [self.docInteractionController presentOptionsMenuFromBarButtonItem:button animated:YES];
+    if ([self exportButton] == nil) {
+        NSLog(@"ExportButton is nil!!");
+    }
+    [self.docInteractionController presentOptionsMenuFromBarButtonItem:[self exportButton] animated:YES];
 }
 
 #pragma mark - Table View
@@ -242,6 +264,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return;
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self reload];
+    [self.detailViewController reload];
 }
 
 //helper method for dividing indexPaths between the two object types

@@ -7,15 +7,16 @@
 //
 
 #import "ItemInputController.h"
+#import "Keyword.h"
+#import "Keyword+KeywordAccessors.h"
 
 @implementation ItemInputController
 
-@synthesize label;
-@synthesize keyword;
+@synthesize labelField;
+@synthesize keywordField;
 //@synthesize picker;
-@synthesize currentObject;
+@synthesize currentKeyword;
 @synthesize inputDelegate;
-@synthesize typeChange;
 
 - (void)viewDidLoad
 {
@@ -25,25 +26,21 @@
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveItem)];
     self.navigationItem.rightBarButtonItem = addButton;
-    
-    self.typeChange = NO;
 }
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate {
-    self.currentObject = nil;
+    self.currentKeyword = nil;
     self.inputDelegate = delegate;
-    self.keyword.placeholder = @"Keyword";
-    self.label.placeholder = @"Label (optional)";
-    self.typeChange = NO;
+    self.keywordField.placeholder = @"Keyword";
+    self.labelField.placeholder = @"Label (optional)";
     [self.tableView reloadData];
 }
 
-- (void)prepareForEditingKeyword:(NSManagedObject *)Keyword fromDelegate:(id)delegate {
+- (void)prepareForEditingKeyword:(Keyword *)keyword fromDelegate:(id)delegate {
     self.inputDelegate = delegate;
-    self.currentObject = Keyword;
-    self.keyword.text = (NSString *)[Keyword valueForKey:@"keyword"];
-    self.label.text = (NSString *)[Keyword valueForKey:@"label"];
-    self.typeChange = NO;
+    self.currentKeyword = keyword;
+    self.keywordField.text = self.currentKeyword.keyword;
+    self.labelField.text = self.currentKeyword.keyword;
     [self.tableView reloadData];
 }
 
@@ -52,19 +49,20 @@
     if (self.inputDelegate == nil) {
         NSLog(@"inputDelegate is nil!");
     }
-    NSLog(@"Keyword: %@ Label: %@", self.keyword.text, self.label.text);
-    if (self.currentObject == nil)
-        [self.inputDelegate createNewKeyword:self.keyword.text withLabel:self.label.text andColor:nil];
+    NSLog(@"Keyword: %@ Label: %@", self.keywordField.text, self.labelField.text);
+    if (self.currentKeyword == nil)
+        [self.inputDelegate createNewKeyword:self.keywordField.text withLabel:self.labelField.text andColor:nil];
     else {
-        [self.currentObject setValue:self.keyword.text forKey:@"keyword"];
-        [self.currentObject setValue:self.label.text forKey:@"label"];
+        self.currentKeyword.keyword = self.keywordField.text;
+        self.currentKeyword.label = self.labelField.text;
     }
+    [self.currentKeyword.managedObjectContext save:nil];
     [self cancel];
 }
 
 - (void)cancel {
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.currentObject = nil;
+    self.currentKeyword = nil;
     [self.inputDelegate reload];
 }
 

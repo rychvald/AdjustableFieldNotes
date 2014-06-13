@@ -60,6 +60,7 @@
         self.currentWordSet.dateCreated = self.picker.date;
         self.currentWordSet.isActive = self.activeSwitch.on;
     }
+    [self.currentWordSet.managedObjectContext save:nil];
     [self cancel];
 }
 
