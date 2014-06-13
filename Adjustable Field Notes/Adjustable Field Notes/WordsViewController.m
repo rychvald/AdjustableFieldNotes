@@ -25,17 +25,20 @@
     [self showWords:self];
 }
 
-- (void)insertNewObject:(id)sender
-{
-    [self performSegueWithIdentifier:@"addWordSet" sender:self];
-    if (self.inputController == nil) {
-        NSLog(@"ItemInputController is nil!");
+- (void)insertNewObject:(id)sender {
+    if (self.tableView.dataSource == self) {
+        [self performSegueWithIdentifier:@"addWordSet" sender:self];
+        if (self.inputController == nil) {
+            NSLog(@"ItemInputController is nil!");
+        }
+        [self.inputController prepareForNewEntryFromDelegate:self];
+    } else {
+        [super insertNewObject:sender];
     }
-    [self.inputController prepareForNewEntryFromDelegate:self];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqual:@"addWordSet"]) {
         NSLog(@"preparing for segue addWordSet");
         self.inputController = (WordSetInputController *)[segue.destinationViewController topViewController];
@@ -46,8 +49,7 @@
     } else if ([segue.identifier isEqualToString:@"showCategories"]) {
         CategoriesViewController *newViewController = (CategoriesViewController *) segue.destinationViewController;
         newViewController.wordSet = sender;
-    }
-    else
+    } else
         NSLog(@"No handler defined for segue %@ in WordsViewController", segue.identifier);
 }
 
@@ -171,7 +173,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.isEditing) {
+    if (self.tableView.dataSource != self) {
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+        return;
+    } else if (self.isEditing) {
         NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
         [self performSegueWithIdentifier:@"editWordSet" sender:editingObject];
         [self.inputController prepareForEditingWordSet:(Keyword *)[self getManagedObjectAtIndexPath:indexPath] fromDelegate:self];
@@ -180,12 +185,11 @@
         [self performSegueWithIdentifier:@"showCategories" sender:[self getManagedObjectAtIndexPath:indexPath]];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
-
 }
 
-//helper method for dividing indexPaths between the two object types
+#pragma mark - helper method for dividing indexPaths between the two object types
 - (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Querying for section: %zd row: %zd",indexPath.section,indexPath.row);
+    //NSLog(@"Querying for section: %zd row: %zd",indexPath.section,indexPath.row);
     Keyword *wordSet;
     NSArray *wordSets = [Keyword getInactiveWordSetsForContext:self.managedObjectContext];
     if (indexPath.section == 0) {

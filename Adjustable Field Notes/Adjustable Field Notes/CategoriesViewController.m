@@ -42,17 +42,20 @@
 
 #pragma mark - Overridden superclass Methods
 
-- (void)insertNewObject:(id)sender
-{
-    [self performSegueWithIdentifier:@"addCategory" sender:self];
-    if (self.inputController == nil) {
-        NSLog(@"ItemInputController is nil!");
+- (void)insertNewObject:(id)sender {
+    if (self.tableView.dataSource == self) {
+        [self performSegueWithIdentifier:@"addCategory" sender:self];
+        if (self.inputController == nil) {
+            NSLog(@"ItemInputController is nil!");
+        }
+        [self.inputController prepareForNewEntryFromDelegate:self];
+    } else {
+        [super insertNewObject:sender];
     }
-    [self.inputController prepareForNewEntryFromDelegate:self];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqual:@"addCategory"]) {
         NSLog(@"preparing for segue addCategory");
         self.inputController = (CategoryInputController *)[segue.destinationViewController topViewController];
@@ -152,17 +155,21 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Keyword *keyword = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
         [self.wordSet removeObjectFromChildrenAtIndex:indexPath.row];
+        [keyword appendToGarbageCollector];
     }
     else
         return;
-    
     [self.managedObjectContext save:nil];
     [self reload];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView.isEditing) {
+    if (self.tableView.dataSource != self) {
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+        return;
+    } else if (tableView.isEditing) {
         NSManagedObject *editingObject = [self getManagedObjectAtIndexPath:indexPath];
         [self performSegueWithIdentifier:@"editCategory" sender:editingObject];
         [self.inputController prepareForEditingCategory:(Keyword *)[self getManagedObjectAtIndexPath:indexPath] fromDelegate:self];
@@ -184,9 +191,9 @@
     }
 }
 
-//helper method for dividing indexPaths between the two object types
+#pragma mark - helper method for dividing indexPaths between the two object types
 - (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Querying for section: %zd row: %zd",indexPath.section,indexPath.row);
+    //NSLog(@"Querying for section: %zd row: %zd",indexPath.section,indexPath.row);
     if ([self.wordSet.children count] > 0)
         return [self.wordSet.children objectAtIndex:indexPath.row];
     else

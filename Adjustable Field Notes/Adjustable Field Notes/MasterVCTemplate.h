@@ -26,6 +26,7 @@
 @property (strong, nonatomic) UINavigationController *itemInputNC;
 @property (strong, nonatomic) UIDocumentInteractionController *docInteractionController;
 
+- (void)insertNewObject:(id)sender;
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
 - (void)reload;
 - (void)showWords:(id)sender;

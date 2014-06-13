@@ -30,11 +30,13 @@
 - (void)prepareForNewEntryFromDelegate:(id)delegate {
     self.inputDelegate = delegate;
     self.name.placeholder = @"New Category";
+    self.title = @"New Category";
     [self.tableView reloadData];
 }
 
 - (void)prepareForEditingCategory:(Keyword *)category fromDelegate:(id)delegate {
     self.currentCategory = category;
+    self.title = category.keyword;
     self.inputDelegate = delegate;
     self.name.text = category.keyword;
     [self.picker selectRow:[self getRowForColor:category.color] inComponent:0 animated:NO];

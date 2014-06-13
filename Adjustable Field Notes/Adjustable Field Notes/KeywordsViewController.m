@@ -20,17 +20,20 @@
     self.title = self.category.keyword;
 }
 
-- (void)insertNewObject:(id)sender
-{
-    [self performSegueWithIdentifier:@"addItem" sender:self];
-    if (self.itemInputController == nil) {
-        NSLog(@"ItemInputController is nil!");
+- (void)insertNewObject:(id)sender {
+    if (self.tableView.dataSource == self) {
+        [self performSegueWithIdentifier:@"addItem" sender:self];
+        if (self.itemInputController == nil) {
+            NSLog(@"ItemInputController is nil!");
+        }
+        [self.itemInputController prepareForNewEntryFromDelegate:self];
+    } else {
+        [super insertNewObject:sender];
     }
-    [self.itemInputController prepareForNewEntryFromDelegate:self];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqual:@"addItem"]) {
         self.itemInputController = (ItemInputController *)[segue.destinationViewController topViewController];
         [self.itemInputController prepareForNewEntryFromDelegate:self];
@@ -154,7 +157,7 @@
     
     Keyword *keyword = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
     if (keyword != nil) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         cell.detailTextLabel.textColor =[UIColor grayColor];
         cell.textLabel.textColor = [UIColor blackColor];
         if (keyword.label == nil || [keyword.label isEqualToString:@""]) {
@@ -175,7 +178,7 @@
         }
         
     } else {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell"];
         cell.textLabel.textColor = [UIColor grayColor];
         cell.textLabel.text = @"None";
         cell.detailTextLabel.text = @"";
@@ -186,11 +189,12 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.category removeObjectFromChildrenAtIndex:indexPath.row];
+        Keyword *keyword = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
+        [self.category removeObjectFromChildrenAtIndex:indexPath.row];;
+        [keyword appendToGarbageCollector];
     }
     else
         return;
-    
     [self.managedObjectContext save:nil];
     [self reload];
 }
@@ -204,7 +208,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView.isEditing) {
+    if (self.tableView.dataSource != self) {
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+        return;
+    } else if (tableView.isEditing) {
         Keyword *editingObject = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
         switch (indexPath.section) {
             case 0:
@@ -230,7 +237,7 @@
     }
 }
 
-//helper method for dividing indexPaths between the two object types
+#pragma mark - helper method for dividing indexPaths between the two object types
 - (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Fetching object for section: %ld with row: %ld", (long)indexPath.section, (long)indexPath.row);
     AbstractWord *returnWord;

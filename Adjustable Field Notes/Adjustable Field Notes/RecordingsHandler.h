@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "MasterVCTemplate.h"
 
-@interface RecordingsHandler : MasterVCTemplate
+@class WordSetInputController;
+@class Recording;
+
+@interface RecordingsHandler : UITableViewController
+
+@property (nonatomic,retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic,retain) WordSetInputController *inputController;
+
+- (Recording *)getRecordingAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

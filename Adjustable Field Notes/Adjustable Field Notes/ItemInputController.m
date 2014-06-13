@@ -31,6 +31,7 @@
 - (void)prepareForNewEntryFromDelegate:(id)delegate {
     self.currentKeyword = nil;
     self.inputDelegate = delegate;
+    self.title = @"New Keyword";
     self.keywordField.placeholder = @"Keyword";
     self.labelField.placeholder = @"Label (optional)";
     [self.tableView reloadData];
@@ -39,8 +40,9 @@
 - (void)prepareForEditingKeyword:(Keyword *)keyword fromDelegate:(id)delegate {
     self.inputDelegate = delegate;
     self.currentKeyword = keyword;
+    self.title = keyword.keyword;
     self.keywordField.text = self.currentKeyword.keyword;
-    self.labelField.text = self.currentKeyword.keyword;
+    self.labelField.text = self.currentKeyword.label;
     [self.tableView reloadData];
 }
 

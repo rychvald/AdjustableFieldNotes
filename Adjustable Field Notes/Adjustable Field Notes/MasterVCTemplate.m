@@ -64,12 +64,22 @@
 }
 
 - (void)insertNewObject:(id)sender {
-    if (self.tableView.delegate == self.recordingsHandler) {
+    if (self.tableView.dataSource == self.recordingsHandler) {
         [self performSegueWithIdentifier:@"addRecording" sender:self];
         if (self.recordingInputController == nil) {
             NSLog(@"ItemInputController is nil!");
         }
         [self.recordingInputController prepareForNewRecordingFromDelegate:self];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"addRecording"]) {
+        self.recordingInputController = (WordSetInputController *)[segue.destinationViewController topViewController];
+        [self.recordingInputController prepareForNewRecordingFromDelegate:self];
+    } else if ([segue.identifier isEqualToString:@"editRecording"]) {
+        self.recordingInputController = (WordSetInputController *)[segue.destinationViewController topViewController];
+        [self.recordingInputController prepareForEditingRecording:(Recording *)sender fromDelegate:self];
     }
 }
 
@@ -97,6 +107,17 @@
     [self reload];
 }
 
+- (void)createNewRecording:(NSString *)recording withDate:(NSDate *)date active:(BOOL)active {
+    Recording *newRecording = [Recording createRecording:recording inContext:self.managedObjectContext];
+    newRecording.name = recording;
+    newRecording.dateCreated = date;
+    newRecording.isActive = active;
+    
+    // Save the context.
+    [self.managedObjectContext save:nil];
+    [self reload];
+}
+
 - (void)reload {
     [self.tableView reloadData];
     [self.detailViewController reload];
@@ -110,7 +131,6 @@
     }
     //self.recordingsHandler.managedObjectContext = self.managedObjectContext;
     self.tableView.dataSource = self.recordingsHandler;
-    self.tableView.delegate = self.recordingsHandler;
     self.title = @"Recordings";
     [self reload];
 }
@@ -120,7 +140,6 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     } else {
         self.tableView.dataSource = self;
-        self.tableView.delegate = self;
     }
     self.title = @"Word Sets";
     [self reload];
@@ -242,7 +261,7 @@
     
     Keyword *keyword = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
     if (keyword != nil) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         cell.detailTextLabel.textColor =[UIColor grayColor];
         cell.textLabel.textColor = [UIColor blackColor];
         if (keyword.label == nil) {
@@ -252,9 +271,8 @@
             cell.detailTextLabel.text = keyword.label;
             cell.textLabel.text = keyword.keyword;
         }
-        
     } else {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell" forIndexPath:indexPath];
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell"];
         cell.textLabel.textColor = [UIColor grayColor];
         cell.textLabel.text = @"None";
         cell.detailTextLabel.text = @"";
@@ -282,7 +300,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    return;
+    if (self.tableView.dataSource == self.recordingsHandler) {
+        if (self.isEditing) {
+            Recording *selectedRecording = [self.recordingsHandler getRecordingAtIndexPath:indexPath];
+            [self performSegueWithIdentifier:@"editRecording" sender:selectedRecording];
+            [self.recordingInputController prepareForEditingRecording:selectedRecording fromDelegate:self];
+        }
+    } else
+        return;
 }
 
 - (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -290,7 +315,7 @@
     [self.detailViewController reload];
 }
 
-//helper method for dividing indexPaths between the two object types
+#pragma mark - helper method for dividing indexPaths between the two object types
 - (NSManagedObject *)getManagedObjectAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
