@@ -18,10 +18,12 @@
 @synthesize wordSet;
 @synthesize inputController;
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     NSLog(@"My Word Set: %@",self.wordSet.keyword);
     self.title = self.wordSet.keyword;
+    self.tableView.dataSource = self;
+    [self reload];
 }
 
 - (void)createNewCategory:(NSString *)name withColor:(UIColor *)color {

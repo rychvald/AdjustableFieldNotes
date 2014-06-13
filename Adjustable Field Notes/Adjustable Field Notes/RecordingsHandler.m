@@ -112,12 +112,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    Recording *recording = [[Recording getRecordingsInContext:self.managedObjectContext]objectAtIndex:indexPath.row];
-    if (editingStyle == UITableViewCellEditingStyleDelete && !recording.isActive) {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Recording *recording = [self getRecordingAtIndexPath:indexPath];
+        NSLog(@"Deleting Recording %@",recording.name);
         [self.managedObjectContext deleteObject:recording];
     } else
         return;
-    
     [self.managedObjectContext save:nil];
     [tableView reloadData];
 }

@@ -496,7 +496,7 @@
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                 </accessibility>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="RecordingCell" textLabel="npK-9k-HsM" detailTextLabel="SoR-sl-WTG" style="IBUITableViewCellStyleSubtitle" id="eC6-pa-cl4">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecordingCell" textLabel="npK-9k-HsM" detailTextLabel="SoR-sl-WTG" style="IBUITableViewCellStyleSubtitle" id="eC6-pa-cl4">
                                 <rect key="frame" x="0.0" y="207" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eC6-pa-cl4" id="LML-yJ-io6">

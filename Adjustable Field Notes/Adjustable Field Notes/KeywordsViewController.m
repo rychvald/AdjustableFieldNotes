@@ -18,6 +18,8 @@
     [super viewDidAppear:animated];
     NSLog(@"My Word Set: %@",self.category.keyword);
     self.title = self.category.keyword;
+    self.tableView.dataSource = self;
+    [self reload];
 }
 
 - (void)insertNewObject:(id)sender {

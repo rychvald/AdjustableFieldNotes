@@ -22,7 +22,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.title = @"Word Sets";
-    [self showWords:self];
+    self.tableView.dataSource = self;
+    [self reload];
 }
 
 - (void)insertNewObject:(id)sender {

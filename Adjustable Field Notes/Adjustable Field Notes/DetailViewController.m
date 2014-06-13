@@ -17,6 +17,7 @@
 #import "KeywordCell.h"
 #import "EntryTextField.h"
 #import "CommentInputController.h"
+#import "MasterVCTemplate.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
