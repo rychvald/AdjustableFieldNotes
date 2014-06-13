@@ -47,10 +47,10 @@
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
     [request setSortDescriptors:@[sortDescriptor]];
     if ([[context executeFetchRequest:request error:nil]count] == 0) {
-        NSLog(@"Creating new initial word set as none seems to exist");
+        NSLog(@"Creating new initial Recording as none seems to exist");
         activeRecording = [Recording createInitialRecordingInContext:context];
     } else {
-        NSLog(@"Retrieving active word set");
+        //NSLog(@"Retrieving active recording");
         activeRecording = [[context executeFetchRequest:request error:nil]objectAtIndex:0];
     }
     return activeRecording;

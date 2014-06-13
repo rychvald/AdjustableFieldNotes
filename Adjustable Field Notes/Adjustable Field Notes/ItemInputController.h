@@ -10,6 +10,7 @@
 
 @class Keyword;
 
+//protocol to use when invoking this class to add / edit a keyword
 @protocol ItemInputDelegate <NSObject>
 
 @property BOOL isRoot;
@@ -24,7 +25,6 @@
 
 @property (nonatomic, retain) IBOutlet UITextField *labelField;
 @property (nonatomic, retain) IBOutlet UITextField *keywordField;
-//@property (nonatomic, retain) IBOutlet UIPickerView *picker;
 @property (nonatomic, retain) Keyword *currentKeyword;
 @property (strong, nonatomic) id<ItemInputDelegate> inputDelegate;
 

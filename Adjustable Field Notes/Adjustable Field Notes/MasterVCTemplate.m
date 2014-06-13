@@ -10,6 +10,7 @@
 
 #import "DetailViewController.h"
 #import "ItemInputController.h"
+#import "WordSetInputController.h"
 #import "AppDelegate.h"
 #import "Keyword.h"
 #import "Keyword+KeywordAccessors.h"
@@ -26,6 +27,7 @@
 @synthesize managedObjectContext;
 @synthesize itemInputNC;
 @synthesize docInteractionController;
+@synthesize recordingInputController;
 
 - (void)awakeFromNib {
     self.clearsSelectionOnViewWillAppear = NO;
@@ -44,11 +46,11 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     //init bottom bar buttons
-    UIBarButtonItem *recordsButton = [[UIBarButtonItem alloc] initWithTitle:@"Records" style:UIBarButtonItemStylePlain target:self action:@selector(showRecords:)];
-    UIBarButtonItem *wordsButton = [[UIBarButtonItem alloc] initWithTitle:@"Words" style:UIBarButtonItemStylePlain target:self action:@selector(showWords:)];
+    UIBarButtonItem *recordsButton = [[UIBarButtonItem alloc] initWithTitle:@"Recordings" style:UIBarButtonItemStylePlain target:self action:@selector(showRecords:)];
+    UIBarButtonItem *wordsButton = [[UIBarButtonItem alloc] initWithTitle:@"Word Sets" style:UIBarButtonItemStylePlain target:self action:@selector(showWords:)];
     UIBarButtonItem *importButton = [[UIBarButtonItem alloc] initWithTitle:@"Import" style:UIBarButtonItemStylePlain target:self action:@selector(import:)];
     UIBarButtonItem *exportButton = [[UIBarButtonItem alloc] initWithTitle:@"Export" style:UIBarButtonItemStylePlain target:self action:@selector(export:)];
-    [self setToolbarItems:@[recordsButton,wordsButton,importButton,exportButton]];
+    [self setToolbarItems:@[wordsButton,recordsButton,importButton,exportButton]];
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     if (self.detailViewController == nil) {
         NSLog(@"Something went wrong assigning detailViewController!");
@@ -62,7 +64,13 @@
 }
 
 - (void)insertNewObject:(id)sender {
-    return;
+    if (self.tableView.delegate == self.recordingsHandler) {
+        [self performSegueWithIdentifier:@"addRecording" sender:self];
+        if (self.recordingInputController == nil) {
+            NSLog(@"ItemInputController is nil!");
+        }
+        [self.recordingInputController prepareForNewRecordingFromDelegate:self];
+    }
 }
 
 #pragma mark - ItemInputDelegate Methods
@@ -97,10 +105,13 @@
 #pragma mark - Methods for Toolbar buttons
 
 - (void)showRecords:(id)sender {
-    RecordingsHandler *handler = [(AppDelegate *)[[UIApplication sharedApplication] delegate] recordingsHandler];
-    handler.managedObjectContext = self.managedObjectContext;
-    self.tableView.dataSource = handler;
-    self.tableView.delegate = handler;
+    if (self.recordingsHandler == nil) {
+        NSLog(@"RecordingsHandler is nil!");
+    }
+    //self.recordingsHandler.managedObjectContext = self.managedObjectContext;
+    self.tableView.dataSource = self.recordingsHandler;
+    self.tableView.delegate = self.recordingsHandler;
+    self.title = @"Recordings";
     [self reload];
 }
 
@@ -111,6 +122,7 @@
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
     }
+    self.title = @"Word Sets";
     [self reload];
 }
 
@@ -129,6 +141,13 @@
     return [self.toolbarItems objectAtIndex:3];
 }
 
+#pragma mark - Methods for Toolbar buttons
+
+- (RecordingsHandler *)recordingsHandler {
+    RecordingsHandler *handler = [(AppDelegate *)[[UIApplication sharedApplication] delegate] recordingsHandler];
+    handler.managedObjectContext = self.managedObjectContext;
+    return handler;
+}
 
 #pragma mark - FileName Input Controller
 

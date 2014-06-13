@@ -8,10 +8,20 @@
 
 #import <Foundation/Foundation.h>
 @class Keyword;
+@class Recording;
 
+//protocol to use when invoking this class to add / edit a word set
 @protocol WordSetInputDelegate <NSObject>
 
 - (void)createNewWordSet:(NSString *)name withDate:(NSDate *)date active:(BOOL)active;
+- (void)reload;
+
+@end
+
+//protocol to use when invoking this class to add / edit a recording
+@protocol RecordingDelegate <NSObject>
+
+- (void)createNewRecording:(NSString *)recording withDate:(NSDate *)date active:(BOOL)active;
 - (void)reload;
 
 @end
@@ -23,8 +33,11 @@
 @property (nonatomic, retain) IBOutlet UIDatePicker *picker;
 @property (nonatomic, retain) Keyword *currentWordSet;
 @property (strong, nonatomic) id<WordSetInputDelegate> inputDelegate;
+@property (strong, nonatomic) id<RecordingDelegate> recordingDelegate;
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate;
 - (void)prepareForEditingWordSet:(Keyword *)wordSet fromDelegate:(id)delegate;
+- (void)prepareForNewRecordingFromDelegate:(id)delegate;
+- (void)prepareForEditingRecording:(Recording *)recording fromDelegate:(id)delegate;
 
 @end

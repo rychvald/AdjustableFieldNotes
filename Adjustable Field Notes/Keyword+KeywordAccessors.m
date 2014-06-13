@@ -56,6 +56,9 @@
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"keyword" ascending:YES];
     [request setSortDescriptors:@[sortDescriptor]];
     array = [context executeFetchRequest:request error:nil];
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:array];
+    [mutableArray removeObject:[self getGarbageCollectorForContext:context]];
+    array = [NSArray arrayWithArray:mutableArray];
     
     return array;
 }
@@ -70,10 +73,26 @@
         NSLog(@"Creating new initial word set as none seems to exist");
         activeKeyword = [Keyword createInitialWordSetInContext:context];
     } else {
-        NSLog(@"Retrieving active word set");
+        //NSLog(@"Retrieving active word set");
         activeKeyword = [[context executeFetchRequest:request error:nil]objectAtIndex:0];
     }
     return activeKeyword;
+}
+
++ (Keyword *)getGarbageCollectorForContext:(NSManagedObjectContext *)context {
+    Keyword *garbageCollector = nil;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Keyword"];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"parent == nil AND active == %@ AND keyword LIKE %@",[NSNumber numberWithBool: NO],@"GarbageCollectionWord"]];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
+    [request setSortDescriptors:@[sortDescriptor]];
+    if ([[context executeFetchRequest:request error:nil]count] == 0) {
+        NSLog(@"Creating new garbage collector word as none seems to exist");
+        garbageCollector = [Keyword createGarbageCollectorInContext:context];
+    } else {
+        //NSLog(@"Retrieving garbage collector word");
+        garbageCollector = [[context executeFetchRequest:request error:nil]objectAtIndex:0];
+    }
+    return garbageCollector;
 }
 
 + (Keyword *)createInitialWordSetInContext:(NSManagedObjectContext *)context {
@@ -84,6 +103,16 @@
     [context insertObject:rootKeyword];
     [context save:nil];
     return rootKeyword;
+}
+
++ (Keyword *)createGarbageCollectorInContext:(NSManagedObjectContext *)context {
+    Keyword *garbageCollection = (Keyword *)[NSEntityDescription insertNewObjectForEntityForName:@"Keyword" inManagedObjectContext:context];
+    garbageCollection.keyword = @"GarbageCollectionWord";
+    garbageCollection.dateCreated = [NSDate date];
+    [garbageCollection setIsActive:NO];
+    [context insertObject:garbageCollection];
+    [context save:nil];
+    return garbageCollection;
 }
 
 - (BOOL)hasEntries {
@@ -192,6 +221,13 @@
     }
     [self setActive:[NSNumber numberWithBool:newValue]];
     [self didChangeValueForKey:@"active"];
+}
+
+//remove a word set object (i.e. parent = nil) to garbage collection.
+//cannot be deleted from context, as dependant recordings may exist.
+- (void)appendToGarbageCollector {
+    self.parent = [Keyword getGarbageCollectorForContext:self.managedObjectContext];
+    [self.managedObjectContext save:nil];
 }
 
 @end

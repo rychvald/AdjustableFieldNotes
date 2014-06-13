@@ -85,7 +85,7 @@
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController {
-    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
+    barButtonItem.title = NSLocalizedString(@"Word Sets", @"Word Sets");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }
@@ -123,7 +123,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     KeywordCell *cell = (KeywordCell *)[cv dequeueReusableCellWithReuseIdentifier:@"WordCell" forIndexPath:indexPath];
     Keyword *word = [self getKeywordForIndexPath:indexPath];
-    NSLog(@"Word: %@",word.keyword);
+    //NSLog(@"Word: %@",word.keyword);
     //cell.backgroundColor = [UIColor blueColor];//[self selectedCategory].color;
     cell.keyword = word;
     

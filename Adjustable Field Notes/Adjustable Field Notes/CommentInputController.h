@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+//class used for comment input popover, when adding entries to a recording
 @class Entry;
 
+//protocol for releasing selected table view cell (containg last entry) when closing the popover
 @protocol CommentInputDelegate <NSObject>
 
 - (void) releaseSelection;

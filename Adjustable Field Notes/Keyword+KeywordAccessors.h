@@ -14,6 +14,7 @@
 + (NSArray *)getWordSetsForContext:(NSManagedObjectContext *)context;
 + (NSArray *)getInactiveWordSetsForContext:(NSManagedObjectContext *)context;
 + (Keyword *)getActiveWordSetForContext:(NSManagedObjectContext *)context;
++ (Keyword *)getGarbageCollectorForContext:(NSManagedObjectContext *)context;
 + (Keyword *)createInitialWordSetInContext:(NSManagedObjectContext *)context;
 - (BOOL)hasEntries;
 - (BOOL)hasKeywords;
@@ -31,5 +32,6 @@
 - (void)removeRelationsObject:(Relation *)value;
 - (BOOL)isActive;
 - (void)setIsActive:(BOOL)newValue;
+- (void)appendToGarbageCollector;
 
 @end

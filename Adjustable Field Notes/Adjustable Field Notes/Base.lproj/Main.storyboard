@@ -266,7 +266,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="NoneCell" textLabel="SaA-pF-9SQ" style="IBUITableViewCellStyleDefault" id="fWn-e2-DYD">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="NoneCell" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="NoneCell" textLabel="SaA-pF-9SQ" style="IBUITableViewCellStyleDefault" id="fWn-e2-DYD">
                                 <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fWn-e2-DYD" id="BgF-9n-e3r">
@@ -286,11 +286,11 @@
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                 </accessibility>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="RecordingCell" textLabel="NDH-A2-f2C" detailTextLabel="1Y2-18-68B" style="IBUITableViewCellStyleSubtitle" id="NBW-Gc-9Yr">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordingCell" textLabel="NDH-A2-f2C" detailTextLabel="1Y2-18-68B" style="IBUITableViewCellStyleSubtitle" id="NBW-Gc-9Yr">
                                 <rect key="frame" x="0.0" y="207" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NBW-Gc-9Yr" id="mPj-lZ-ac6">
-                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NDH-A2-f2C">
@@ -321,6 +321,8 @@
                         <segue destination="7A5-wx-zVl" kind="push" identifier="showKeywordsAndRelations" id="Rmo-uD-hBQ"/>
                         <segue destination="FeL-6E-jVC" kind="modal" identifier="addCategory" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="xwp-fK-y6a"/>
                         <segue destination="FeL-6E-jVC" kind="modal" identifier="editCategory" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="oyF-g7-0mD"/>
+                        <segue destination="Ba2-Cp-tEU" kind="modal" identifier="addRecording" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="QRf-Hi-w9O"/>
+                        <segue destination="Ba2-Cp-tEU" kind="modal" identifier="editRecording" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="hVN-lN-XJi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKy-O0-QkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,7 +339,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="none" showsReorderControl="YES" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="gH5-ha-DnP" detailTextLabel="ZjV-vt-h97" style="IBUITableViewCellStyleSubtitle" id="ov5-xQ-J1N">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="gH5-ha-DnP" detailTextLabel="ZjV-vt-h97" style="IBUITableViewCellStyleSubtitle" id="ov5-xQ-J1N">
                                 <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ov5-xQ-J1N" id="VZ2-nb-OGX">
@@ -362,7 +364,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="NoneCell" textLabel="wtr-dn-TrD" style="IBUITableViewCellStyleDefault" id="CGR-LS-u9z">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="NoneCell" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="NoneCell" textLabel="wtr-dn-TrD" style="IBUITableViewCellStyleDefault" id="CGR-LS-u9z">
                                 <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CGR-LS-u9z" id="j5b-Fw-Ipa">
@@ -382,11 +384,11 @@
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                 </accessibility>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="RecordingCell" textLabel="tu0-Dc-9w0" detailTextLabel="UFq-bz-mDW" style="IBUITableViewCellStyleSubtitle" id="JXF-Pa-Zh4">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordingCell" textLabel="tu0-Dc-9w0" detailTextLabel="UFq-bz-mDW" style="IBUITableViewCellStyleSubtitle" id="JXF-Pa-Zh4">
                                 <rect key="frame" x="0.0" y="207" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JXF-Pa-Zh4" id="HkM-4H-b6T">
-                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tu0-Dc-9w0">
@@ -416,6 +418,8 @@
                     <connections>
                         <segue destination="YIy-pa-kUN" kind="modal" identifier="addItem" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="wgz-hj-2Lh"/>
                         <segue destination="YIy-pa-kUN" kind="modal" identifier="editItem" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="815-QF-1B4"/>
+                        <segue destination="Ba2-Cp-tEU" kind="modal" identifier="addRecording" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="XSf-wY-sMo"/>
+                        <segue destination="Ba2-Cp-tEU" kind="modal" identifier="editRecording" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="61s-ye-LOL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXX-8v-pOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -472,7 +476,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="NoneCell" textLabel="PZV-E3-sh3" style="IBUITableViewCellStyleDefault" id="moJ-YY-fc9">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="NoneCell" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="NoneCell" textLabel="PZV-E3-sh3" style="IBUITableViewCellStyleDefault" id="moJ-YY-fc9">
                                 <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="moJ-YY-fc9" id="LPX-Mb-rvU">
@@ -492,11 +496,11 @@
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                 </accessibility>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="RecordingCell" textLabel="npK-9k-HsM" detailTextLabel="SoR-sl-WTG" style="IBUITableViewCellStyleSubtitle" id="eC6-pa-cl4">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="RecordingCell" textLabel="npK-9k-HsM" detailTextLabel="SoR-sl-WTG" style="IBUITableViewCellStyleSubtitle" id="eC6-pa-cl4">
                                 <rect key="frame" x="0.0" y="207" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eC6-pa-cl4" id="LML-yJ-io6">
-                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="npK-9k-HsM">
@@ -529,6 +533,8 @@
                         <segue destination="iUk-Za-G51" kind="push" identifier="showCategories" id="mqz-YO-SmD"/>
                         <segue destination="Ba2-Cp-tEU" kind="modal" identifier="addWordSet" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="MXM-N1-i5J"/>
                         <segue destination="Ba2-Cp-tEU" kind="modal" identifier="editWordSet" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="KX1-WN-Iyo"/>
+                        <segue destination="Ba2-Cp-tEU" kind="modal" identifier="addRecording" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="a2V-Ua-TIa"/>
+                        <segue destination="Ba2-Cp-tEU" kind="modal" identifier="editRecording" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="kpd-37-KQm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
@@ -933,7 +939,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="MXM-N1-i5J"/>
+        <segue reference="kpd-37-KQm"/>
         <segue reference="xwp-fK-y6a"/>
         <segue reference="815-QF-1B4"/>
     </inferredMetricsTieBreakers>

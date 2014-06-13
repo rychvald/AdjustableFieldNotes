@@ -19,6 +19,12 @@
 
 #pragma mark - Overridden superclass Methods
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.title = @"Word Sets";
+    [self showWords:self];
+}
+
 - (void)insertNewObject:(id)sender
 {
     [self performSegueWithIdentifier:@"addWordSet" sender:self];
@@ -95,8 +101,7 @@
     return header;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger retVal = 0;
     
     switch (section) {
@@ -121,9 +126,10 @@
 {
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    Keyword *keyword;
     
     if (indexPath.section == 0) {
-        Keyword *keyword = [Keyword getActiveWordSetForContext:self.managedObjectContext];
+        keyword = [Keyword getActiveWordSetForContext:self.managedObjectContext];
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         cell.textLabel.text = keyword.keyword;
         cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:keyword.dateCreated dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
@@ -135,7 +141,7 @@
             cell.textLabel.text = @"None";
             cell.detailTextLabel.text = @"";
         } else {
-            Keyword *keyword = [wordSets objectAtIndex:indexPath.row];
+            keyword = [wordSets objectAtIndex:indexPath.row];
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
             cell.textLabel.text = keyword.keyword;
             cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:keyword.dateCreated dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
@@ -153,13 +159,10 @@
         return [super tableView:tableView canEditRowAtIndexPath:indexPath];
 }
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.managedObjectContext deleteObject:[self getManagedObjectAtIndexPath:indexPath]];
+        Keyword *keyword = (Keyword *)[self getManagedObjectAtIndexPath:indexPath];
+        [keyword appendToGarbageCollector];
     }
     else
         return;

@@ -12,11 +12,15 @@
 
 @class DetailViewController;
 @class Keyword;
+@class RecordingsHandler;
+@class WordSetInputController;
 
 @interface MasterVCTemplate : UITableViewController
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (nonatomic, retain) Keyword *myKeyword;
+@property (nonatomic,retain) RecordingsHandler *recordingsHandler;
+@property (nonatomic,retain) WordSetInputController *recordingInputController;
 
 @property (retain, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) UINavigationController *itemInputNC;
@@ -24,5 +28,6 @@
 
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;
 - (void)reload;
+- (void)showWords:(id)sender;
 
 @end
