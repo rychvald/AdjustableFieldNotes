@@ -101,6 +101,8 @@
     NSMutableOrderedSet *newSet = [[NSMutableOrderedSet alloc]initWithOrderedSet:self.entries];
     [newSet removeObject:value];
     self.entries = [[NSOrderedSet alloc]initWithOrderedSet:newSet];
+    [self.managedObjectContext deleteObject:value];
+    [self.managedObjectContext save:nil];
 }
 
 - (BOOL)isActive {

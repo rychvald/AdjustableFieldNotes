@@ -25,6 +25,7 @@
 @property (retain, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) UINavigationController *itemInputNC;
 @property (strong, nonatomic) UIDocumentInteractionController *docInteractionController;
+@property (nonatomic,retain) UIBarButtonItem *exportButton;
 
 - (void)insertNewObject:(id)sender;
 - (void)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label andColor:(UIColor *)color;

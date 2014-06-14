@@ -20,6 +20,7 @@
 - (BOOL)hasKeywords;
 - (BOOL)hasRelations;
 + (Keyword *)createNewKeyword:(NSString *)keyword withLabel:(NSString *)label color:(UIColor *)color inContext:(NSManagedObjectContext *)context;
++ (void)addWordSetFromFile:(NSURL *)fileURL inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 - (void)insertObject:(Keyword *)value inChildrenAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromChildrenAtIndex:(NSUInteger)idx;

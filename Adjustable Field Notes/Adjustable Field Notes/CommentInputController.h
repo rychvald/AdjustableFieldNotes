@@ -15,6 +15,7 @@
 @protocol CommentInputDelegate <NSObject>
 
 - (void) releaseSelection;
+- (void) reload;
 
 @end
 

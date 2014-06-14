@@ -37,6 +37,7 @@
     self.currentEntry.comment = self.textView.text;
     [self.currentEntry.managedObjectContext save:nil];
     [self.delegate releaseSelection];
+    [self.delegate reload];
 }
 
 - (IBAction)clearButtonPressed:(id)sender {

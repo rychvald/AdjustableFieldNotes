@@ -12,6 +12,9 @@
 #import "Recording.h"
 #import "Recording+Additions.h"
 #import "RecordingsHandler.h"
+#import "Keyword.h"
+#import "Keyword+KeywordAccessors.h"
+#import "MasterVCTemplate.h"
 
 @implementation AppDelegate
 
@@ -20,6 +23,15 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [Keyword addWordSetFromFile:url inManagedObjectContext:self.managedObjectContext];
+    UISplitViewController *splitVC =  (UISplitViewController *)self.window.rootViewController;
+    UINavigationController *navVC = (UINavigationController *)[splitVC.viewControllers objectAtIndex:0];
+    MasterVCTemplate *masterVC = (MasterVCTemplate *)navVC.topViewController;
+    [masterVC reload];
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -33,6 +45,13 @@
     UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
     WordsViewController *controller = (WordsViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
+    //treat file if any was appended
+    NSURL *fileURL = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
+    NSLog(@"launchingWithOptions called");
+    if (fileURL != nil) {
+        NSLog(@"ladding word set");
+        [Keyword addWordSetFromFile:fileURL inManagedObjectContext:self.managedObjectContext];
+    }
     return YES;
 }
 							
@@ -46,6 +65,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self.managedObjectContext save:nil];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -70,6 +90,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
+    [self.managedObjectContext save:nil];
     [self saveContext];
 }
 

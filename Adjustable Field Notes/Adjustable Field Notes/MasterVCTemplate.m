@@ -20,6 +20,7 @@
 #import "RecordingsHandler.h"
 #import "Recording.h"
 #import "Recording+Additions.h"
+#import "NSManagedObject+Serialization.h"
 
 @implementation MasterVCTemplate
 
@@ -28,6 +29,7 @@
 @synthesize itemInputNC;
 @synthesize docInteractionController;
 @synthesize recordingInputController;
+@synthesize exportButton;
 
 - (void)awakeFromNib {
     self.clearsSelectionOnViewWillAppear = NO;
@@ -48,13 +50,17 @@
     //init bottom bar buttons
     UIBarButtonItem *recordsButton = [[UIBarButtonItem alloc] initWithTitle:@"Recordings" style:UIBarButtonItemStylePlain target:self action:@selector(showRecords:)];
     UIBarButtonItem *wordsButton = [[UIBarButtonItem alloc] initWithTitle:@"Word Sets" style:UIBarButtonItemStylePlain target:self action:@selector(showWords:)];
-    UIBarButtonItem *importButton = [[UIBarButtonItem alloc] initWithTitle:@"Import" style:UIBarButtonItemStylePlain target:self action:@selector(import:)];
-    UIBarButtonItem *exportButton = [[UIBarButtonItem alloc] initWithTitle:@"Export" style:UIBarButtonItemStylePlain target:self action:@selector(export:)];
-    [self setToolbarItems:@[wordsButton,recordsButton,importButton,exportButton]];
+    self.exportButton = [[UIBarButtonItem alloc] initWithTitle:@"Export" style:UIBarButtonItemStylePlain target:self action:@selector(export:)];
+    [self setToolbarItems:@[wordsButton,recordsButton,self.exportButton]];
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     if (self.detailViewController == nil) {
         NSLog(@"Something went wrong assigning detailViewController!");
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self reload];
 }
 
 - (void)didReceiveMemoryWarning
@@ -145,19 +151,61 @@
     [self reload];
 }
 
-- (void)import:(id)sender {
-    
-}
-
 - (void)export:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"File Name" message:@"Please enter a file name" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"File Name and Export" message:@"Please enter a file name and choose whether you want to export the active recording or the active word set." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Active Recording",@"Active Word Set",nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertView.delegate = self;
     [alertView show];
 }
 
-- (UIBarButtonItem *)exportButton {
-    return [self.toolbarItems objectAtIndex:3];
+- (void)exportActiveWordSetToFilepath:(NSString *)filepath {
+    Keyword *wordset = [Keyword getActiveWordSetForContext:self.managedObjectContext];
+    wordset.isActive = NO;
+    NSDictionary *wordsetDictionary = [wordset toDictionary];
+    wordset.isActive = YES;
+    
+    NSString *extension = @".wordset";
+    while ([[NSFileManager defaultManager] fileExistsAtPath:[filepath stringByAppendingString:extension]]) {
+        filepath = [filepath stringByAppendingString:@"-1"];
+    }
+    filepath = [filepath stringByAppendingString:extension];
+    NSLog(@"Filename: %@",filepath);
+    
+    if(![[NSManagedObject dataFromDictionary:wordsetDictionary] writeToFile:filepath atomically:YES]) {
+        NSLog(@"Something went wrong when storing file!");
+    }
+    [self showDocInteractionControllerForFilepath:filepath];
+    [self.managedObjectContext save:nil];
+}
+
+- (void)exportActiveRecordingToFilepath:(NSString *)filepath {
+    NSString *exportData = [[Recording getActiveRecordingForContext:self.managedObjectContext] serialise];
+    
+    NSString *extension = @".csv";
+    
+    while ([[NSFileManager defaultManager] fileExistsAtPath:[filepath stringByAppendingString:extension]]) {
+        filepath = [filepath stringByAppendingString:@"-1"];
+    }
+    filepath = [filepath stringByAppendingString:extension];
+    NSLog(@"Filename: %@",filepath);
+    [[NSFileManager defaultManager] createFileAtPath:filepath contents:nil attributes:nil];
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForUpdatingAtPath:filepath];
+    [fileHandle seekToEndOfFile];
+    [fileHandle writeData:[exportData dataUsingEncoding:NSUTF8StringEncoding]];
+    [fileHandle closeFile];
+    [self showDocInteractionControllerForFilepath:filepath];
+}
+
+- (void)showDocInteractionControllerForFilepath:(NSString *)filepath {
+    if (self.docInteractionController == nil) {
+        self.docInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filepath]];
+    } else {
+        self.docInteractionController.URL = [NSURL fileURLWithPath:filepath];
+    }
+    if ([self exportButton] == nil) {
+        NSLog(@"ExportButton is nil!!");
+    }
+    [self.docInteractionController presentOptionsMenuFromBarButtonItem:[self exportButton] animated:YES];
 }
 
 #pragma mark - Methods for Toolbar buttons
@@ -171,38 +219,30 @@
 #pragma mark - FileName Input Controller
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == [alertView cancelButtonIndex]) {
+        return;
+    }
     UITextField *fileNameInput = [alertView textFieldAtIndex:0];
     NSString *filename;
     if (fileNameInput.text == nil || [fileNameInput.text isEqualToString:@""]) {
-        filename = [Recording getActiveRecordingForContext:self.managedObjectContext].name;
+        filename = @"untitled";
     } else {
         filename = fileNameInput.text;
     }
-    NSString *exportData = [[Recording getActiveRecordingForContext:self.managedObjectContext] serialise];
-    
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
     filename = [docPath stringByAppendingPathComponent:filename];
-    NSString *extension = @".csv";
-    
-    while ([[NSFileManager defaultManager] fileExistsAtPath:[filename stringByAppendingString:extension]]) {
-        filename = [filename stringByAppendingString:@"-1"];
+    NSLog(@"Button index: %li",(long)buttonIndex);
+    switch (buttonIndex) {
+        case 1:
+            [self exportActiveRecordingToFilepath:filename];
+            break;
+        case 2:
+            [self exportActiveWordSetToFilepath:filename];
+            break;
+        default:
+            NSLog(@"Wrong index: %li",(long)buttonIndex);
+            break;
     }
-    filename = [filename stringByAppendingString:extension];
-    NSLog(@"Filename: %@",filename);
-    [[NSFileManager defaultManager] createFileAtPath:filename contents:nil attributes:nil];
-    NSFileHandle *fileHandle = [NSFileHandle fileHandleForUpdatingAtPath:filename];
-    [fileHandle seekToEndOfFile];
-    [fileHandle writeData:[exportData dataUsingEncoding:NSUTF8StringEncoding]];
-    [fileHandle closeFile];
-    if (self.docInteractionController == nil) {
-        self.docInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
-    } else {
-        self.docInteractionController.URL = [NSURL fileURLWithPath:filename];
-    }
-    if ([self exportButton] == nil) {
-        NSLog(@"ExportButton is nil!!");
-    }
-    [self.docInteractionController presentOptionsMenuFromBarButtonItem:[self exportButton] animated:YES];
 }
 
 #pragma mark - Table View

@@ -26,6 +26,10 @@
     [self reload];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self reload];
+}
+
 - (void)insertNewObject:(id)sender {
     if (self.tableView.dataSource == self) {
         [self performSegueWithIdentifier:@"addWordSet" sender:self];

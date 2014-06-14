@@ -39,6 +39,26 @@
     }
 }
 
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    [self configureView];
+    UIBarButtonItem *removeButton = [[UIBarButtonItem alloc] initWithTitle:@"Remove Last Entry" style:UIBarButtonItemStylePlain target:self action:@selector(removeLastEntry:)];
+    self.navigationItem.rightBarButtonItems = @[removeButton];
+}
+
+#pragma mark - Methods for Toolbar buttons
+
+- (void)removeLastEntry:(id)sender {
+    Recording *recording = [Recording getActiveRecordingForContext:self.managedObjectContext];
+    Entry *lastentry = [recording.entries lastObject];
+    [recording removeEntriesObject:lastentry];
+    [self.managedObjectContext deleteObject:lastentry];
+    [self.managedObjectContext save:nil];
+    [self reload];
+}
+
+
+
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem {
@@ -66,11 +86,6 @@
         [self.recordingTableview setContentOffset:offset animated:NO];
     }
     [self reload];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self configureView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,8 +197,9 @@ return [[UICollectionReusableView alloc] init];
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EntryCell" forIndexPath:indexPath];
     Entry *entry = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries objectAtIndex:indexPath.row];
-    cell.textLabel.text = [entry asString];
-    cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:entry.timestamp dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:entry.timestamp dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+    cell.textLabel.text = [dateString stringByAppendingFormat:@" %@",[entry asString]];
+    cell.detailTextLabel.text = entry.comment;
     return cell;
 }
 

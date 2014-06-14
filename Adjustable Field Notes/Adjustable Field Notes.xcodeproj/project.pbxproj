@@ -44,6 +44,7 @@
 		418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 418EA93318F7D014000EA9E7 /* Keyword+KeywordAccessors.m */; };
 		41A80E89190932EC008FDB42 /* KeywordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A80E88190932EC008FDB42 /* KeywordCell.m */; };
 		41A9D09C190F8AB4004EF528 /* Entry+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A9D09B190F8AB4004EF528 /* Entry+Additions.m */; };
+		41B9145D194CB1AE00CB33C9 /* NSManagedObject+Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B9145C194CB1AE00CB33C9 /* NSManagedObject+Serialization.m */; };
 		41C829D4192E4044004421C3 /* CommentInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C829D3192E4044004421C3 /* CommentInputController.m */; };
 		41D4242618F336AA00068102 /* ItemInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D4242518F336AA00068102 /* ItemInputController.m */; };
 /* End PBXBuildFile section */
@@ -126,6 +127,8 @@
 		41A80E88190932EC008FDB42 /* KeywordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordCell.m; sourceTree = "<group>"; };
 		41A9D09A190F8AB4004EF528 /* Entry+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entry+Additions.h"; sourceTree = "<group>"; };
 		41A9D09B190F8AB4004EF528 /* Entry+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entry+Additions.m"; sourceTree = "<group>"; };
+		41B9145B194CB1AE00CB33C9 /* NSManagedObject+Serialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Serialization.h"; sourceTree = "<group>"; };
+		41B9145C194CB1AE00CB33C9 /* NSManagedObject+Serialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Serialization.m"; sourceTree = "<group>"; };
 		41C829D2192E4044004421C3 /* CommentInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInputController.h; sourceTree = "<group>"; };
 		41C829D3192E4044004421C3 /* CommentInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInputController.m; sourceTree = "<group>"; };
 		41D4242418F336AA00068102 /* ItemInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemInputController.h; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				086AAC1A18D6E61900B0BEAE /* Adjustable_Field_Notes.xcdatamodeld */,
+				41B9145B194CB1AE00CB33C9 /* NSManagedObject+Serialization.h */,
+				41B9145C194CB1AE00CB33C9 /* NSManagedObject+Serialization.m */,
 				41740C7019191D9900C78AF2 /* Entry.h */,
 				41740C7119191D9900C78AF2 /* Entry.m */,
 				41740C6D19191D9900C78AF2 /* AbstractWord.h */,
@@ -422,6 +427,7 @@
 				41D4242618F336AA00068102 /* ItemInputController.m in Sources */,
 				418EA93418F7D014000EA9E7 /* Keyword+KeywordAccessors.m in Sources */,
 				41740C6619191B5500C78AF2 /* Recording.m in Sources */,
+				41B9145D194CB1AE00CB33C9 /* NSManagedObject+Serialization.m in Sources */,
 				4145CD57190A475C006B141D /* MasterVCTemplate.m in Sources */,
 				41740C7219191D9900C78AF2 /* Entry.m in Sources */,
 				4145CD5A190A49F9006B141D /* RecordingsHandler.m in Sources */,
