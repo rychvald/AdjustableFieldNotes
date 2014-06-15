@@ -22,7 +22,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    self.title = @"Records";
+    self.title = NSLocalizedString(@"Recordings", nil);
 }
 
 - (void)reloadRecordings {
@@ -39,10 +39,10 @@
     NSString *header = @"";
     switch (section) {
         case 0:
-            header = @"Active";
+            header = NSLocalizedString(@"Active", nil);
             break;
         case 1:
-            header = @"Inactive";
+            header = NSLocalizedString(@"Inactive", nil);
         default:
             break;
     }
@@ -86,7 +86,7 @@
         if ([recordings count] == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"NoneCell"];
             cell.textLabel.textColor = [UIColor grayColor];
-            cell.textLabel.text = @"None";
+            cell.textLabel.text = NSLocalizedString(@"None", nil);
             cell.detailTextLabel.text = @"";
         } else {
             recording = [recordings objectAtIndex:indexPath.row];

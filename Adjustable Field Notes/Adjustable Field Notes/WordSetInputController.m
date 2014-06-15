@@ -17,6 +17,7 @@
 @synthesize activeSwitch;
 @synthesize name;
 @synthesize picker;
+@synthesize activeTextField;
 @synthesize currentWordSet;
 @synthesize currentRecording;
 @synthesize inputDelegate;
@@ -33,8 +34,9 @@
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate {
     self.inputDelegate = delegate;
-    self.name.placeholder = @"New Word Set";
-    self.title = @"New Word Set";
+    self.name.placeholder = NSLocalizedString(@"New Word Set", nil);
+    self.title = NSLocalizedString(@"New Word Set", nil);
+    self.activeTextField.text = NSLocalizedString(@"Make this the active word set", nil);
     [self.tableView reloadData];
 }
 
@@ -50,13 +52,15 @@
     } else {
         self.activeSwitch.on = NO;
     }
+    self.activeTextField.text = NSLocalizedString(@"Make this the active word set", nil);
     [self.tableView reloadData];
 }
 
 - (void)prepareForNewRecordingFromDelegate:(id)delegate {
     self.recordingDelegate = delegate;
-    self.name.placeholder = @"New Recording";
-    self.title = @"New Recording";
+    self.name.placeholder = NSLocalizedString(@"New Recording", nil);
+    self.title = NSLocalizedString(@"New Recording", nil);
+    self.activeTextField.text = NSLocalizedString(@"Make this the active recording", nil);
     [self.tableView reloadData];
 }
 
@@ -72,6 +76,7 @@
     } else {
         self.activeSwitch.on = NO;
     }
+    self.activeTextField.text = NSLocalizedString(@"Make this the active word set", nil);
     [self.tableView reloadData];
 }
 
@@ -87,7 +92,6 @@
 }
 
 - (void)saveWordSet {
-    NSLog(@"Saving Word Set...");
     if (self.inputDelegate == nil) {
         NSLog(@"inputDelegate is nil!");
     }
@@ -102,7 +106,6 @@
 }
 
 - (void)saveRecording {
-    NSLog(@"Saving Recording...");
     if (self.recordingDelegate == nil) {
         NSLog(@"inputDelegate is nil!");
     }
@@ -124,6 +127,33 @@
     [self.recordingDelegate reload];
     self.inputDelegate = nil;
     self.recordingDelegate = nil;
+}
+
+#pragma mark - UITableView DataSource method
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *header;
+    NSString *active = @"";
+    if (self.recordingDelegate != nil) {
+        active = NSLocalizedString(@"Active Recording", nil);
+    } else if (self.inputDelegate != nil) {
+        active = NSLocalizedString(@"Active Word Set", nil);
+    }
+    switch (section) {
+        case 0:
+            header = NSLocalizedString(@"Name", nil);
+            break;
+        case 1:
+            header = NSLocalizedString(@"Creation Date", nil);
+            break;
+        case 2:
+            header = active;
+            break;
+        default:
+            header = @"";
+            break;
+    }
+    return header;
 }
 
 #pragma mark - UITextField Delegate method

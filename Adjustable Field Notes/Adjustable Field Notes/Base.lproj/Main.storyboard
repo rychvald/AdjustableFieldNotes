@@ -92,11 +92,11 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-qY-XQD">
-                                        <rect key="frame" x="629" y="45" width="54" height="30"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-qY-XQD">
+                                        <rect key="frame" x="581" y="45" width="102" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="hOL-85-rAJ"/>
+                                            <constraint firstAttribute="width" constant="102" id="453-Ll-5MF"/>
                                         </constraints>
                                         <state key="normal" title="Commit">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -106,11 +106,11 @@
                                             <action selector="commit:" destination="JEX-9P-axG" eventType="touchDown" id="V1F-M5-d8M"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nh-nT-iHl">
-                                        <rect key="frame" x="527" y="45" width="94" height="30"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nh-nT-iHl">
+                                        <rect key="frame" x="471" y="45" width="102" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Dvi-av-hYR"/>
+                                            <constraint firstAttribute="width" constant="102" id="V2v-TB-cFB"/>
                                         </constraints>
                                         <state key="normal" title="Clear">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,11 +120,11 @@
                                             <action selector="removeAllKeywords:" destination="Gpf-Ce-P79" eventType="touchDown" id="3Vu-0F-cOX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y0-lp-a7i">
-                                        <rect key="frame" x="445" y="45" width="77" height="30"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y0-lp-a7i">
+                                        <rect key="frame" x="361" y="45" width="102" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="2Ar-x4-MfJ"/>
+                                            <constraint firstAttribute="width" constant="102" id="sPt-xz-Fzs"/>
                                         </constraints>
                                         <state key="normal" title="Backspace">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -138,16 +138,19 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="tintColor" red="1" green="0.0186293742" blue="0.014070230410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="4ca-qY-XQD" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="CIp-0N-3Ul"/>
-                                    <constraint firstItem="2nh-nT-iHl" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="GrW-7u-dfP"/>
-                                    <constraint firstItem="2nh-nT-iHl" firstAttribute="leading" secondItem="7y0-lp-a7i" secondAttribute="trailing" constant="5" id="IEy-3X-TRk"/>
-                                    <constraint firstItem="4ca-qY-XQD" firstAttribute="leading" secondItem="2nh-nT-iHl" secondAttribute="trailing" constant="8" id="KnR-0p-aWY"/>
-                                    <constraint firstItem="7y0-lp-a7i" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="Tfy-9p-vC3"/>
+                                    <constraint firstItem="2nh-nT-iHl" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="0Q1-0V-MhM"/>
+                                    <constraint firstItem="4ca-qY-XQD" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="Tdz-p1-LGC"/>
+                                    <constraint firstAttribute="bottom" secondItem="7y0-lp-a7i" secondAttribute="bottom" constant="4" id="Yjl-QU-ubg"/>
+                                    <constraint firstAttribute="bottom" secondItem="2nh-nT-iHl" secondAttribute="bottom" constant="4" id="ZJF-nL-4ki"/>
+                                    <constraint firstItem="2nh-nT-iHl" firstAttribute="leading" secondItem="7y0-lp-a7i" secondAttribute="trailing" constant="8" id="d8y-fT-cq0"/>
                                     <constraint firstItem="Gpf-Ce-P79" firstAttribute="leading" secondItem="XsR-U0-QIx" secondAttribute="leading" constant="20" id="hXC-ZB-NA0"/>
+                                    <constraint firstAttribute="trailing" secondItem="4ca-qY-XQD" secondAttribute="trailing" constant="20" id="i1E-cl-VUS"/>
+                                    <constraint firstItem="4ca-qY-XQD" firstAttribute="leading" secondItem="2nh-nT-iHl" secondAttribute="trailing" constant="8" id="iyw-Bm-Jcb"/>
                                     <constraint firstAttribute="height" constant="79" id="kXl-fR-ppT"/>
                                     <constraint firstAttribute="trailing" secondItem="Gpf-Ce-P79" secondAttribute="trailing" constant="20" id="lYf-d9-s0R"/>
                                     <constraint firstItem="Gpf-Ce-P79" firstAttribute="top" secondItem="XsR-U0-QIx" secondAttribute="top" constant="8" id="scD-GW-oLe"/>
-                                    <constraint firstAttribute="trailing" secondItem="4ca-qY-XQD" secondAttribute="trailing" constant="20" id="uJr-EZ-4t5"/>
+                                    <constraint firstAttribute="bottom" secondItem="4ca-qY-XQD" secondAttribute="bottom" constant="4" id="trX-7V-P9l"/>
+                                    <constraint firstItem="7y0-lp-a7i" firstAttribute="top" secondItem="Gpf-Ce-P79" secondAttribute="bottom" constant="7" id="xcG-Bc-Clm"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZgG-4q-VL8">
@@ -222,6 +225,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="backspaceButton" destination="7y0-lp-a7i" id="yaD-T9-Vhl"/>
+                        <outlet property="clearButton" destination="2nh-nT-iHl" id="3d5-Ac-KAL"/>
+                        <outlet property="commitButton" destination="4ca-qY-XQD" id="K0F-8i-8EX"/>
                         <outlet property="inputField" destination="Gpf-Ce-P79" id="O9Y-pU-IR0"/>
                         <outlet property="keywordCollectionView" destination="ZgG-4q-VL8" id="ydH-nY-JjE"/>
                         <outlet property="recordingTableview" destination="JwA-6L-atR" id="bO4-Uv-cOR"/>
@@ -718,7 +724,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Creation Date" id="3OF-bT-H2c" userLabel="Type">
+                            <tableViewSection headerTitle="Creation Date" id="3OF-bT-H2c" userLabel="Creation Date">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="216" id="0yD-yK-Ekl">
                                         <rect key="frame" x="0.0" y="211" width="320" height="216"/>
@@ -760,7 +766,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Active Word Set" id="AUx-bi-QDu" userLabel="Color">
+                            <tableViewSection headerTitle="Active Word Set" id="AUx-bi-QDu" userLabel="Active Word Set">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="tRC-HA-b9J" userLabel="colorCell">
                                         <rect key="frame" x="0.0" y="475" width="320" height="44"/>
@@ -769,7 +775,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Make this the active word set" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggg-lw-K0F" userLabel="Color">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Make this the active word set" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggg-lw-K0F" userLabel="Active Text Field">
                                                     <rect key="frame" x="20" y="7" width="223" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -796,6 +802,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" title="New Word Set" id="7wt-K5-1xg"/>
                     <connections>
                         <outlet property="activeSwitch" destination="3nq-oG-kOk" id="1g8-su-2A2"/>
+                        <outlet property="activeTextField" destination="ggg-lw-K0F" id="3sP-GW-9rh"/>
                         <outlet property="name" destination="yxI-xJ-sMh" id="1fa-83-yob"/>
                         <outlet property="picker" destination="UaL-mz-cfZ" id="iJb-a6-Jed"/>
                     </connections>
@@ -909,7 +916,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBL-EJ-O0r">
-                                <rect key="frame" x="441" y="128" width="139" height="30"/>
+                                <rect key="frame" x="393" y="128" width="187" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Close &amp; Save">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -925,6 +932,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="157"/>
                     <connections>
+                        <outlet property="clearButton" destination="QjD-LZ-KVz" id="r7t-Lz-oz1"/>
+                        <outlet property="closeAndSaveButton" destination="CBL-EJ-O0r" id="28U-W2-6Bh"/>
                         <outlet property="textView" destination="3c8-Up-XxN" id="YYe-lV-xvO"/>
                     </connections>
                 </viewController>

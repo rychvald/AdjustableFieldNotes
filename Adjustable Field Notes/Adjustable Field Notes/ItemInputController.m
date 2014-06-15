@@ -31,9 +31,9 @@
 - (void)prepareForNewEntryFromDelegate:(id)delegate {
     self.currentKeyword = nil;
     self.inputDelegate = delegate;
-    self.title = @"New Keyword";
-    self.keywordField.placeholder = @"Keyword";
-    self.labelField.placeholder = @"Label (optional)";
+    self.title = NSLocalizedString(@"New Keyword", nil);
+    self.keywordField.placeholder = NSLocalizedString(@"Keyword", nil);
+    self.labelField.placeholder = NSLocalizedString(@"Label (optional)", nil);
     [self.tableView reloadData];
 }
 
@@ -47,11 +47,9 @@
 }
 
 - (void)saveItem {
-    NSLog(@"Saving item...");
     if (self.inputDelegate == nil) {
         NSLog(@"inputDelegate is nil!");
     }
-    NSLog(@"Keyword: %@ Label: %@", self.keywordField.text, self.labelField.text);
     if (self.currentKeyword == nil)
         [self.inputDelegate createNewKeyword:self.keywordField.text withLabel:self.labelField.text andColor:nil];
     else {
@@ -66,6 +64,21 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     self.currentKeyword = nil;
     [self.inputDelegate reload];
+}
+
+#pragma mark - UITableView DataSource method
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *header;
+    switch (section) {
+        case 0:
+            header = NSLocalizedString(@"Name", nil);
+            break;
+        default:
+            header = @"";
+            break;
+    }
+    return header;
 }
 
 #pragma mark - UITextField Delegate method

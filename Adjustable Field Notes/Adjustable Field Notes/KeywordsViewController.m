@@ -117,10 +117,10 @@
     NSString *header;
     switch (section) {
         case 0:
-            header = @"Keywords";
+            header = NSLocalizedString(@"Keywords", nil);
             break;
         case 1:
-            header = @"Relations";
+            header = NSLocalizedString(@"Relations",nil);
             break;
         default:
             header = @"";
@@ -182,7 +182,7 @@
     } else {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell"];
         cell.textLabel.textColor = [UIColor grayColor];
-        cell.textLabel.text = @"None";
+        cell.textLabel.text = NSLocalizedString(@"None", nil);
         cell.detailTextLabel.text = @"";
         
     }

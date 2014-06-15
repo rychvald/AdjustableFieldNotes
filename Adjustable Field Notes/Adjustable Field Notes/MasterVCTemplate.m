@@ -48,9 +48,9 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     //init bottom bar buttons
-    UIBarButtonItem *recordsButton = [[UIBarButtonItem alloc] initWithTitle:@"Recordings" style:UIBarButtonItemStylePlain target:self action:@selector(showRecords:)];
-    UIBarButtonItem *wordsButton = [[UIBarButtonItem alloc] initWithTitle:@"Word Sets" style:UIBarButtonItemStylePlain target:self action:@selector(showWords:)];
-    self.exportButton = [[UIBarButtonItem alloc] initWithTitle:@"Export" style:UIBarButtonItemStylePlain target:self action:@selector(export:)];
+    UIBarButtonItem *recordsButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Recordings", nil) style:UIBarButtonItemStylePlain target:self action:@selector(showRecords:)];
+    UIBarButtonItem *wordsButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Word Sets Button", nil) style:UIBarButtonItemStylePlain target:self action:@selector(showWords:)];
+    self.exportButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Export", nil) style:UIBarButtonItemStylePlain target:self action:@selector(export:)];
     [self setToolbarItems:@[wordsButton,recordsButton,self.exportButton]];
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     if (self.detailViewController == nil) {
@@ -137,7 +137,7 @@
     }
     //self.recordingsHandler.managedObjectContext = self.managedObjectContext;
     self.tableView.dataSource = self.recordingsHandler;
-    self.title = @"Recordings";
+    self.title = NSLocalizedString(@"Recordings", nil);
     [self reload];
 }
 
@@ -147,12 +147,12 @@
     } else {
         self.tableView.dataSource = self;
     }
-    self.title = @"Word Sets";
+    self.title = NSLocalizedString(@"Word Sets", nil);
     [self reload];
 }
 
 - (void)export:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"File Name and Export" message:@"Please enter a file name and choose whether you want to export the active recording or the active word set." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Active Recording",@"Active Word Set",nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"File Name and Export", nil) message:NSLocalizedString(@"Please enter a file name...", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Active Recording", nil),NSLocalizedString(@"Active Word Set", nil),nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertView.delegate = self;
     [alertView show];
@@ -257,10 +257,10 @@
     NSString *header;
     switch (section) {
         case 0:
-            header = @"Keywords";
+            header = NSLocalizedString(@"Keywords", nil);
             break;
         case 1:
-            header = @"Relations";
+            header = NSLocalizedString(@"Relations",nil);
             break;
         default:
             header = @"";
@@ -314,7 +314,7 @@
     } else {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell"];
         cell.textLabel.textColor = [UIColor grayColor];
-        cell.textLabel.text = @"None";
+        cell.textLabel.text = NSLocalizedString(@"None", nil);
         cell.detailTextLabel.text = @"";
     }
     return cell;

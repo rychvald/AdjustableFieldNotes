@@ -31,6 +31,7 @@
 @property (nonatomic,retain) IBOutlet UISwitch *activeSwitch;
 @property (nonatomic,retain) IBOutlet UITextField *name;
 @property (nonatomic,retain) IBOutlet UIDatePicker *picker;
+@property (nonatomic,retain) IBOutlet UITextField *activeTextField;
 @property (nonatomic,retain) Keyword *currentWordSet;
 @property (nonatomic,retain) Recording *currentRecording;
 @property (strong, nonatomic) id<WordSetInputDelegate> inputDelegate;

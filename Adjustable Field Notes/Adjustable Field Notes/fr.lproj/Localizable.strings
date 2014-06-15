@@ -1,0 +1,60 @@
+/* Localized versions of Info.plist keys */
+
+// French version
+
+//Button titles
+"Recordings" = "Enregistrements";
+"Word Sets" = "Groupes de Mots";
+"Word Sets Button" = "Groupes";
+"Export" = "Export";
+"Backspace" = "Retour arrière";
+"Clear" = "Effacer";
+"Commit" = "Transcrire";
+"Remove Last Entry" = "Enlever la dernière inscription";
+"Close & Save" = "Fermer & sauvegarder";
+"Cancel" = "Abandon";
+
+//Table View Section Titles
+"Active" = "Actif";
+"Inactive" = "Inactif";
+"Categories" = "Catégorème";
+"Keywords" = "Mots-Clés";
+"Relations" = "Relations";
+
+//Input Controller Strings
+"New Category" = "Nouveau Catégorème";
+"New Word Set" = "Nouveau Groupes de Mots";
+"New Keyword" = "Nouveau Mot-Clé";
+"New Recording" = "Nouvel Enregistrement";
+"Keyword" = "Mot-Clé";
+"Label (optional)" = "Nom présenté (optionnel)";
+"Name" = "Nom";
+"Creation Date" = "Date d'élaboration";
+"Active Word Set" = "Groupe de Mots Actif";
+"Colour" = "Couleur";
+"Active Recording" = "Enregistrement Actif";
+"Make this the active word set" = "Activer ce Groupe de Mots";
+"Make this the active recording" = "Activer cet Enregistrement";
+
+//Strings for generating word sets and recordings
+"Initial Recording" = "Enregistrement Initial";
+"Initial Word Set" = "Groupe de Mots Initial";
+
+//Table View generic cells
+"None" = "Aucun";
+
+//Colours
+"White" = "Blanc";
+"Yellow" = "Jaune";
+"Red" = "Rouge";
+"Purple" = "Violet";
+"Orange" = "Orangé";
+"Magenta" = "Magenta";
+"Green" = "Vert";
+"Cyan" = "Cyan";
+"Blue" = "Bleu";
+"Gray" = "Gris";
+
+//Alert View
+"File Name and Export" = "Nom du Fichier et Export";
+"Please enter a file name..." = "Tapez le nom du fichier et choisissez, si vous voulez exporter l'enregistrement actif ou le groupe de mots actif.";

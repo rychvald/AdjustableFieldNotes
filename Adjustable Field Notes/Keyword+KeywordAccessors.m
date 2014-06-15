@@ -98,7 +98,7 @@
 
 + (Keyword *)createInitialWordSetInContext:(NSManagedObjectContext *)context {
     Keyword *rootKeyword = (Keyword *)[NSEntityDescription insertNewObjectForEntityForName:@"Keyword" inManagedObjectContext:context];
-    rootKeyword.keyword = @"Initial Word Set";
+    rootKeyword.keyword = NSLocalizedString(@"Initial Word Set",nil);
     rootKeyword.dateCreated = [NSDate date];
     [rootKeyword setIsActive:YES];
     [context insertObject:rootKeyword];

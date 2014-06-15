@@ -110,7 +110,7 @@
     NSString *header;
     switch (section) {
         case 0:
-            header = @"Categories";
+            header = NSLocalizedString(@"Categories", nil);
             break;
         default:
             header = @"";
@@ -140,7 +140,7 @@
     if ([wordSets count] == 0) {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell"];
         cell.textLabel.textColor = [UIColor grayColor];
-        cell.textLabel.text = @"None";
+        cell.textLabel.text = NSLocalizedString(@"None", nil);
     } else {
         Keyword *keyword = [wordSets objectAtIndex:indexPath.row];
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];

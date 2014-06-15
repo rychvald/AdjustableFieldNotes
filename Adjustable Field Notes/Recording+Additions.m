@@ -58,7 +58,7 @@
 
 + (Recording *)createInitialRecordingInContext:(NSManagedObjectContext *)context {
     Recording *recording = (Recording *)[NSEntityDescription insertNewObjectForEntityForName:@"Recording" inManagedObjectContext:context];
-    recording.name = @"Initial Recording";
+    recording.name = NSLocalizedString(@"Initial Recording",nil);
     recording.dateCreated = [NSDate date];
     [recording setIsActive:YES];
     [context insertObject:recording];

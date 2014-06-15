@@ -42,19 +42,26 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     [self configureView];
-    UIBarButtonItem *removeButton = [[UIBarButtonItem alloc] initWithTitle:@"Remove Last Entry" style:UIBarButtonItemStylePlain target:self action:@selector(removeLastEntry:)];
+    UIBarButtonItem *removeButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Remove Last Entry", nil) style:UIBarButtonItemStylePlain target:self action:@selector(removeLastEntry:)];
     self.navigationItem.rightBarButtonItems = @[removeButton];
+    [self.backspaceButton setTitle:NSLocalizedString(@"Backspace", nil) forState:UIControlStateNormal];
+    [self.clearButton setTitle:NSLocalizedString(@"Clear", nil) forState:UIControlStateNormal];
+    [self.commitButton setTitle:NSLocalizedString(@"Commit", nil) forState:UIControlStateNormal];
 }
 
 #pragma mark - Methods for Toolbar buttons
 
 - (void)removeLastEntry:(id)sender {
     Recording *recording = [Recording getActiveRecordingForContext:self.managedObjectContext];
-    Entry *lastentry = [recording.entries lastObject];
-    [recording removeEntriesObject:lastentry];
-    [self.managedObjectContext deleteObject:lastentry];
-    [self.managedObjectContext save:nil];
-    [self reload];
+    if ([recording.entries count] <= 0) {
+        return;
+    } else {
+        Entry *lastentry = [recording.entries lastObject];
+        [recording removeEntriesObject:lastentry];
+        [self.managedObjectContext deleteObject:lastentry];
+        [self.managedObjectContext save:nil];
+        [self reload];
+    }
 }
 
 
@@ -159,7 +166,6 @@ return [[UICollectionReusableView alloc] init];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
     return;
 }
 

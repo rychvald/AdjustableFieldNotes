@@ -21,7 +21,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.title = @"Word Sets";
+    self.title = NSLocalizedString(@"Word Sets", nil);
     self.tableView.dataSource = self;
     [self reload];
 }
@@ -96,10 +96,10 @@
     NSString *header;
     switch (section) {
         case 0:
-            header = @"Active";
+            header = NSLocalizedString(@"Active",nil);
             break;
         case 1:
-            header = @"Inactive";
+            header = NSLocalizedString(@"Inactive",nil);
             break;
         default:
             header = @"";
@@ -145,7 +145,7 @@
         if ([wordSets count] == 0) {
             cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoneCell"];
             cell.textLabel.textColor = [UIColor grayColor];
-            cell.textLabel.text = @"None";
+            cell.textLabel.text = NSLocalizedString(@"None", nil);
             cell.detailTextLabel.text = @"";
         } else {
             keyword = [wordSets objectAtIndex:indexPath.row];

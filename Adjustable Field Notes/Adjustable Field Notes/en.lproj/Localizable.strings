@@ -1,0 +1,61 @@
+/* Localized versions of Info.plist keys */
+
+// English version
+
+//Button titles
+"Recordings" = "Recordings";
+"Word Sets" = "Word Sets";
+"Word Sets Button" = "Word Sets";
+"Export" = "Export";
+"Backspace" = "Backspace";
+"Clear" = "Clear";
+"Commit" = "Commit";
+"Remove Last Entry" = "Remove Last Entry";
+"Close & Save" = "Close & Save";
+"Cancel" = "Cancel";
+
+//Table View Section Titles
+"Active" = "Active";
+"Inactive" = "Inactive";
+"Categories" = "Categories";
+"Keywords" = "Keywords";
+"Relations" = "Relations";
+
+//Input Controller Strings
+"New Category" = "New Category";
+"New Word Set" = "New Word Set";
+"New Keyword" = "New Keyword";
+"New Recording" = "New Recording";
+"Keyword" = "Keyword";
+"Label (optional)" = "Label (optional)";
+"Name" = "Name";
+"Creation Date" = "Creation Date";
+"Active Word Set" = "Active Word Set";
+"Colour" = "Colour";
+"Active Recording" = "Active Recording";
+"Make this the active word set" = "Activate this Word Set";
+"Make this the active recording" = "Activate this Recording";
+
+//Strings for generating word sets and recordings
+"Initial Recording" = "Initial Recording";
+"Initial Word Set" = "Initial Word Set";
+
+//Table View generic cells
+"None" = "None";
+
+//Colours
+"White" = "White";
+"Yellow" = "Yellow";
+"Red" = "Red";
+"Purple" = "Purple";
+"Orange" = "Orange";
+"Magenta" = "Magenta";
+"Green" = "Green";
+"Cyan" = "Cyan";
+"Blue" = "Blue";
+"Gray" = "Gray";
+
+//Alert View
+"File Name and Export" = "File Name and Export";
+"Please enter a file name..." = "Please enter a file name and choose whether you want to export the active recording or the active word set.";
+

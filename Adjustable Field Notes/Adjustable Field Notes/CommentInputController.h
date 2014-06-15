@@ -22,6 +22,8 @@
 @interface CommentInputController : UIViewController <UIPopoverControllerDelegate>
 
 @property (nonatomic,retain) IBOutlet UITextView *textView;
+@property (nonatomic,retain) IBOutlet UIButton *closeAndSaveButton;
+@property (nonatomic,retain) IBOutlet UIButton *clearButton;
 @property (nonatomic,retain) Entry *currentEntry;
 @property (nonatomic,retain) UIPopoverController *popoverVC;
 @property (nonatomic,retain) id<CommentInputDelegate> delegate;

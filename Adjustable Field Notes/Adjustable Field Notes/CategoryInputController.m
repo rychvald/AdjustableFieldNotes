@@ -29,8 +29,8 @@
 
 - (void)prepareForNewEntryFromDelegate:(id)delegate {
     self.inputDelegate = delegate;
-    self.name.placeholder = @"New Category";
-    self.title = @"New Category";
+    self.name.placeholder = NSLocalizedString(@"New Category", nil);
+    self.title = NSLocalizedString(@"New Category", nil);
     [self.tableView reloadData];
 }
 
@@ -44,7 +44,6 @@
 }
 
 - (void)saveItem {
-    NSLog(@"Saving item...");
     if (self.inputDelegate == nil) {
         NSLog(@"inputDelegate is nil!");
     }
@@ -87,6 +86,24 @@
     return [[CategoryInputController colorStrings]objectAtIndex:row];
 }
 
+#pragma mark - UITableView DataSource method
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *header;
+    switch (section) {
+        case 0:
+            header = NSLocalizedString(@"Name", nil);
+            break;
+        case 1:
+            header = NSLocalizedString(@"Colour", nil);
+            break;
+        default:
+            header = @"";
+            break;
+    }
+    return header;
+}
+
 #pragma mark - UITextField Delegate method
 
 -(BOOL)textFieldShouldReturn:(UITextField*)textField {
@@ -124,16 +141,16 @@
 + (NSArray *)colorStrings {
     
     return @[
-             @"White",
-             @"Yellow",
-             @"Red",
-             @"Purple",
-             @"Orange",
-             @"Magenta",
-             @"Green",
-             @"Cyan",
-             @"Blue",
-             @"Gray",
+             NSLocalizedString(@"White", nil),
+             NSLocalizedString(@"Yellow", nil),
+             NSLocalizedString(@"Red", nil),
+             NSLocalizedString(@"Purple", nil),
+             NSLocalizedString(@"Orange", nil),
+             NSLocalizedString(@"Magenta", nil),
+             NSLocalizedString(@"Green", nil),
+             NSLocalizedString(@"Cyan", nil),
+             NSLocalizedString(@"Blue", nil),
+             NSLocalizedString(@"Gray", nil),
              ];
 }
 

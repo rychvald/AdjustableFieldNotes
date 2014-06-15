@@ -1,0 +1,60 @@
+/* Localized versions of Info.plist keys */
+
+// German version
+
+//Button titles
+"Recordings" = "Aufzeichnungen";
+"Word Sets" = "Wortgruppen";
+"Word Sets Button" = "Wortgruppen";
+"Export" = "Export";
+"Backspace" = "Rückschritt";
+"Clear" = "Löschen";
+"Commit" = "Eintragen";
+"Remove Last Entry" = "Letzten Eintrag löschen";
+"Close & Save" = "Speichern & schliessen";
+"Cancel" = "Abbrechen";
+
+//Table View Section Titles
+"Active" = "Aktiv";
+"Inactive" = "Inaktiv";
+"Categories" = "Kategorien";
+"Keywords" = "Schlüsselwörter";
+"Relations" = "Relationen";
+
+//Input Controller Strings
+"New Category" = "Neue Kategorie";
+"New Word Set" = "Neue Wortgruppe";
+"New Keyword" = "Neues Schlüsselwort";
+"New Recording" = "Neue Aufzeichnung";
+"Keyword" = "Schlüsselwort";
+"Label (optional)" = "Anzeigename (optional)";
+"Name" = "Name";
+"Creation Date" = "Erstellungsdatum";
+"Active Word Set" = "Aktive Wortgruppe";
+"Colour" = "Farbe";
+"Active Recording" = "Aktive Aufzeichnung";
+"Make this the active word set" = "Diese Wortgruppe aktivieren";
+"Make this the active recording" = "Diese Aufzeichnung aktivieren";
+
+//Strings for generating word sets and recordings
+"Initial Recording" = "Erste Aufzeichnung";
+"Initial Word Set" = "Erste Wortgruppe";
+
+//Table View generic cells
+"None" = "Keine";
+
+//Colours
+"White" = "Weiss";
+"Yellow" = "Gelb";
+"Red" = "Rot";
+"Purple" = "Violett";
+"Orange" = "Orange";
+"Magenta" = "Magenta";
+"Green" = "Grün";
+"Cyan" = "Cyan";
+"Blue" = "Blau";
+"Gray" = "Grau";
+
+//Alert View
+"File Name and Export" = "Dateiname und Export";
+"Please enter a file name..." = "Bitte geben Sie einen Dateinamen ein und wählen Sie, ob die aktive Aufzeichnung oder die aktive Wortgruppe exportiert werden soll.";

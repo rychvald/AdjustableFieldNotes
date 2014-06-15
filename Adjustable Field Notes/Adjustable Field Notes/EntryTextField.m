@@ -62,7 +62,11 @@
 }
 
 - (void)commitToRecording:(Recording *)recording {
-    [recording addEntryWithTimestamp:self.timestamp keywords:keywords];
+    if (self.text == nil || [self.text isEqualToString:@""]) {
+        return;
+    } else {
+        [recording addEntryWithTimestamp:self.timestamp keywords:keywords];
+    }
 }
 
 @end

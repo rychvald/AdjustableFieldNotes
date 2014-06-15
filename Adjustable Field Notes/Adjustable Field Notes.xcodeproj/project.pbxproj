@@ -11,7 +11,7 @@
 		086AAC0618D6E61900B0BEAE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0518D6E61900B0BEAE /* CoreGraphics.framework */; };
 		086AAC0818D6E61900B0BEAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0718D6E61900B0BEAE /* UIKit.framework */; };
 		086AAC0A18D6E61900B0BEAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0918D6E61900B0BEAE /* CoreData.framework */; };
-		086AAC1018D6E61900B0BEAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC0E18D6E61900B0BEAE /* InfoPlist.strings */; };
+		086AAC1018D6E61900B0BEAE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC0E18D6E61900B0BEAE /* Localizable.strings */; };
 		086AAC1218D6E61900B0BEAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC1118D6E61900B0BEAE /* main.m */; };
 		086AAC1618D6E61900B0BEAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC1518D6E61900B0BEAE /* AppDelegate.m */; };
 		086AAC1918D6E61900B0BEAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC1718D6E61900B0BEAE /* Main.storyboard */; };
@@ -66,7 +66,7 @@
 		086AAC0718D6E61900B0BEAE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		086AAC0918D6E61900B0BEAE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		086AAC0D18D6E61900B0BEAE /* Adjustable Field Notes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Adjustable Field Notes-Info.plist"; sourceTree = "<group>"; };
-		086AAC0F18D6E61900B0BEAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		086AAC0F18D6E61900B0BEAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		086AAC1118D6E61900B0BEAE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		086AAC1318D6E61900B0BEAE /* Adjustable Field Notes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Adjustable Field Notes-Prefix.pch"; sourceTree = "<group>"; };
 		086AAC1418D6E61900B0BEAE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -82,10 +82,10 @@
 		086AAC3518D6E61900B0BEAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Adjustable_Field_NotesTests.m; sourceTree = "<group>"; };
 		08ADBF1C18E1CDCC007E131A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
-		08ADBF1D18E1CDCC007E131A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		08ADBF1D18E1CDCC007E131A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		08ADBF1E18E1CDCC007E131A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08ADBF1F18E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
-		08ADBF2018E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		08ADBF2018E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		08ADBF2118E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		41201BB1190D5EE000B0E8DB /* WordSetInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSetInputController.h; sourceTree = "<group>"; };
 		41201BB2190D5EE000B0E8DB /* WordSetInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSetInputController.m; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				086AAC0D18D6E61900B0BEAE /* Adjustable Field Notes-Info.plist */,
-				086AAC0E18D6E61900B0BEAE /* InfoPlist.strings */,
+				086AAC0E18D6E61900B0BEAE /* Localizable.strings */,
 				086AAC1118D6E61900B0BEAE /* main.m */,
 				086AAC1318D6E61900B0BEAE /* Adjustable Field Notes-Prefix.pch */,
 			);
@@ -396,7 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				086AAC2418D6E61900B0BEAE /* Images.xcassets in Resources */,
-				086AAC1018D6E61900B0BEAE /* InfoPlist.strings in Resources */,
+				086AAC1018D6E61900B0BEAE /* Localizable.strings in Resources */,
 				086AAC1918D6E61900B0BEAE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,14 +465,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		086AAC0E18D6E61900B0BEAE /* InfoPlist.strings */ = {
+		086AAC0E18D6E61900B0BEAE /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				086AAC0F18D6E61900B0BEAE /* en */,
 				08ADBF1D18E1CDCC007E131A /* de */,
 				08ADBF2018E1CDD4007E131A /* fr */,
 			);
-			name = InfoPlist.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		086AAC1718D6E61900B0BEAE /* Main.storyboard */ = {

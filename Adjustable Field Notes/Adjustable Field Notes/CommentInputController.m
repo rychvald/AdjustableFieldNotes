@@ -15,6 +15,14 @@
 @synthesize currentEntry;
 @synthesize popoverVC;
 @synthesize delegate;
+@synthesize closeAndSaveButton;
+@synthesize clearButton;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.clearButton setTitle:NSLocalizedString(@"Clear", nil) forState:UIControlStateNormal];
+    [self.closeAndSaveButton setTitle:NSLocalizedString(@"Close & Save", nil) forState:UIControlStateNormal];
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.textView becomeFirstResponder];
