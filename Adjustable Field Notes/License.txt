@@ -1,0 +1,16 @@
+The Software Adjustable Field Notes is released unter two distinct licenses:
+
+1) Via the App Store
+The version in the App Store is released under the standard EULA provided by the Apple iOS App Store. For more information, please see on the following page:
+https://www.apple.com/legal/internet-services/itunes/appstore/dev/stdeula/
+
+2) Via the Website www.ekf46.ch/AdjustableFieldNotes
+This version is released under the GNU GPL v3 and is provided "as is", with no guarantee of any kind. You will need an Apple iOS developer account in order to install the source code on an appropriate device.
+You can find the GNU GPL v3 unde the following address:
+http://www.gnu.org/copyleft/gpl.html
+
+In any case, if you encounter problems with the software or want to alter it, reuse code etc., you are kindly asked to write a short e-mail to:
+marcel.stolz@students.unibe.ch
+
+
+Marcel Stolz, June 17th 2014
