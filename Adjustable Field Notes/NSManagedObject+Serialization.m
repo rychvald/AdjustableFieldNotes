@@ -108,9 +108,9 @@
     // Check to see there are any objects that should be skipped in the traversal.
     // This method can be optionally implemented by NSManagedObject subclasses.
     NSMutableSet *traversedObjects = nil;
-    if ([self respondsToSelector:@selector(serializationObjectsToSkip)]) {
+    /*if ([self respondsToSelector:@selector(serializationObjectsToSkip)]) {
         traversedObjects = [self performSelector:@selector(serializationObjectsToSkip)];
-    }
+    }*/
     return [self toDictionaryWithTraversalHistory:traversedObjects];
 }
 

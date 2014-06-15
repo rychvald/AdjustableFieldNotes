@@ -27,6 +27,7 @@
 @property (strong,nonatomic) IBOutlet UIButton *backspaceButton;
 @property (strong,nonatomic) IBOutlet UIButton *clearButton;
 @property (strong,nonatomic) IBOutlet UIButton *commitButton;
+@property (strong,nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
 - (void)reload;
 

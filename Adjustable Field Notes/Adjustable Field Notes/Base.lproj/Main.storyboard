@@ -36,7 +36,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <userGuides>
-                            <userLayoutGuide location="384" affinity="minY"/>
+                            <userLayoutGuide location="515" affinity="minY"/>
                         </userGuides>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="JwA-6L-atR">
@@ -159,13 +159,13 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7hs-5S-dBk">
                                     <size key="itemSize" width="170" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="30"/>
+                                    <size key="footerReferenceSize" width="50" height="2"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" restorationIdentifier="WordCell" reuseIdentifier="WordCell" id="zn9-z0-jo3" userLabel="WordCell" customClass="KeywordCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="170" height="50"/>
+                                        <rect key="frame" x="0.0" y="30" width="170" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="50"/>
@@ -176,7 +176,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Label" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bmi-Wt-Qu2">
-                                                            <rect key="frame" x="11" y="10" width="149" height="30"/>
+                                                            <rect key="frame" x="10" y="10" width="149" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -185,7 +185,7 @@
                                                     <constraints>
                                                         <constraint firstItem="bmi-Wt-Qu2" firstAttribute="centerX" secondItem="7vT-Wk-gUJ" secondAttribute="centerX" id="bxw-6i-UTw"/>
                                                         <constraint firstItem="bmi-Wt-Qu2" firstAttribute="centerY" secondItem="7vT-Wk-gUJ" secondAttribute="centerY" id="gvV-A2-m78"/>
-                                                        <constraint firstItem="bmi-Wt-Qu2" firstAttribute="leading" secondItem="7vT-Wk-gUJ" secondAttribute="leading" constant="11" id="rtm-34-akA"/>
+                                                        <constraint firstItem="bmi-Wt-Qu2" firstAttribute="leading" secondItem="7vT-Wk-gUJ" secondAttribute="leading" constant="10" id="lyT-NQ-7kB"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -202,6 +202,39 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="Header" id="1Em-vo-8uf" userLabel="Header" customClass="CollectionViewHeaderWithTitle">
+                                    <rect key="frame" x="0.0" y="0.0" width="703" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Dd-XZ-ZCO">
+                                            <rect key="frame" x="20" y="9" width="679" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <connections>
+                                        <outlet property="headerLabel" destination="2Dd-XZ-ZCO" id="6bX-gX-GFI"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="Footer" id="Zsu-Vg-qeO" userLabel="Footer">
+                                    <rect key="frame" x="0.0" y="80" width="703" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BE4-S6-BIt" userLabel="Line">
+                                            <rect key="frame" x="0.0" y="0.0" width="703" height="2"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BE4-S6-BIt" firstAttribute="leading" secondItem="Zsu-Vg-qeO" secondAttribute="leading" id="9aU-Kj-eT2"/>
+                                        <constraint firstAttribute="trailing" secondItem="BE4-S6-BIt" secondAttribute="trailing" id="AQ0-o1-PP6"/>
+                                        <constraint firstItem="BE4-S6-BIt" firstAttribute="top" secondItem="Zsu-Vg-qeO" secondAttribute="top" id="Irl-Fm-dDI"/>
+                                        <constraint firstAttribute="bottom" secondItem="BE4-S6-BIt" secondAttribute="bottom" id="Utb-Dw-Xr9"/>
+                                    </constraints>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="JEX-9P-axG" id="ys3-Fc-zXg"/>
                                     <outlet property="delegate" destination="JEX-9P-axG" id="2r4-iM-TkY"/>
@@ -228,6 +261,7 @@
                         <outlet property="backspaceButton" destination="7y0-lp-a7i" id="yaD-T9-Vhl"/>
                         <outlet property="clearButton" destination="2nh-nT-iHl" id="3d5-Ac-KAL"/>
                         <outlet property="commitButton" destination="4ca-qY-XQD" id="K0F-8i-8EX"/>
+                        <outlet property="flowLayout" destination="7hs-5S-dBk" id="Cyp-9n-zkh"/>
                         <outlet property="inputField" destination="Gpf-Ce-P79" id="O9Y-pU-IR0"/>
                         <outlet property="keywordCollectionView" destination="ZgG-4q-VL8" id="ydH-nY-JjE"/>
                         <outlet property="recordingTableview" destination="JwA-6L-atR" id="bO4-Uv-cOR"/>

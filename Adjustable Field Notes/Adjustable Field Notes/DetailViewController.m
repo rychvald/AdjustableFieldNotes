@@ -18,6 +18,10 @@
 #import "EntryTextField.h"
 #import "CommentInputController.h"
 #import "MasterVCTemplate.h"
+#import "CollectionViewHeaderWithTitle.h"
+
+#define MARGIN 10
+#define TOP_MARGIN 5
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -47,6 +51,14 @@
     [self.backspaceButton setTitle:NSLocalizedString(@"Backspace", nil) forState:UIControlStateNormal];
     [self.clearButton setTitle:NSLocalizedString(@"Clear", nil) forState:UIControlStateNormal];
     [self.commitButton setTitle:NSLocalizedString(@"Commit", nil) forState:UIControlStateNormal];
+    [self setCollectionViewMargins];
+}
+
+#pragma mark - Methods for Toolbar buttons
+
+- (void)setCollectionViewMargins {
+    self.flowLayout.sectionInset = UIEdgeInsetsMake(TOP_MARGIN, MARGIN, MARGIN, MARGIN);
+    self.flowLayout.minimumInteritemSpacing = MARGIN;
 }
 
 #pragma mark - Methods for Toolbar buttons
@@ -152,10 +164,20 @@
     
     return cell;
 }
-// 4
-/*- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-return [[UICollectionReusableView alloc] init];
-}*/
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *reusableView = nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+        CollectionViewHeaderWithTitle *headerWithTitle = (CollectionViewHeaderWithTitle *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
+        Keyword *category = [[Keyword getActiveWordSetForContext:self.managedObjectContext].children objectAtIndex:indexPath.section];
+        [headerWithTitle setLabelString:category.keyword];
+        reusableView = headerWithTitle;
+    } else if (kind == UICollectionElementKindSectionFooter) {
+        reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"Footer" forIndexPath:indexPath];
+    }
+    
+    return reusableView;
+}
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -168,19 +190,6 @@ return [[UICollectionReusableView alloc] init];
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     return;
 }
-
-#pragma mark – UICollectionViewDelegateFlowLayout
-
-/*- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    //UICollectionViewCell *cell = [self.keywordCollectionView dequeueReusableCellWithReuseIdentifier:@"WordCell" forIndexPath:indexPath];
-    CGSize retval = CGSizeMake(57,25);
-    //retval.height += 35; retval.width += 35;
-    return retval;
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(50, 20, 50, 20);
-}*/
 
 #pragma mark - Table View
 

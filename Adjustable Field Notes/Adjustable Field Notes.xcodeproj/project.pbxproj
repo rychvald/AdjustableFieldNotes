@@ -24,6 +24,7 @@
 		086AAC2E18D6E61900B0BEAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AAC0918D6E61900B0BEAE /* CoreData.framework */; };
 		086AAC3618D6E61900B0BEAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 086AAC3418D6E61900B0BEAE /* InfoPlist.strings */; };
 		086AAC3818D6E61900B0BEAE /* Adjustable_Field_NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AAC3718D6E61900B0BEAE /* Adjustable_Field_NotesTests.m */; };
+		4107EAEA194DFA8C007D61D7 /* CollectionViewHeaderWithTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4107EAE9194DFA8C007D61D7 /* CollectionViewHeaderWithTitle.m */; };
 		41201BB3190D5EE000B0E8DB /* WordSetInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41201BB2190D5EE000B0E8DB /* WordSetInputController.m */; };
 		41201BB6190D5EF800B0E8DB /* CategoryInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41201BB5190D5EF800B0E8DB /* CategoryInputController.m */; };
 		4145CD57190A475C006B141D /* MasterVCTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4145CD56190A475C006B141D /* MasterVCTemplate.m */; };
@@ -87,6 +88,8 @@
 		08ADBF1F18E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		08ADBF2018E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		08ADBF2118E1CDD4007E131A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4107EAE8194DFA8C007D61D7 /* CollectionViewHeaderWithTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHeaderWithTitle.h; sourceTree = "<group>"; };
+		4107EAE9194DFA8C007D61D7 /* CollectionViewHeaderWithTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewHeaderWithTitle.m; sourceTree = "<group>"; };
 		41201BB1190D5EE000B0E8DB /* WordSetInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSetInputController.h; sourceTree = "<group>"; };
 		41201BB2190D5EE000B0E8DB /* WordSetInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSetInputController.m; sourceTree = "<group>"; };
 		41201BB4190D5EF800B0E8DB /* CategoryInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryInputController.h; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 				086AAC2118D6E61900B0BEAE /* DetailViewController.m */,
 				41A80E87190932EC008FDB42 /* KeywordCell.h */,
 				41A80E88190932EC008FDB42 /* KeywordCell.m */,
+				4107EAE8194DFA8C007D61D7 /* CollectionViewHeaderWithTitle.h */,
+				4107EAE9194DFA8C007D61D7 /* CollectionViewHeaderWithTitle.m */,
 				41740C55191905D900C78AF2 /* EntryTextField.h */,
 				41740C56191905D900C78AF2 /* EntryTextField.m */,
 			);
@@ -441,6 +446,7 @@
 				41740C6919191B5500C78AF2 /* Relation.m in Sources */,
 				086AAC1218D6E61900B0BEAE /* main.m in Sources */,
 				41740C6C19191D9800C78AF2 /* WordWrapper.m in Sources */,
+				4107EAEA194DFA8C007D61D7 /* CollectionViewHeaderWithTitle.m in Sources */,
 				41201BB6190D5EF800B0E8DB /* CategoryInputController.m in Sources */,
 				41A80E89190932EC008FDB42 /* KeywordCell.m in Sources */,
 			);
