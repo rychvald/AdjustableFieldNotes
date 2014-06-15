@@ -3,7 +3,7 @@
 //  Adjustable Field Notes
 //
 //  Created by Marcel Stolz on 17.03.14.
-//  Copyright (c) 2014 ___FULLUSERNAME___. All rights reserved.
+//  Copyright (c) 2014 ___FULLUSERNAME___.
 //
 
 #import <UIKit/UIKit.h>

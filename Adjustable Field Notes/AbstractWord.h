@@ -3,7 +3,7 @@
 //  Adjustable Field Notes
 //
 //  Created by Marcel Stolz on 06.05.14.
-//  Copyright (c) 2014 Marcel Stolz. All rights reserved.
+//  Copyright (c) 2014 Marcel Stolz.  
 //
 
 #import <Foundation/Foundation.h>
