@@ -25,11 +25,14 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    [Keyword addWordSetFromFile:url inManagedObjectContext:self.managedObjectContext];
+    Keyword *wordSet = [Keyword addWordSetFromFile:url inManagedObjectContext:self.managedObjectContext];
     UISplitViewController *splitVC =  (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navVC = (UINavigationController *)[splitVC.viewControllers objectAtIndex:0];
     MasterVCTemplate *masterVC = (MasterVCTemplate *)navVC.topViewController;
     [masterVC reload];
+    NSString *alertViewMessage = [NSString stringWithFormat:NSLocalizedString(@"The word set \"%@\" has been imported successfully!", nil),wordSet.keyword];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Import",nil) message: alertViewMessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
     return YES;
 }
 

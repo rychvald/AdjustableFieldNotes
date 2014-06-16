@@ -58,4 +58,5 @@
 //Alert View
 "File Name and Export" = "File Name and Export";
 "Please enter a file name..." = "Please enter a file name and choose whether you want to export the active recording or the active word set.";
+"The word set \"%@\" has been imported successfully!" = "The word set \"%@\" has been imported successfully!";
 

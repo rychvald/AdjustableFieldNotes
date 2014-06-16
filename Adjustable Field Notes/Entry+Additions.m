@@ -29,7 +29,24 @@
 
 #pragma mark - Helper Methods
 
-- (NSString *)asString {
+- (NSString *)asLabelString {
+    NSString *string = @"";
+    NSArray *wordsArray = [self getWordsArray];
+    if ([wordsArray count] == 0) {
+        string = @"";
+    } else {
+        for (AbstractWord *word in wordsArray) {
+            if (word.label == nil || [word.label isEqualToString:@""]) {
+                string = [string stringByAppendingFormat:@" %@",word.keyword];
+            } else {
+                string = [string stringByAppendingFormat:@" %@",word.label];
+            }
+        }
+    }
+    return string;
+}
+
+- (NSString *)asKeywordString {
     NSString *string = @"";
     NSArray *wordsArray = [self getWordsArray];
     if ([wordsArray count] == 0) {
@@ -53,10 +70,10 @@
 - (NSString *)serialise {
     NSArray *wordsArray = [self getWordsArray];
     NSString *serialisedEntry = [NSString stringWithFormat:@"%@,",self.timestamp.description];
+    serialisedEntry = [serialisedEntry stringByAppendingFormat:@"%@,",self.comment];
     for (AbstractWord *word in wordsArray) {
         serialisedEntry = [serialisedEntry stringByAppendingFormat:@"%@,",word.keyword];
     }
-    serialisedEntry = [serialisedEntry stringByAppendingFormat:@"%@,",self.comment];
     return serialisedEntry;
 }
 

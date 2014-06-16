@@ -58,3 +58,4 @@
 //Alert View
 "File Name and Export" = "Nom du Fichier et Export";
 "Please enter a file name..." = "Tapez le nom du fichier et choisissez, si vous voulez exporter l'enregistrement actif ou le groupe de mots actif.";
+"The word set \"%@\" has been imported successfully!" = "Réussi d'importer le groupe de mots \"%@\"!";
