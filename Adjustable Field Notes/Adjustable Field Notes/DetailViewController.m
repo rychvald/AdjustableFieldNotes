@@ -256,6 +256,7 @@
 - (void)reload {
     [self.recordingTableview reloadData];
     [self.keywordCollectionView reloadData];
+    self.title = [Recording getActiveRecordingForContext:self.managedObjectContext].name;
 }
 
 #pragma mark - Helper Methods
