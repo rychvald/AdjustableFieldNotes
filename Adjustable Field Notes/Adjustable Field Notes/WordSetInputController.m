@@ -103,6 +103,7 @@
         self.currentWordSet.isActive = self.activeSwitch.on;
     }
     [self.currentWordSet.managedObjectContext save:nil];
+    [self.inputDelegate reload];
 }
 
 - (void)saveRecording {
@@ -117,6 +118,7 @@
         self.currentRecording.isActive = self.activeSwitch.on;
     }
     [self.currentRecording.managedObjectContext save:nil];
+    [self.recordingDelegate reload];
 }
 
 - (void)cancel {

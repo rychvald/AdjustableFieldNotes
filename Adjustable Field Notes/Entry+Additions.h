@@ -14,7 +14,8 @@
 
 + (Entry *)createNewEntryForRecording:(Recording *)recording inContext:(NSManagedObjectContext *)context;
 
-- (NSString *)asString;
+- (NSString *)asLabelString;
+- (NSString *)asKeywordString;
 - (NSString *)serialise;
 - (void)addWordsObject:(AbstractWord *)value;
 - (void)removeLastObject;

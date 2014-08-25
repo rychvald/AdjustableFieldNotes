@@ -213,7 +213,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EntryCell" forIndexPath:indexPath];
     Entry *entry = [[Recording getActiveRecordingForContext:self.managedObjectContext].entries objectAtIndex:indexPath.row];
     NSString *dateString = [NSDateFormatter localizedStringFromDate:entry.timestamp dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-    cell.textLabel.text = [dateString stringByAppendingFormat:@" %@",[entry asString]];
+    cell.textLabel.text = [dateString stringByAppendingFormat:@" %@",[entry asLabelString]];
     cell.detailTextLabel.text = entry.comment;
     return cell;
 }
@@ -256,6 +256,7 @@
 - (void)reload {
     [self.recordingTableview reloadData];
     [self.keywordCollectionView reloadData];
+    self.title = [Recording getActiveRecordingForContext:self.managedObjectContext].name;
 }
 
 #pragma mark - Helper Methods

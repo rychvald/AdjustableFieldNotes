@@ -116,13 +116,14 @@
     return garbageCollection;
 }
 
-+ (void)addWordSetFromFile:(NSURL *)fileURL inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
++ (Keyword *)addWordSetFromFile:(NSURL *)fileURL inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     NSData *wordsetData = [NSData dataWithContentsOfURL:fileURL];
     NSDictionary *wordsetDictionary = [NSManagedObject dictionaryFromData:wordsetData];
     Keyword *keyword = (Keyword *)[NSManagedObject createManagedObjectFromDictionary:wordsetDictionary inContext:managedObjectContext];
     keyword.isActive = NO;
     [managedObjectContext save:nil];
     NSLog(@"Added word set: %@",keyword.keyword);
+    return keyword;
 }
 
 - (BOOL)hasEntries {
