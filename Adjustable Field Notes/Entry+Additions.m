@@ -69,10 +69,10 @@
 
 - (NSString *)serialise {
     NSArray *wordsArray = [self getWordsArray];
-    NSString *serialisedEntry = [NSString stringWithFormat:@"%@;",self.timestamp.description];
-    serialisedEntry = [serialisedEntry stringByAppendingFormat:@"%@;",self.comment];
+    NSString *serialisedEntry = [NSString stringWithFormat:@"%@;",[NSDateFormatter localizedStringFromDate:self.timestamp dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle]];
+    serialisedEntry = [serialisedEntry stringByAppendingFormat:@"\"%@\";",self.comment];
     for (AbstractWord *word in wordsArray) {
-        serialisedEntry = [serialisedEntry stringByAppendingFormat:@"%@;",word.keyword];
+        serialisedEntry = [serialisedEntry stringByAppendingFormat:@"\"%@\";",word.keyword];
     }
     return serialisedEntry;
 }

@@ -241,4 +241,8 @@
     [self.managedObjectContext save:nil];
 }
 
+- (NSString *)generateXML {
+    return nil;
+}
+
 @end
