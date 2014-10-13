@@ -10,29 +10,29 @@
 	<string>Adjustable Field Notes</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>38E3841E-2BC0-49F1-BC8C-443B3A247871</key>
+		<key>9B909E2EDF6D1D95DBC41C4FEB5C50DD62F0DCF4</key>
 		<string>https://github.com/rychvald/AdjustableFieldNotes.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Adjustable Field Notes/Adjustable Field Notes.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>38E3841E-2BC0-49F1-BC8C-443B3A247871</key>
+		<key>9B909E2EDF6D1D95DBC41C4FEB5C50DD62F0DCF4</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/rychvald/AdjustableFieldNotes.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>38E3841E-2BC0-49F1-BC8C-443B3A247871</string>
+	<string>9B909E2EDF6D1D95DBC41C4FEB5C50DD62F0DCF4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>38E3841E-2BC0-49F1-BC8C-443B3A247871</string>
+			<string>9B909E2EDF6D1D95DBC41C4FEB5C50DD62F0DCF4</string>
 			<key>IDESourceControlWCCName</key>
 			<string>AdjustableFieldNotes</string>
 		</dict>
