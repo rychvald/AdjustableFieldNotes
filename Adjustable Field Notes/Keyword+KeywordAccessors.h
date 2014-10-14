@@ -34,5 +34,6 @@
 - (BOOL)isActive;
 - (void)setIsActive:(BOOL)newValue;
 - (void)appendToGarbageCollector;
+- (NSString *)generateXML;
 
 @end
