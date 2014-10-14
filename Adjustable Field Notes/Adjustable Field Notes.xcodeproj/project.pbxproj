@@ -591,7 +591,7 @@
 				GCC_PREFIX_HEADER = "Adjustable Field Notes/Adjustable Field Notes-Prefix.pch";
 				INFOPLIST_FILE = "Adjustable Field Notes/Adjustable Field Notes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "12bf3cc6-d30b-431d-9f19-5f4cc61bb3bb";
+				PROVISIONING_PROFILE = "D8E8AD04-A7C0-4386-90B8-164FA0E56803";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -607,7 +607,7 @@
 				GCC_PREFIX_HEADER = "Adjustable Field Notes/Adjustable Field Notes-Prefix.pch";
 				INFOPLIST_FILE = "Adjustable Field Notes/Adjustable Field Notes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "12bf3cc6-d30b-431d-9f19-5f4cc61bb3bb";
+				PROVISIONING_PROFILE = "D8E8AD04-A7C0-4386-90B8-164FA0E56803";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
